@@ -1,0 +1,17 @@
+if {[file exists work]} {
+   vdel -all 
+}
+vlib work 
+
+vcom -2008 ./TPUFiles/*.vhd
+
+vcom -2008 ./Mux/*.vhd
+
+vcom -2008 ./OnesComp/*.vhd
+
+vcom -2008 ./Adder/*.vhd
+
+vcom -2008 ./AddSub/*.vhd
+
+#instruction read out # 
+echo "hope this works lol" 

@@ -1,0 +1,91 @@
+[N
+9
+5
+8 mux2t1_n
+4
+1 N
+9
+5 mixed
+7
+17 adder_subtractorn
+6
+9 ones_comp
+8
+20 tb_adder_subtractorn
+1
+39 /home/shawnr/CPRE_381/Lab1(1)/Lab1/work
+2
+19 ripple_carry_addern
+3
+10 structural
+]
+[G
+1
+2
+3
+1
+4
+1
+0
+32
+0
+0 0
+0
+0
+]
+[G
+1
+8
+9
+1
+4
+1
+0
+32
+0
+0 0
+0
+0
+]
+[G
+1
+5
+3
+1
+4
+1
+0
+32
+0
+0 0
+0
+0
+]
+[G
+1
+7
+3
+1
+4
+1
+0
+32
+0
+0 0
+0
+0
+]
+[G
+1
+6
+3
+1
+4
+1
+0
+32
+0
+0 0
+0
+0
+]

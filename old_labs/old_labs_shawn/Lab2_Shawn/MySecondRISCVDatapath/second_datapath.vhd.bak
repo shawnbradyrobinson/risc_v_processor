@@ -1,0 +1,183 @@
+-------------------------------------------------------------------------
+-- Shawn Robinson 
+-------------------------------------------------------------------------
+
+
+-- second_datapath.vhd
+-------------------------------------------------------------------------
+-- DESCRIPTION: Building on top of first_datapath to implement lw sw capabalities!
+--
+--
+-- NOTES:
+-------------------------------------------------------------------------
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+use work.types_package.all; 
+
+entity second_datapath is
+
+port(clk_dp 		: in std_logic; 
+     reset_dp		: in std_logic; 
+     write_enable_dp	: in std_logic; 
+     ALUsrc		: in std_logic; 
+     add_sub_select_dp	: in std_logic; 
+     MemWrite		: in std_logic; 
+     MemToReg		: in std_logic; 
+     rd_address_dp	: in std_logic_vector(4 downto 0); 
+     rs1_address_dp	: in std_logic_vector(4 downto 0); 
+     rs2_address_dp	: in std_logic_vector(4 downto 0); 
+     rs1_read_dp	: out std_logic_vector(31 downto 0); 
+     rs2_read_dp	: out std_logic_vector(31 downto 0);
+     immediate_value_dp	: in std_logic_vector(11 downto 0)
+);
+
+end second_datapath;
+
+architecture structural of second_datapath is
+
+  component mux2t1_N is
+  generic(N : integer := 32); -- Generic of type integer for input/output data width. Default value is 16.
+  port(i_S          		: in std_logic;
+       i_D0         		: in std_logic_vector(N-1 downto 0);
+       i_D1         		: in std_logic_vector(N-1 downto 0);
+       o_O          		: out std_logic_vector(N-1 downto 0));
+  end component;
+
+  component register_file is
+     port(clk 			: in std_logic; 
+     	  reset			: in std_logic; 
+     	  write_enable		: in std_logic; 
+     	  rd_address		: in std_logic_vector(4 downto 0); 
+     	  rd_data		: in std_logic_vector(31 downto 0); 
+     	  rs1_address		: in std_logic_vector(4 downto 0); 
+     	  rs2_address		: in std_logic_vector(4 downto 0); 
+     	  rs1_out		: out std_logic_vector(31 downto 0); 
+     	  rs2_out		: out std_logic_vector(31 downto 0));
+  end component; 
+
+  component adder_subtractorN
+     generic(N : integer := 32); -- Generic of type integer for input/output data width. Default value is 16.
+     port(A         		: in std_logic_vector(N-1 downto 0);
+          B         		: in std_logic_vector(N-1 downto 0);
+          --don't need a Cin because the select handles it 
+          add_sub_select 	: in std_logic;   
+          Result	 	: out std_logic_vector(N-1 downto 0); 
+          Cout      		: out std_logic); 
+  end component; 
+
+  component mem is 
+	generic(
+		DATA_WIDTH	: natural := 32; 
+		ADDR_WIDTH	: natural := 10 
+	);
+	port(
+		clk		: in std_logic; 
+		addr		: in std_logic_vector((ADDR_WIDTH-1) downto 0); 
+		data		: in std_logic_vector((DATA_WIDTH-1) downto 0); 
+		we		: in std_logic	:= '1'; 
+		q		: out std_logic_vector((DATA_WIDTH-1) downto 0)
+	);
+  end component; 
+
+  component bitextender_12to32 is
+	port(
+		imm12_in	: in std_logic_vector(11 downto 0); 
+		sign_select	: in std_logic;
+		imm32_out	: out std_logic_vector(31 downto 0) 
+	);
+  end component; 
+
+
+
+  
+-- === SIGNALS === 
+signal s_rs1_out		: std_logic_vector(31 downto 0); 
+signal s_rs2_out		: std_logic_vector(31 downto 0); 
+signal s_result			: std_logic_vector(31 downto 0); 
+signal s_B_SRC_Choice		: std_logic_vector(31 downto 0); 
+signal s_mem_output		: std_logic_vector(31 downto 0); 
+signal s_rd_data		: std_logic_vector(31 downto 0); 
+signal s_extended_imm		: std_logic_vector(31 downto 0); 
+
+
+	
+
+begin
+
+--Sign Bit Extender Stuff -- 
+EXTENDER: bitextender_12to32
+	port map(
+		imm12_in	=> immediate_value_dp,
+		sign_select	=> '1',
+		imm32_out	=> s_extended_imm
+	);
+
+-- Instance of the register_file 
+	RISC_V_REGISTERS: register_file 
+		port map(
+			clk			=> clk_dp,
+			reset			=> reset_dp,
+			write_enable		=> write_enable_dp,
+			rd_address		=> rd_address_dp,
+			rd_data			=> s_rd_data, -- this is new to support the new instructions!!
+			rs1_address		=> rs1_address_dp,
+			rs2_address		=> rs2_address_dp,
+			rs1_out			=> s_rs1_out,
+			rs2_out			=> s_rs2_out
+				);
+
+-- ALU PART 1: MUX FOR WHERE B COMES FROM 
+	ALU_SRC_MUX: mux2t1_N
+		generic map (N => 32)
+		port map(
+			i_S			=> ALUsrc,
+			i_D0			=> s_rs2_out,
+			i_D1			=> s_extended_imm, -- adding in the new wire from the bit extender
+			o_O			=> s_B_SRC_Choice
+			);
+-- ALU PART 2: Instance of the adder_subtractorN
+	ALU_ADDSUB: adder_subtractorN
+		generic map (N => 32)
+		port map(
+			A			=> s_rs1_out,
+			B			=> s_B_SRC_Choice,
+			add_sub_select		=> add_sub_select_dp,
+			Result			=> s_result,
+			Cout			=> open
+			);
+
+-- DATA MEMORY BLOCK
+
+	MEMORY_BLOCK: mem
+		generic map(
+			DATA_WIDTH => 32,
+			ADDR_WIDTH => 10
+		)
+		port map(
+			clk		=> clk_dp,
+			addr		=> s_result(11 downto 2), --if I want to implement the full RISC-V someday, this changes to 11downto2
+			data		=> s_rs2_out,
+			we		=> MemWrite,
+			q		=> s_mem_output
+		);
+
+-- MEMORY OR ALU RD_DATA CHOICE
+	MEMTOREG_MUX: mux2t1_N
+		generic map(N => 32)
+		port map(
+			i_S		=> MemToReg,
+			i_D0		=> s_result,
+			i_D1		=> s_mem_output,
+			o_O		=> s_rd_data
+		);
+
+
+
+-- DATAPATH MAPS
+			
+     	rs1_read_dp		<= s_rs1_out;
+     	rs2_read_dp		<= s_rs2_out;
+
+  
+end structural;
