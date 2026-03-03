@@ -1,0 +1,75 @@
+-------------------------------------------------------------------------
+-- Shawn Robinson 
+-------------------------------------------------------------------------
+
+
+-- tb_first_datapath.vhd
+-------------------------------------------------------------------------
+-- DESCRIPTION: This file contains a simple VHDL testbench for my 12 to 32 bit extender 
+--
+-- NOTES:
+-------------------------------------------------------------------------
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity tb_bitextender_12to32 is
+--  generic(gCLK_HPER   : time := 50 ns);
+end tb_bitextender_12to32;
+
+architecture behavioral of tb_bitextender_12to32 is
+  
+  -- Calculate the clock period as twice the half-period
+-- constant cCLK_PER  : time := gCLK_HPER * 2;
+
+
+  component bitextender_12to32
+    port(	imm12_in		: in std_logic_vector(11 downto 0);
+		sign_select		: in std_logic; -- 1 = sign extend, 0 = zero extend 
+		imm32_out		: out std_logic_vector(31 downto 0)
+	);
+  end component;
+
+--signals -- 
+
+	signal s_imm12_in		: std_logic_vector(11 downto 0) := (others => '0'); 
+	signal s_sign_select		: std_logic := '0'; 
+	signal s_imm32_out		: std_logic_vector(31 downto 0); 
+
+
+begin
+
+  DUT: bitextender_12to32 
+  port map(	imm12_in		=> s_imm12_in,
+		sign_select		=> s_sign_select,
+		imm32_out		=> s_imm32_out
+	);  
+
+  -- This process sets the clock value (low for gCLK_HPER, then high
+  -- for gCLK_HPER). Absent a "wait" command, processes restart 
+  -- at the beginning once they have reached the final statement.
+--  P_CLK: process
+--  begin
+--    s_clk_dp <= '0';
+--    wait for gCLK_HPER;
+--    s_clk_dp <= '1';
+--    wait for gCLK_HPER;
+--  end process;
+  
+--Testbench process
+P_TB: process
+begin
+
+s_imm12_in <= "100000000001";
+s_sign_select <= '1'; 
+wait for 10 ns; 
+--Expect: FFFFF801
+
+s_sign_select <= '0'; 
+wait for 10 ns; 
+--Expect: 00000801
+
+wait; 
+end process;
+  
+end behavioral;

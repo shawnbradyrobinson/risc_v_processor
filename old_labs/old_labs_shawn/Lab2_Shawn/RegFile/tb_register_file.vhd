@@ -1,0 +1,117 @@
+-------------------------------------------------------------------------
+-- Shawn Robinson 
+-------------------------------------------------------------------------
+
+
+-- tb_register_file.vhd
+-------------------------------------------------------------------------
+-- DESCRIPTION: This file contains a simple VHDL testbench for my final register file!
+--
+-- NOTES:
+-------------------------------------------------------------------------
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity tb_register_file is
+  generic(gCLK_HPER   : time := 50 ns);
+end tb_register_file;
+
+architecture behavioral of tb_register_file is
+  
+  -- Calculate the clock period as twice the half-period
+ constant cCLK_PER  : time := gCLK_HPER * 2;
+
+
+  component register_file
+    port(clk 			: in std_logic; 
+         reset			: in std_logic; 
+         write_enable		: in std_logic; 
+         rd_address		: in std_logic_vector(4 downto 0); 
+         rd_data		: in std_logic_vector(31 downto 0); 
+         rs1_address		: in std_logic_vector(4 downto 0); 
+         rs2_address		: in std_logic_vector(4 downto 0); 
+         rs1_out		: out std_logic_vector(31 downto 0); 
+         rs2_out		: out std_logic_vector(31 downto 0));  
+  end component;
+
+--signals -- 
+	signal s_clk 		: std_logic := '0';
+	signal s_reset		: std_logic := '0';
+	signal s_write_enable	: std_logic := '0';
+	signal s_rd_address	: std_logic_vector(4 downto 0) := (others => '0');
+	signal s_rd_data	: std_logic_vector(31 downto 0) := (others => '0');
+	signal s_rs1_address	: std_logic_vector(4 downto 0) := (others => '0');
+	signal s_rs2_address	: std_logic_vector(4 downto 0) := (others => '0');
+	signal s_rs1_out	: std_logic_vector(31 downto 0);  
+	signal s_rs2_out	: std_logic_vector(31 downto 0);   
+
+begin
+
+  DUT: register_file 
+  port map(clk 			=> s_clk,
+	   reset		=> s_reset,
+	   write_enable		=> s_write_enable,
+	   rd_address		=> s_rd_address,
+	   rd_data		=> s_rd_data,
+	   rs1_address		=> s_rs1_address,
+	   rs2_address		=> s_rs2_address,
+	   rs1_out		=> s_rs1_out,
+	   rs2_out		=> s_rs2_out);
+
+  -- This process sets the clock value (low for gCLK_HPER, then high
+  -- for gCLK_HPER). Absent a "wait" command, processes restart 
+  -- at the beginning once they have reached the final statement.
+  P_CLK: process
+  begin
+    s_CLK <= '0';
+    wait for gCLK_HPER;
+    s_CLK <= '1';
+    wait for gCLK_HPER;
+  end process;
+  
+  -- Testbench process  
+  P_TB: process
+  begin
+    -- Reset the FF
+  --  s_RST <= '1';
+  --  s_WE  <= '0';
+ --   s_D   <= (0 => '0', others => '0');
+   -- wait for 100 ns;
+
+	s_reset <= '1';
+	wait for cCLK_PER * 2;
+
+	s_reset <= '0';
+	wait for cCLK_PER; 
+	--Test writing to x1 -- 
+	s_rd_address	<= "00001"; 
+	s_rd_data	<= x"ABCDE123";
+	s_write_enable	<= '1';
+	wait for cCLK_PER;
+	s_write_enable	<= '0';
+
+	--Test writing to x2 -- 
+	s_rd_address	<= "00010"; 
+	s_rd_data	<= x"456789AB";
+	s_write_enable	<= '1';
+	wait for cCLK_PER;
+	s_write_enable	<= '0';
+
+	--Test writing to x0 (hopefully doesn't work) -- 
+	s_rd_address	<= "00000"; 
+	s_rd_data	<= x"FFFFFFFF";
+	s_write_enable	<= '1';
+	wait for cCLK_PER;
+	s_write_enable	<= '0';
+	
+	s_rs1_address	<= "00001"; -- Shoulde see xABCDE123
+	s_rs2_address	<= "00010"; -- Should see x456789AB
+	wait for 20 ns;
+
+	--Read x0 to verify it stayed zero 
+	s_rs1_address	<= "00000"; 
+	wait; 	
+  end process;
+  
+end behavioral;

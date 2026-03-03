@@ -1,0 +1,360 @@
+-------------------------------------------------------------------------
+-- Shawn Robinson 
+-------------------------------------------------------------------------
+
+
+-- tb_first_datapath.vhd
+-------------------------------------------------------------------------
+-- DESCRIPTION: This file contains a simple VHDL testbench for my first datapath
+--
+-- NOTES:
+-------------------------------------------------------------------------
+
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity tb_first_datapath is
+  generic(gCLK_HPER   : time := 50 ns);
+end tb_first_datapath;
+
+architecture behavioral of tb_first_datapath is
+  
+  -- Calculate the clock period as twice the half-period
+ constant cCLK_PER  : time := gCLK_HPER * 2;
+
+
+  component first_datapath
+    port(clk_dp 		: in std_logic; 
+     reset_dp		: in std_logic; 
+     write_enable_dp	: in std_logic; 
+     ALUsrc		: in std_logic; 
+     rd_address_dp	: in std_logic_vector(4 downto 0); 
+    -- rd_data_dp		: in std_logic_vector(31 downto 0); 
+     rs1_address_dp	: in std_logic_vector(4 downto 0); 
+     rs2_address_dp	: in std_logic_vector(4 downto 0); 
+     rs1_read_dp	: out std_logic_vector(31 downto 0); 
+     add_sub_select_dp	: in std_logic; 
+     rs2_read_dp	: out std_logic_vector(31 downto 0);
+     immediate_value_dp	: in std_logic_vector(31 downto 0));  
+  end component;
+
+--signals -- 
+	signal s_clk_dp 		: std_logic := '0';
+	signal s_reset_dp		: std_logic := '0';
+	signal s_write_enable		: std_logic := '0';
+	signal s_ALUsrc			: std_logic := '0'; 
+	signal s_rd_address		: std_logic_vector(4 downto 0) := (others => '0');
+	signal s_rs1_address		: std_logic_vector(4 downto 0) := (others => '0');
+	signal s_rs2_address		: std_logic_vector(4 downto 0) := (others => '0');
+	
+	signal s_add_sub_select		: std_logic := '0'; 
+	signal s_immediate_value	: std_logic_vector(31 downto 0) := (others => '0');
+
+
+	signal s_rs1_out		: std_logic_vector(31 downto 0);  
+	signal s_rs2_out		: std_logic_vector(31 downto 0);   
+
+begin
+
+  DUT: first_datapath 
+  port map(	clk_dp 			=> s_clk_dp, 
+     	 	reset_dp		=> s_reset_dp,
+     		write_enable_dp		=> s_write_enable,
+     		ALUsrc			=> s_ALUsrc,
+     		rd_address_dp		=> s_rd_address,
+     		--rd_data_dp		=> (others => '0'),
+     		rs1_address_dp		=> s_rs1_address,
+     		rs2_address_dp		=> s_rs2_address,
+     		rs1_read_dp		=> s_rs1_out,
+     		add_sub_select_dp	=> s_add_sub_select,
+     		rs2_read_dp		=> s_rs2_out,
+     		immediate_value_dp	=> s_immediate_value
+	);  
+
+  -- This process sets the clock value (low for gCLK_HPER, then high
+  -- for gCLK_HPER). Absent a "wait" command, processes restart 
+  -- at the beginning once they have reached the final statement.
+  P_CLK: process
+  begin
+    s_clk_dp <= '0';
+    wait for gCLK_HPER;
+    s_clk_dp <= '1';
+    wait for gCLK_HPER;
+  end process;
+  
+--Testbench process
+P_TB: process
+begin
+    -- 1. Initial Reset
+    s_reset_dp <= '1';
+    wait for cCLK_PER * 2;
+    s_reset_dp <= '0';
+    wait for cCLK_PER * 2;
+
+   s_write_enable <= '0';
+   wait for cCLK_PER; 
+
+    -----------------------------------------------------------
+    -- LOAD INITIAL VALUES (addi x#, zero, imm)
+    -- ALUSrc = '1', add_sub = '0' (add), rs1 = 0
+    -----------------------------------------------------------
+
+    -- addi x1, zero, 1
+    wait for gCLK_HPER;  -- Align to falling edge
+    s_rd_address        <= "00001";
+    s_rs1_address       <= "00000"; 
+    s_rs2_address	<= "00000"; 
+    s_immediate_value   <= x"00000001";
+    s_ALUsrc            <= '1';
+    s_add_sub_select    <= '0';
+    s_write_enable      <= '1';
+    wait for cCLK_PER;
+
+    -- addi x2, zero, 2
+    wait for gCLK_HPER;  -- Align to falling edge
+    s_rd_address        <= "00010";
+    s_rs1_address       <= "00000"; 
+    s_rs2_address	<= "00000"; 
+    s_immediate_value   <= x"00000002";
+    s_ALUsrc            <= '1';
+    s_add_sub_select    <= '0';
+    s_write_enable      <= '1';
+    wait for cCLK_PER;
+
+    -- addi x3, zero, 3
+    wait for gCLK_HPER;  -- Align to falling edge
+    s_rd_address        <= "00011";
+    s_rs1_address       <= "00000"; 
+    s_rs2_address	<= "00000"; 
+    s_immediate_value   <= x"00000003";
+    s_ALUsrc            <= '1';
+    s_add_sub_select    <= '0';
+    s_write_enable      <= '1';
+    wait for cCLK_PER;
+
+    -- addi x4, zero, 4
+    wait for gCLK_HPER;  -- Align to falling edge
+    s_rd_address        <= "00100";
+    s_rs1_address       <= "00000"; 
+    s_rs2_address	<= "00000"; 
+    s_immediate_value   <= x"00000004";
+    s_ALUsrc            <= '1';
+    s_add_sub_select    <= '0';
+    s_write_enable      <= '1';
+    wait for cCLK_PER;
+
+    -- addi x5, zero, 5
+    wait for gCLK_HPER;  -- Align to falling edge
+    s_rd_address        <= "00101";
+    s_rs1_address       <= "00000"; 
+    s_rs2_address	<= "00000"; 
+    s_immediate_value   <= x"00000005";
+    s_ALUsrc            <= '1';
+    s_add_sub_select    <= '0';
+    s_write_enable      <= '1';
+    wait for cCLK_PER;
+
+    -- addi x6, zero, 6
+    wait for gCLK_HPER;  -- Align to falling edge
+    s_rd_address        <= "00110";
+    s_rs1_address       <= "00000"; 
+    s_rs2_address	<= "00000"; 
+    s_immediate_value   <= x"00000006";
+    s_ALUsrc            <= '1';
+    s_add_sub_select    <= '0';
+    s_write_enable      <= '1';
+    wait for cCLK_PER;
+
+    -- addi x7, zero, 7
+    wait for gCLK_HPER;  -- Align to falling edge
+    s_rd_address        <= "00111";
+    s_rs1_address       <= "00000"; 
+    s_rs2_address	<= "00000"; 
+    s_immediate_value   <= x"00000007";
+    s_ALUsrc            <= '1';
+    s_add_sub_select    <= '0';
+    s_write_enable      <= '1';
+    wait for cCLK_PER;
+
+    -- addi x8, zero, 8
+    wait for gCLK_HPER;  -- Align to falling edge
+    s_rd_address        <= "01000";
+    s_rs1_address       <= "00000"; 
+    s_rs2_address	<= "00000"; 
+    s_immediate_value   <= x"00000008";
+    s_ALUsrc            <= '1';
+    s_add_sub_select    <= '0';
+    s_write_enable      <= '1';
+    wait for cCLK_PER;
+
+    -- addi x9, zero, 9
+    wait for gCLK_HPER;  -- Align to falling edge
+    s_rd_address        <= "01001";
+    s_rs1_address       <= "00000"; 
+    s_rs2_address	<= "00000"; 
+    s_immediate_value   <= x"00000009";
+    s_ALUsrc            <= '1';
+    s_add_sub_select    <= '0';
+    s_write_enable      <= '1';
+    wait for cCLK_PER;
+
+    -- addi x10, zero, 10
+    wait for gCLK_HPER;  -- Align to falling edge
+    s_rd_address        <= "01010";
+    s_rs1_address       <= "00000"; 
+    s_rs2_address	<= "00000"; 
+    s_immediate_value   <= x"0000000A";
+    s_ALUsrc            <= '1';
+    s_add_sub_select    <= '0';
+    s_write_enable      <= '1';
+    wait for cCLK_PER;
+
+
+    -----------------------------------------------------------
+    -- ARITHMETIC CHAIN (add/sub)
+    -- ALUSrc = '0' (uses Register B)
+    -----------------------------------------------------------
+
+    -- add x11, x1, x2 (1+2 = 3)
+    wait for gCLK_HPER;  -- Align to falling edge
+    s_rd_address        <= "01011";
+    s_rs1_address       <= "00001"; 
+    s_rs2_address	<= "00010"; 
+    s_immediate_value   <= x"00000000";
+    s_ALUsrc            <= '0';
+    s_add_sub_select    <= '0';
+    s_write_enable      <= '1';
+    wait for cCLK_PER;
+    wait for cCLK_PER; 
+
+    -- sub x12, x11, x3 (3-3 = 0)
+    wait for gCLK_HPER;  -- Align to falling edge
+    s_rd_address        <= "01100";
+    s_rs1_address       <= "01011"; 
+    s_rs2_address	<= "00011"; 
+    s_immediate_value   <= x"00000000";
+    s_ALUsrc            <= '0';
+    s_add_sub_select    <= '1';
+    s_write_enable      <= '1';
+    wait for cCLK_PER;
+    wait for cCLK_PER; 
+
+    -- add x13, x12, x4 (0+4 = 4)
+    wait for gCLK_HPER;  -- Align to falling edge
+    s_rd_address        <= "01101";
+    s_rs1_address       <= "01100"; 
+    s_rs2_address	<= "00100"; 
+    s_immediate_value   <= x"00000000";
+    s_ALUsrc            <= '0';
+    s_add_sub_select    <= '0';
+    s_write_enable      <= '1';
+    wait for cCLK_PER;
+    wait for cCLK_PER; 
+
+    -- sub x14, x13, x5 (4-5 = -1)
+    wait for gCLK_HPER;  -- Align to falling edge
+    s_rd_address        <= "01110";
+    s_rs1_address       <= "01101"; 
+    s_rs2_address	<= "00101"; 
+    s_immediate_value   <= x"00000000";
+    s_ALUsrc            <= '0';
+    s_add_sub_select    <= '1';
+    s_write_enable      <= '1';
+    wait for cCLK_PER;
+    wait for cCLK_PER; 
+
+    -- add x15, x14, x6 (-1+6 = 5)
+    wait for gCLK_HPER;  -- Align to falling edge
+    s_rd_address        <= "01111";
+    s_rs1_address       <= "01110"; 
+    s_rs2_address	<= "00110"; 
+    s_immediate_value   <= x"00000000";
+    s_ALUsrc            <= '0';
+    s_add_sub_select    <= '0';
+    s_write_enable      <= '1';
+    wait for cCLK_PER;
+    wait for cCLK_PER; 
+
+    -- sub x16, x15, x7 (5-7 = -2)
+    wait for gCLK_HPER;  -- Align to falling edge
+    s_rd_address        <= "10000";
+    s_rs1_address       <= "01111"; 
+    s_rs2_address	<= "00111"; 
+    s_immediate_value   <= x"00000000";
+    s_ALUsrc            <= '0';
+    s_add_sub_select    <= '1';
+    s_write_enable      <= '1';
+    wait for cCLK_PER;
+    wait for cCLK_PER; 
+
+    -- add x17, x16, x8 (-2+8 = 6)
+    wait for gCLK_HPER;  -- Align to falling edge
+    s_rd_address        <= "10001";
+    s_rs1_address       <= "10000"; 
+    s_rs2_address	<= "01000"; 
+    s_immediate_value   <= x"00000000";
+    s_ALUsrc            <= '0';
+    s_add_sub_select    <= '0';
+    s_write_enable      <= '1';
+    wait for cCLK_PER;
+    wait for cCLK_PER; 
+
+    -- sub x18, x17, x9 (6-9 = -3)
+    wait for gCLK_HPER;  -- Align to falling edge
+    s_rd_address        <= "10010";
+    s_rs1_address       <= "10001"; 
+    s_rs2_address	<= "01001"; 
+    s_immediate_value   <= x"00000000";
+    s_ALUsrc            <= '0';
+    s_add_sub_select    <= '1';
+    s_write_enable      <= '1';
+    wait for cCLK_PER;
+    wait for cCLK_PER; 
+
+    -- add x19, x18, x10 (-3+10 = 7)
+    wait for gCLK_HPER;  -- Align to falling edge
+    s_rd_address        <= "10011";
+    s_rs1_address       <= "10010"; 
+    s_rs2_address	<= "01010"; 
+    s_immediate_value   <= x"00000000";
+    s_ALUsrc            <= '0';
+    s_add_sub_select    <= '0';
+    s_write_enable      <= '1';
+    wait for cCLK_PER;
+    wait for cCLK_PER; 
+
+    -----------------------------------------------------------
+    -- FINAL RESULT
+    -----------------------------------------------------------
+
+    -- addi x20, zero, -35
+    wait for gCLK_HPER;  -- Align to falling edge
+    s_rd_address        <= "10100";
+    s_rs1_address       <= "00000"; 
+    s_rs2_address	<= "00000"; 
+    s_immediate_value   <= x"FFFFFFDD";
+    s_ALUsrc            <= '1';
+    s_add_sub_select    <= '0';
+    s_write_enable      <= '1';
+    wait for cCLK_PER;
+    wait for cCLK_PER; 
+
+    -- add x21, x19, x20 (7 + -35 = -28)
+    wait for gCLK_HPER;  -- Align to falling edge
+    s_rd_address        <= "10101";
+    s_rs1_address       <= "10011"; 
+    s_rs2_address	<= "10100"; 
+    s_immediate_value   <= x"00000000";
+    s_ALUsrc            <= '0';
+    s_add_sub_select    <= '0';
+    s_write_enable      <= '1';
+    wait for cCLK_PER;
+    wait for cCLK_PER; 
+
+    -- Cleanup
+    wait for gCLK_HPER;  -- Align to falling edge
+    s_write_enable      <= '0';
+    wait;
+end process;
+  
+end behavioral;
