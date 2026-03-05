@@ -55,6 +55,10 @@ signal not_s : std_logic;
 -- ?? 
 
 begin 
+select_not: invg
+	port MAP(i_A => i_S,
+		 o_F => not_s);  
+
 w1And: andg2 
 	port MAP(i_A => i_D1,
 		 i_B => i_S,
@@ -63,9 +67,6 @@ w0And: andg2
 	port MAP(i_A => i_D0,
 		 i_B => not_s,
 		 o_F => s_0); 
-select_not: invg
-	port MAP(i_A => i_S,
-		 o_F => not_s);  
 last_or: org2
 	port MAP(i_A => s_1,
 		 i_B => s_0,
