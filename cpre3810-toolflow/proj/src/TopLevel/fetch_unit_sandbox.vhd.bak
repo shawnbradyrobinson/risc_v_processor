@@ -37,6 +37,9 @@ architecture structure of fetch_unit_sandbox is
 	signal s_pc_offset			: std_logic_vector(31 downto 0); 
 	signal s_branch_or_jump		: std_logic; 
 	signal s_branch_and_zero	: std_logic; 
+
+	--handling a risc-v shift left one requirement
+	signal s_imm_shifted		: std_logic_vector(31 downto 0); 
 	
 
   component andg2 is 
@@ -58,25 +61,25 @@ architecture structure of fetch_unit_sandbox is
  component mux2t1_N is 
   generic(N : integer);
   port(i_S          : in std_logic;
-       i_D0         : in std_logic_vector(DATA_WIDTH-1 downto 0);
-       i_D1         : in std_logic_vector(DATA_WIDTH-1 downto 0);
-       o_O          : out std_logic_vector(DATA_WIDTH-1 downto 0));
+       i_D0         : in std_logic_vector(N-1 downto 0);
+       i_D1         : in std_logic_vector(N-1 downto 0);
+       o_O          : out std_logic_vector(N-1 downto 0));
 
  end component;
  
 
   component ripple_carry_adderN is
   generic(N : integer); 
-  port(A         : in std_logic_vector(DATA_WIDTH-1 downto 0);
-       B         : in std_logic_vector(DATA_WIDTH-1 downto 0);
+  port(A         : in std_logic_vector(N-1 downto 0);
+       B         : in std_logic_vector(N-1 downto 0);
        Cin       : in std_logic := '0';
-       Sum	 : out std_logic_vector(DATA_WIDTH-1 downto 0);  
+       Sum	 : out std_logic_vector(N-1 downto 0);  
        Cout      : out std_logic); 
 
   end component;
 
 begin
-
+  s_imm_shifted <= immediate_generate(30 downto 0) & '0'; 
   BranchZero_And : andg2
     port map(i_A 	=> BRANCH,
 	     i_B 	=> ZERO,

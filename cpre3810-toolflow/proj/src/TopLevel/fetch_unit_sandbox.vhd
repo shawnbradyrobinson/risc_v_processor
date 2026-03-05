@@ -37,6 +37,9 @@ architecture structure of fetch_unit_sandbox is
 	signal s_pc_offset			: std_logic_vector(31 downto 0); 
 	signal s_branch_or_jump		: std_logic; 
 	signal s_branch_and_zero	: std_logic; 
+
+	--handling a risc-v shift left one requirement
+	signal s_imm_shifted		: std_logic_vector(31 downto 0); 
 	
 
   component andg2 is 
@@ -76,7 +79,7 @@ architecture structure of fetch_unit_sandbox is
   end component;
 
 begin
-
+  s_imm_shifted <= immediate_generate(30 downto 0) & '0'; 
   BranchZero_And : andg2
     port map(i_A 	=> BRANCH,
 	     i_B 	=> ZERO,
@@ -93,7 +96,7 @@ begin
     generic map(N => 32)
     port map(   i_S	=> s_branch_or_jump,
 		i_D0	=> c_immediate_four,
-		i_D1	=> immediate_generate,
+		i_D1	=> s_imm_shifted,
 		o_O	=>  s_pc_offset
 		);
   PC_BASE: mux2t1_N

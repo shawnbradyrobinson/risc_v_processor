@@ -1,0 +1,2925 @@
+# //  Questa Sim-64
+# //  Version 2025.1_2 linux_x86_64 Apr  7 2025
+# //
+# // Unpublished work. Copyright 2025 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+ls
+# RISCV_Processor.vhd
+# RISCV_Processor.vhd.bak
+# andg2.vhd
+# fetch_unit_sandbox.vhd
+# fetch_unit_sandbox.vhd.bak
+# full_adder.vhd
+# mem.vhd
+# mux2t1.vhd
+# mux2t1_N.vhd
+# org2.vhd
+# ripple_carry_adderN.vhd
+# tb_fetch_unit_sandbox.vhd
+# tb_fetch_unit_sandbox.vhd.bak
+# transcript
+# xorg2.vhd
+# Ctrl+G  ==>  Goto
+# Ctrl+H  ==>  Replace
+# Ctrl+U  ==>  Delete Line
+# Ctrl+W  ==>  Add Selection To Wave
+add wave -position insertpoint {{lab 2 -- how'd I do? :-)}}
+do dosandbox.do
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:24:51 on Mar 05,2026
+# vcom -reportprogress 300 -2008 andg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity andg2
+# -- Compiling architecture dataflow of andg2
+# End time: 09:24:51 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:24:51 on Mar 05,2026
+# vcom -reportprogress 300 -2008 org2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity org2
+# -- Compiling architecture dataflow of org2
+# End time: 09:24:51 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:24:51 on Mar 05,2026
+# vcom -reportprogress 300 -2008 xorg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity xorg2
+# -- Compiling architecture dataflow of xorg2
+# End time: 09:24:51 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:24:51 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1
+# -- Compiling architecture structure of mux2t1
+# End time: 09:24:51 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:24:51 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1_N.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1_N
+# -- Compiling architecture structural of mux2t1_N
+# End time: 09:24:51 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:24:51 on Mar 05,2026
+# vcom -reportprogress 300 -2008 full_adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity full_adder
+# -- Compiling architecture structure of full_adder
+# End time: 09:24:51 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:24:51 on Mar 05,2026
+# vcom -reportprogress 300 -2008 ripple_carry_adderN.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity ripple_carry_adderN
+# -- Compiling architecture structural of ripple_carry_adderN
+# End time: 09:24:51 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:24:51 on Mar 05,2026
+# vcom -reportprogress 300 -2008 fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity fetch_unit_sandbox
+# ** Error: fetch_unit_sandbox.vhd(19): (vcom-1136) Unknown identifier "DATA_WIDTH".
+# ** Note: fetch_unit_sandbox.vhd(30): VHDL Compiler exiting
+# End time: 09:24:51 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: /usr/local/mentor/questasim/linux_x86_64/vcom failed.
+# Error in macro ./dosandbox.do line 22
+# /usr/local/mentor/questasim/linux_x86_64/vcom failed.
+#     while executing
+# "vcom -2008 fetch_unit_sandbox.vhd"
+do dosandbox.do
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:25:14 on Mar 05,2026
+# vcom -reportprogress 300 -2008 andg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity andg2
+# -- Compiling architecture dataflow of andg2
+# End time: 09:25:15 on Mar 05,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:25:15 on Mar 05,2026
+# vcom -reportprogress 300 -2008 org2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity org2
+# -- Compiling architecture dataflow of org2
+# End time: 09:25:15 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:25:15 on Mar 05,2026
+# vcom -reportprogress 300 -2008 xorg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity xorg2
+# -- Compiling architecture dataflow of xorg2
+# End time: 09:25:15 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:25:15 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1
+# -- Compiling architecture structure of mux2t1
+# End time: 09:25:15 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:25:15 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1_N.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1_N
+# -- Compiling architecture structural of mux2t1_N
+# End time: 09:25:15 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:25:15 on Mar 05,2026
+# vcom -reportprogress 300 -2008 full_adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity full_adder
+# -- Compiling architecture structure of full_adder
+# End time: 09:25:15 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:25:15 on Mar 05,2026
+# vcom -reportprogress 300 -2008 ripple_carry_adderN.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity ripple_carry_adderN
+# -- Compiling architecture structural of ripple_carry_adderN
+# End time: 09:25:15 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:25:15 on Mar 05,2026
+# vcom -reportprogress 300 -2008 fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity fetch_unit_sandbox
+# -- Compiling architecture structure of fetch_unit_sandbox
+# ** Error: fetch_unit_sandbox.vhd(65): (vcom-1576) Expecting token 'COMPONENT' after 'END'. Syntax is valid with -2019 switch.
+# ** Error: fetch_unit_sandbox.vhd(76): (vcom-1576) Expecting token 'COMPONENT' after 'END'. Syntax is valid with -2019 switch.
+# ** Warning: fetch_unit_sandbox.vhd(92): (vcom-1624) Component instance fetch_unit_sandbox(structure).PC_AUX has a generic map clause and the component mux2t1_N has no generics.
+# Generic map will be ignored.
+# ** Error: fetch_unit_sandbox.vhd(94): (vcom-1484) Unknown formal identifier "i_S".
+# ** Error: fetch_unit_sandbox.vhd(95): (vcom-1484) Unknown formal identifier "i_D0".
+# ** Error: fetch_unit_sandbox.vhd(96): (vcom-1484) Unknown formal identifier "i_D1".
+# ** Error: fetch_unit_sandbox.vhd(97): (vcom-1484) Unknown formal identifier "o_O".
+# ** Warning: fetch_unit_sandbox.vhd(99): (vcom-1624) Component instance fetch_unit_sandbox(structure).PC_BASE has a generic map clause and the component mux2t1_N has no generics.
+# Generic map will be ignored.
+# ** Error: fetch_unit_sandbox.vhd(101): (vcom-1484) Unknown formal identifier "i_S".
+# ** Error: fetch_unit_sandbox.vhd(102): (vcom-1484) Unknown formal identifier "i_D0".
+# ** Error: fetch_unit_sandbox.vhd(103): (vcom-1484) Unknown formal identifier "i_D1".
+# ** Error: fetch_unit_sandbox.vhd(104): (vcom-1484) Unknown formal identifier "o_O".
+# ** Warning: fetch_unit_sandbox.vhd(107): (vcom-1624) Component instance fetch_unit_sandbox(structure).NEXT_PC_ADD has a generic map clause and the component ripple_carry_adderN has no generics.
+# Generic map will be ignored.
+# ** Error: fetch_unit_sandbox.vhd(109): (vcom-1484) Unknown formal identifier "A".
+# ** Error: fetch_unit_sandbox.vhd(110): (vcom-1484) Unknown formal identifier "B".
+# ** Error: fetch_unit_sandbox.vhd(111): (vcom-1484) Unknown formal identifier "Sum".
+# ** Error: fetch_unit_sandbox.vhd(112): (vcom-1484) Unknown formal identifier "Cout".
+# ** Note: fetch_unit_sandbox.vhd(119): VHDL Compiler exiting
+# End time: 09:25:15 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 14, Warnings: 3
+# ** Error: /usr/local/mentor/questasim/linux_x86_64/vcom failed.
+# Error in macro ./dosandbox.do line 22
+# /usr/local/mentor/questasim/linux_x86_64/vcom failed.
+#     while executing
+# "vcom -2008 fetch_unit_sandbox.vhd"
+do dosandbox.do
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:27:06 on Mar 05,2026
+# vcom -reportprogress 300 -2008 andg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity andg2
+# -- Compiling architecture dataflow of andg2
+# End time: 09:27:06 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:27:06 on Mar 05,2026
+# vcom -reportprogress 300 -2008 org2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity org2
+# -- Compiling architecture dataflow of org2
+# End time: 09:27:06 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:27:06 on Mar 05,2026
+# vcom -reportprogress 300 -2008 xorg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity xorg2
+# -- Compiling architecture dataflow of xorg2
+# End time: 09:27:06 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:27:06 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1
+# -- Compiling architecture structure of mux2t1
+# End time: 09:27:06 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:27:06 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1_N.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1_N
+# -- Compiling architecture structural of mux2t1_N
+# End time: 09:27:06 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:27:06 on Mar 05,2026
+# vcom -reportprogress 300 -2008 full_adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity full_adder
+# -- Compiling architecture structure of full_adder
+# End time: 09:27:06 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:27:06 on Mar 05,2026
+# vcom -reportprogress 300 -2008 ripple_carry_adderN.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity ripple_carry_adderN
+# -- Compiling architecture structural of ripple_carry_adderN
+# End time: 09:27:06 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:27:06 on Mar 05,2026
+# vcom -reportprogress 300 -2008 fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity fetch_unit_sandbox
+# -- Compiling architecture structure of fetch_unit_sandbox
+# ** Error: fetch_unit_sandbox.vhd(65): (vcom-1576) Expecting token 'COMPONENT' after 'END'. Syntax is valid with -2019 switch.
+# ** Error: fetch_unit_sandbox.vhd(76): (vcom-1576) Expecting token 'COMPONENT' after 'END'. Syntax is valid with -2019 switch.
+# ** Warning: fetch_unit_sandbox.vhd(92): (vcom-1624) Component instance fetch_unit_sandbox(structure).PC_AUX has a generic map clause and the component mux2t1_N has no generics.
+# Generic map will be ignored.
+# ** Error: fetch_unit_sandbox.vhd(94): (vcom-1484) Unknown formal identifier "i_S".
+# ** Error: fetch_unit_sandbox.vhd(95): (vcom-1484) Unknown formal identifier "i_D0".
+# ** Error: fetch_unit_sandbox.vhd(96): (vcom-1484) Unknown formal identifier "i_D1".
+# ** Error: fetch_unit_sandbox.vhd(97): (vcom-1484) Unknown formal identifier "o_O".
+# ** Warning: fetch_unit_sandbox.vhd(99): (vcom-1624) Component instance fetch_unit_sandbox(structure).PC_BASE has a generic map clause and the component mux2t1_N has no generics.
+# Generic map will be ignored.
+# ** Error: fetch_unit_sandbox.vhd(101): (vcom-1484) Unknown formal identifier "i_S".
+# ** Error: fetch_unit_sandbox.vhd(102): (vcom-1484) Unknown formal identifier "i_D0".
+# ** Error: fetch_unit_sandbox.vhd(103): (vcom-1484) Unknown formal identifier "i_D1".
+# ** Error: fetch_unit_sandbox.vhd(104): (vcom-1484) Unknown formal identifier "o_O".
+# ** Warning: fetch_unit_sandbox.vhd(107): (vcom-1624) Component instance fetch_unit_sandbox(structure).NEXT_PC_ADD has a generic map clause and the component ripple_carry_adderN has no generics.
+# Generic map will be ignored.
+# ** Error: fetch_unit_sandbox.vhd(109): (vcom-1484) Unknown formal identifier "A".
+# ** Error: fetch_unit_sandbox.vhd(110): (vcom-1484) Unknown formal identifier "B".
+# ** Error: fetch_unit_sandbox.vhd(111): (vcom-1484) Unknown formal identifier "Sum".
+# ** Error: fetch_unit_sandbox.vhd(112): (vcom-1484) Unknown formal identifier "Cout".
+# ** Note: fetch_unit_sandbox.vhd(119): VHDL Compiler exiting
+# End time: 09:27:06 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 14, Warnings: 3
+# ** Error: /usr/local/mentor/questasim/linux_x86_64/vcom failed.
+# Error in macro ./dosandbox.do line 22
+# /usr/local/mentor/questasim/linux_x86_64/vcom failed.
+#     while executing
+# "vcom -2008 fetch_unit_sandbox.vhd"
+do dosandbox.do
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:29:48 on Mar 05,2026
+# vcom -reportprogress 300 -2008 andg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity andg2
+# -- Compiling architecture dataflow of andg2
+# End time: 09:29:48 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:29:48 on Mar 05,2026
+# vcom -reportprogress 300 -2008 org2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity org2
+# -- Compiling architecture dataflow of org2
+# End time: 09:29:48 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:29:48 on Mar 05,2026
+# vcom -reportprogress 300 -2008 xorg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity xorg2
+# -- Compiling architecture dataflow of xorg2
+# End time: 09:29:48 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:29:48 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1
+# -- Compiling architecture structure of mux2t1
+# End time: 09:29:48 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:29:48 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1_N.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1_N
+# -- Compiling architecture structural of mux2t1_N
+# End time: 09:29:48 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:29:48 on Mar 05,2026
+# vcom -reportprogress 300 -2008 full_adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity full_adder
+# -- Compiling architecture structure of full_adder
+# End time: 09:29:48 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:29:48 on Mar 05,2026
+# vcom -reportprogress 300 -2008 ripple_carry_adderN.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity ripple_carry_adderN
+# -- Compiling architecture structural of ripple_carry_adderN
+# End time: 09:29:48 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:29:48 on Mar 05,2026
+# vcom -reportprogress 300 -2008 fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity fetch_unit_sandbox
+# -- Compiling architecture structure of fetch_unit_sandbox
+# End time: 09:29:48 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# project one sandbox -- COMPILED!
+.main clear
+do dosandbox.do
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:30:26 on Mar 05,2026
+# vcom -reportprogress 300 -2008 andg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity andg2
+# -- Compiling architecture dataflow of andg2
+# End time: 09:30:26 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:30:26 on Mar 05,2026
+# vcom -reportprogress 300 -2008 org2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity org2
+# -- Compiling architecture dataflow of org2
+# End time: 09:30:26 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:30:27 on Mar 05,2026
+# vcom -reportprogress 300 -2008 xorg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity xorg2
+# -- Compiling architecture dataflow of xorg2
+# End time: 09:30:27 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:30:27 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1
+# -- Compiling architecture structure of mux2t1
+# End time: 09:30:27 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:30:27 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1_N.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1_N
+# -- Compiling architecture structural of mux2t1_N
+# End time: 09:30:27 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:30:27 on Mar 05,2026
+# vcom -reportprogress 300 -2008 full_adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity full_adder
+# -- Compiling architecture structure of full_adder
+# End time: 09:30:27 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:30:27 on Mar 05,2026
+# vcom -reportprogress 300 -2008 ripple_carry_adderN.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity ripple_carry_adderN
+# -- Compiling architecture structural of ripple_carry_adderN
+# End time: 09:30:27 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:30:27 on Mar 05,2026
+# vcom -reportprogress 300 -2008 fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity fetch_unit_sandbox
+# -- Compiling architecture structure of fetch_unit_sandbox
+# End time: 09:30:27 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:30:27 on Mar 05,2026
+# vcom -reportprogress 300 -2008 tb_fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_fetch_unit_sandbox
+# -- Compiling architecture behavioral of tb_fetch_unit_sandbox
+# End time: 09:30:27 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# project one sandbox -- COMPILED!
+do dosandbox.do
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:32:39 on Mar 05,2026
+# vcom -reportprogress 300 -2008 andg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity andg2
+# -- Compiling architecture dataflow of andg2
+# End time: 09:32:39 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:32:39 on Mar 05,2026
+# vcom -reportprogress 300 -2008 org2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity org2
+# -- Compiling architecture dataflow of org2
+# End time: 09:32:39 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:32:39 on Mar 05,2026
+# vcom -reportprogress 300 -2008 xorg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity xorg2
+# -- Compiling architecture dataflow of xorg2
+# End time: 09:32:39 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:32:39 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1
+# -- Compiling architecture structure of mux2t1
+# End time: 09:32:39 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:32:39 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1_N.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1_N
+# -- Compiling architecture structural of mux2t1_N
+# End time: 09:32:39 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:32:39 on Mar 05,2026
+# vcom -reportprogress 300 -2008 full_adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity full_adder
+# -- Compiling architecture structure of full_adder
+# End time: 09:32:39 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:32:39 on Mar 05,2026
+# vcom -reportprogress 300 -2008 ripple_carry_adderN.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity ripple_carry_adderN
+# -- Compiling architecture structural of ripple_carry_adderN
+# End time: 09:32:39 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:32:39 on Mar 05,2026
+# vcom -reportprogress 300 -2008 fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity fetch_unit_sandbox
+# -- Compiling architecture structure of fetch_unit_sandbox
+# End time: 09:32:39 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:32:39 on Mar 05,2026
+# vcom -reportprogress 300 -2008 tb_fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_fetch_unit_sandbox
+# -- Compiling architecture behavioral of tb_fetch_unit_sandbox
+# End time: 09:32:39 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" work.tb_fetch_unit.sandbox.vhd 
+# Start time: 09:32:39 on Mar 05,2026
+# ** Error (suppressible): (vsim-19) Failed to access library 'work.tb_fetch_unit.sandbox' at "work.tb_fetch_unit.sandbox".
+# No such file or directory. (errno = ENOENT)
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./dosandbox.do PAUSED at line 26
+.main clear
+do dosandbox.do
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:33:09 on Mar 05,2026
+# vcom -reportprogress 300 -2008 andg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity andg2
+# -- Compiling architecture dataflow of andg2
+# End time: 09:33:09 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:33:09 on Mar 05,2026
+# vcom -reportprogress 300 -2008 org2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity org2
+# -- Compiling architecture dataflow of org2
+# End time: 09:33:09 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:33:09 on Mar 05,2026
+# vcom -reportprogress 300 -2008 xorg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity xorg2
+# -- Compiling architecture dataflow of xorg2
+# End time: 09:33:09 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:33:09 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1
+# -- Compiling architecture structure of mux2t1
+# End time: 09:33:09 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:33:09 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1_N.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1_N
+# -- Compiling architecture structural of mux2t1_N
+# End time: 09:33:09 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:33:09 on Mar 05,2026
+# vcom -reportprogress 300 -2008 full_adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity full_adder
+# -- Compiling architecture structure of full_adder
+# End time: 09:33:09 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:33:09 on Mar 05,2026
+# vcom -reportprogress 300 -2008 ripple_carry_adderN.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity ripple_carry_adderN
+# -- Compiling architecture structural of ripple_carry_adderN
+# End time: 09:33:09 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:33:09 on Mar 05,2026
+# vcom -reportprogress 300 -2008 fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity fetch_unit_sandbox
+# -- Compiling architecture structure of fetch_unit_sandbox
+# End time: 09:33:10 on Mar 05,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:33:10 on Mar 05,2026
+# vcom -reportprogress 300 -2008 tb_fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_fetch_unit_sandbox
+# -- Compiling architecture behavioral of tb_fetch_unit_sandbox
+# End time: 09:33:10 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" work.tb_fetch_unit_sandbox 
+# Start time: 09:32:39 on Mar 05,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+# ** Error (suppressible): fetch_unit_sandbox.vhd(92): (vopt-1271) Bad default binding for component instance "PC_AUX: mux2t1_N".
+#  (Component generic "DATA_WIDTH" is not on the entity "work.mux2t1_N".)
+#  (Entity is selected because it is in the same library as the design unit that contains the component.)
+# ** Error (suppressible): fetch_unit_sandbox.vhd(99): (vopt-1271) Bad default binding for component instance "PC_BASE: mux2t1_N".
+#  (Component generic "DATA_WIDTH" is not on the entity "work.mux2t1_N".)
+#  (Entity is selected because it is in the same library as the design unit that contains the component.)
+# ** Error (suppressible): fetch_unit_sandbox.vhd(107): (vopt-1271) Bad default binding for component instance "NEXT_PC_ADD: ripple_carry_adderN".
+#  (Component generic "DATA_WIDTH" is not on the entity "work.ripple_carry_adderN".)
+#  (Entity is selected because it is in the same library as the design unit that contains the component.)
+# Optimization failed
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=4, Warnings=1.
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./dosandbox.do PAUSED at line 26
+do dosandbox.do
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:34:48 on Mar 05,2026
+# vcom -reportprogress 300 -2008 andg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity andg2
+# -- Compiling architecture dataflow of andg2
+# End time: 09:34:48 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:34:48 on Mar 05,2026
+# vcom -reportprogress 300 -2008 org2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity org2
+# -- Compiling architecture dataflow of org2
+# End time: 09:34:48 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:34:48 on Mar 05,2026
+# vcom -reportprogress 300 -2008 xorg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity xorg2
+# -- Compiling architecture dataflow of xorg2
+# End time: 09:34:48 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:34:48 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1
+# -- Compiling architecture structure of mux2t1
+# End time: 09:34:48 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:34:48 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1_N.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1_N
+# -- Compiling architecture structural of mux2t1_N
+# End time: 09:34:48 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:34:48 on Mar 05,2026
+# vcom -reportprogress 300 -2008 full_adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity full_adder
+# -- Compiling architecture structure of full_adder
+# End time: 09:34:49 on Mar 05,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:34:49 on Mar 05,2026
+# vcom -reportprogress 300 -2008 ripple_carry_adderN.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity ripple_carry_adderN
+# -- Compiling architecture structural of ripple_carry_adderN
+# End time: 09:34:49 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:34:49 on Mar 05,2026
+# vcom -reportprogress 300 -2008 fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity fetch_unit_sandbox
+# -- Compiling architecture structure of fetch_unit_sandbox
+# ** Error: fetch_unit_sandbox.vhd(61): (vcom-1136) Unknown identifier "DATA_WIDTH".
+# ** Error: fetch_unit_sandbox.vhd(61): (vcom-1591) Bad expression in left bound of range expression.
+# ** Error: fetch_unit_sandbox.vhd(61): Type error in range expression.
+# ** Error: fetch_unit_sandbox.vhd(62): (vcom-1136) Unknown identifier "DATA_WIDTH".
+# ** Error: fetch_unit_sandbox.vhd(62): (vcom-1591) Bad expression in left bound of range expression.
+# ** Error: fetch_unit_sandbox.vhd(62): Type error in range expression.
+# ** Error: fetch_unit_sandbox.vhd(63): (vcom-1136) Unknown identifier "DATA_WIDTH".
+# ** Error: fetch_unit_sandbox.vhd(63): (vcom-1591) Bad expression in left bound of range expression.
+# ** Error: fetch_unit_sandbox.vhd(63): Type error in range expression.
+# ** Error: fetch_unit_sandbox.vhd(70): (vcom-1136) Unknown identifier "DATA_WIDTH".
+# ** Error: fetch_unit_sandbox.vhd(70): (vcom-1591) Bad expression in left bound of range expression.
+# ** Error: fetch_unit_sandbox.vhd(70): Type error in range expression.
+# ** Error: fetch_unit_sandbox.vhd(71): (vcom-1136) Unknown identifier "DATA_WIDTH".
+# ** Error: fetch_unit_sandbox.vhd(71): (vcom-1591) Bad expression in left bound of range expression.
+# ** Error: fetch_unit_sandbox.vhd(71): Type error in range expression.
+# ** Error: fetch_unit_sandbox.vhd(73): (vcom-1136) Unknown identifier "DATA_WIDTH".
+# ** Error: fetch_unit_sandbox.vhd(73): (vcom-1591) Bad expression in left bound of range expression.
+# ** Error: fetch_unit_sandbox.vhd(73): Type error in range expression.
+# ** Note: fetch_unit_sandbox.vhd(116): VHDL Compiler exiting
+# End time: 09:34:49 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 18, Warnings: 0
+# ** Error: /usr/local/mentor/questasim/linux_x86_64/vcom failed.
+# Error in macro ./dosandbox.do line 22
+# /usr/local/mentor/questasim/linux_x86_64/vcom failed.
+#     while executing
+# "vcom -2008 fetch_unit_sandbox.vhd"
+do dosandbox.do
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:35:12 on Mar 05,2026
+# vcom -reportprogress 300 -2008 andg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity andg2
+# -- Compiling architecture dataflow of andg2
+# End time: 09:35:12 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:35:12 on Mar 05,2026
+# vcom -reportprogress 300 -2008 org2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity org2
+# -- Compiling architecture dataflow of org2
+# End time: 09:35:12 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:35:12 on Mar 05,2026
+# vcom -reportprogress 300 -2008 xorg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity xorg2
+# -- Compiling architecture dataflow of xorg2
+# End time: 09:35:12 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:35:12 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1
+# -- Compiling architecture structure of mux2t1
+# End time: 09:35:12 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:35:12 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1_N.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1_N
+# -- Compiling architecture structural of mux2t1_N
+# End time: 09:35:12 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:35:12 on Mar 05,2026
+# vcom -reportprogress 300 -2008 full_adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity full_adder
+# -- Compiling architecture structure of full_adder
+# End time: 09:35:12 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:35:12 on Mar 05,2026
+# vcom -reportprogress 300 -2008 ripple_carry_adderN.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity ripple_carry_adderN
+# -- Compiling architecture structural of ripple_carry_adderN
+# End time: 09:35:12 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:35:12 on Mar 05,2026
+# vcom -reportprogress 300 -2008 fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity fetch_unit_sandbox
+# -- Compiling architecture structure of fetch_unit_sandbox
+# End time: 09:35:12 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:35:12 on Mar 05,2026
+# vcom -reportprogress 300 -2008 tb_fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_fetch_unit_sandbox
+# -- Compiling architecture behavioral of tb_fetch_unit_sandbox
+# End time: 09:35:12 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" work.tb_fetch_unit_sandbox 
+# Start time: 09:32:39 on Mar 05,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(0)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(1)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(2)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(3)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(4)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(5)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(6)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(7)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(8)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(9)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(10)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(11)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(12)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(13)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(14)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(15)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(16)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(17)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(18)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(19)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(20)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(21)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(22)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(23)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(24)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(25)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(26)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(27)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(28)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(29)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(30)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(31)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(0)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(1)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(2)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(3)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(4)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(5)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(6)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(7)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(8)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(9)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(10)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(11)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(12)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(13)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(14)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(15)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(16)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(17)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(18)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(19)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(20)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(21)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(22)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(23)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(24)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(25)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(26)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(27)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(28)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(29)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(30)/MUXI
+# ** Warning: mux2t1.vhd(66): (vopt-3473) Component instance "select_not : invg" is not bound.
+#         Region: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(31)/MUXI
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=5, Warnings=66.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_fetch_unit_sandbox(behavioral)#1
+# Loading work.fetch_unit_sandbox(structure)#1
+# Loading work.andg2(dataflow)#1
+# Loading work.org2(dataflow)#1
+# Loading work.mux2t1_n(structural)#1
+# Loading work.mux2t1(structure)#1
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(0)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(1)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(2)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(3)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(4)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(5)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(6)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(7)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(8)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(9)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(10)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(11)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(12)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(13)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(14)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(15)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(16)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(17)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(18)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(19)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(20)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(21)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(22)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(23)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(24)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(25)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(26)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(27)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(28)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(29)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(30)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(31)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(0)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(1)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(2)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(3)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(4)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(5)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(6)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(7)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(8)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(9)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(10)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(11)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(12)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(13)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(14)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(15)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(16)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(17)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(18)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(19)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(20)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(21)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(22)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(23)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(24)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(25)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(26)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(27)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(28)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(29)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(30)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(31)/MUXI File: mux2t1.vhd
+# Loading work.ripple_carry_addern(structural)#1
+# Loading work.full_adder(structure)#1
+# Loading work.xorg2(dataflow)#1
+# project one sandbox -- COMPILED!
+add wave -position insertpoint  \
+sim:/tb_fetch_unit_sandbox/gCLK_HPER \
+sim:/tb_fetch_unit_sandbox/s_iCLK \
+sim:/tb_fetch_unit_sandbox/s_iRST \
+sim:/tb_fetch_unit_sandbox/s_PC \
+sim:/tb_fetch_unit_sandbox/s_rs1 \
+sim:/tb_fetch_unit_sandbox/s_PC_SRC \
+sim:/tb_fetch_unit_sandbox/s_JUMP \
+sim:/tb_fetch_unit_sandbox/s_BRANCH \
+sim:/tb_fetch_unit_sandbox/s_ZERO \
+sim:/tb_fetch_unit_sandbox/s_imm_gen \
+sim:/tb_fetch_unit_sandbox/s_next_PC
+run 500
+quit -sim
+# End time: 09:36:45 on Mar 05,2026, Elapsed time: 0:04:06
+# Errors: 5, Warnings: 130
+do dosandbox.do
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:38:30 on Mar 05,2026
+# vcom -reportprogress 300 -2008 andg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity andg2
+# -- Compiling architecture dataflow of andg2
+# End time: 09:38:30 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:38:30 on Mar 05,2026
+# vcom -reportprogress 300 -2008 org2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity org2
+# -- Compiling architecture dataflow of org2
+# End time: 09:38:30 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:38:30 on Mar 05,2026
+# vcom -reportprogress 300 -2008 xorg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity xorg2
+# -- Compiling architecture dataflow of xorg2
+# End time: 09:38:30 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:38:30 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1
+# -- Compiling architecture structure of mux2t1
+# End time: 09:38:30 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:38:30 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1_N.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1_N
+# -- Compiling architecture structural of mux2t1_N
+# End time: 09:38:30 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:38:30 on Mar 05,2026
+# vcom -reportprogress 300 -2008 full_adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity full_adder
+# -- Compiling architecture structure of full_adder
+# End time: 09:38:30 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:38:30 on Mar 05,2026
+# vcom -reportprogress 300 -2008 ripple_carry_adderN.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity ripple_carry_adderN
+# -- Compiling architecture structural of ripple_carry_adderN
+# End time: 09:38:30 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:38:30 on Mar 05,2026
+# vcom -reportprogress 300 -2008 fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity fetch_unit_sandbox
+# -- Compiling architecture structure of fetch_unit_sandbox
+# End time: 09:38:30 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:38:30 on Mar 05,2026
+# vcom -reportprogress 300 -2008 tb_fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_fetch_unit_sandbox
+# -- Compiling architecture behavioral of tb_fetch_unit_sandbox
+# End time: 09:38:30 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" work.tb_fetch_unit_sandbox 
+# Start time: 09:38:30 on Mar 05,2026
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_fetch_unit_sandbox(behavioral)#1
+# Loading work.fetch_unit_sandbox(structure)#1
+# Loading work.andg2(dataflow)#1
+# Loading work.org2(dataflow)#1
+# Loading work.mux2t1_n(structural)#1
+# Loading work.mux2t1(structure)#1
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(0)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(1)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(2)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(3)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(4)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(5)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(6)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(7)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(8)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(9)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(10)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(11)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(12)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(13)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(14)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(15)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(16)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(17)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(18)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(19)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(20)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(21)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(22)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(23)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(24)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(25)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(26)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(27)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(28)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(29)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(30)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(31)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(0)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(1)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(2)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(3)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(4)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(5)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(6)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(7)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(8)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(9)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(10)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(11)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(12)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(13)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(14)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(15)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(16)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(17)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(18)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(19)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(20)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(21)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(22)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(23)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(24)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(25)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(26)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(27)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(28)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(29)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(30)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(31)/MUXI File: mux2t1.vhd
+# Loading work.ripple_carry_addern(structural)#1
+# Loading work.full_adder(structure)#1
+# Loading work.xorg2(dataflow)#1
+# project one sandbox -- COMPILED!
+quit -sim
+# End time: 09:41:33 on Mar 05,2026, Elapsed time: 0:03:03
+# Errors: 0, Warnings: 64
+do dosandbox.do
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:41:36 on Mar 05,2026
+# vcom -reportprogress 300 -2008 andg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity andg2
+# -- Compiling architecture dataflow of andg2
+# End time: 09:41:36 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:41:36 on Mar 05,2026
+# vcom -reportprogress 300 -2008 org2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity org2
+# -- Compiling architecture dataflow of org2
+# End time: 09:41:36 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:41:36 on Mar 05,2026
+# vcom -reportprogress 300 -2008 xorg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity xorg2
+# -- Compiling architecture dataflow of xorg2
+# End time: 09:41:36 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:41:36 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1
+# -- Compiling architecture structure of mux2t1
+# End time: 09:41:36 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:41:36 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1_N.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1_N
+# -- Compiling architecture structural of mux2t1_N
+# End time: 09:41:36 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:41:36 on Mar 05,2026
+# vcom -reportprogress 300 -2008 full_adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity full_adder
+# -- Compiling architecture structure of full_adder
+# End time: 09:41:36 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:41:36 on Mar 05,2026
+# vcom -reportprogress 300 -2008 ripple_carry_adderN.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity ripple_carry_adderN
+# -- Compiling architecture structural of ripple_carry_adderN
+# End time: 09:41:36 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:41:36 on Mar 05,2026
+# vcom -reportprogress 300 -2008 fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity fetch_unit_sandbox
+# -- Compiling architecture structure of fetch_unit_sandbox
+# End time: 09:41:36 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:41:36 on Mar 05,2026
+# vcom -reportprogress 300 -2008 tb_fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_fetch_unit_sandbox
+# -- Compiling architecture behavioral of tb_fetch_unit_sandbox
+# End time: 09:41:36 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" work.tb_fetch_unit_sandbox 
+# Start time: 09:41:36 on Mar 05,2026
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_fetch_unit_sandbox(behavioral)#1
+# Loading work.fetch_unit_sandbox(structure)#1
+# Loading work.andg2(dataflow)#1
+# Loading work.org2(dataflow)#1
+# Loading work.mux2t1_n(structural)#1
+# Loading work.mux2t1(structure)#1
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(0)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(1)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(2)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(3)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(4)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(5)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(6)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(7)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(8)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(9)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(10)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(11)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(12)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(13)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(14)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(15)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(16)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(17)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(18)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(19)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(20)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(21)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(22)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(23)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(24)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(25)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(26)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(27)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(28)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(29)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(30)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(31)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(0)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(1)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(2)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(3)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(4)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(5)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(6)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(7)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(8)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(9)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(10)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(11)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(12)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(13)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(14)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(15)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(16)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(17)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(18)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(19)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(20)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(21)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(22)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(23)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(24)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(25)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(26)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(27)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(28)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(29)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(30)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(31)/MUXI File: mux2t1.vhd
+# Loading work.ripple_carry_addern(structural)#1
+# Loading work.full_adder(structure)#1
+# Loading work.xorg2(dataflow)#1
+# project one sandbox -- COMPILED!
+quit -sim
+# End time: 09:41:44 on Mar 05,2026, Elapsed time: 0:00:08
+# Errors: 0, Warnings: 64
+main .clear
+# invalid command name "main"
+.main clear
+do dosandbox.do
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:42:13 on Mar 05,2026
+# vcom -reportprogress 300 -2008 invg2.vhd 
+# ** Error: (vcom-7) Failed to open design unit file "invg2.vhd" in read mode.
+# No such file or directory. (errno = ENOENT)
+# End time: 09:42:13 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: /usr/local/mentor/questasim/linux_x86_64/vcom failed.
+# Error in macro ./dosandbox.do line 14
+# /usr/local/mentor/questasim/linux_x86_64/vcom failed.
+#     while executing
+# "vcom -2008 invg2.vhd"
+do dosandbox.do
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:42:28 on Mar 05,2026
+# vcom -reportprogress 300 -2008 invg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity invg
+# -- Compiling architecture dataflow of invg
+# End time: 09:42:28 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:42:28 on Mar 05,2026
+# vcom -reportprogress 300 -2008 andg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity andg2
+# -- Compiling architecture dataflow of andg2
+# End time: 09:42:28 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:42:28 on Mar 05,2026
+# vcom -reportprogress 300 -2008 org2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity org2
+# -- Compiling architecture dataflow of org2
+# End time: 09:42:28 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:42:28 on Mar 05,2026
+# vcom -reportprogress 300 -2008 xorg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity xorg2
+# -- Compiling architecture dataflow of xorg2
+# End time: 09:42:28 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:42:28 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1
+# -- Compiling architecture structure of mux2t1
+# End time: 09:42:28 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:42:28 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1_N.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1_N
+# -- Compiling architecture structural of mux2t1_N
+# End time: 09:42:28 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:42:28 on Mar 05,2026
+# vcom -reportprogress 300 -2008 full_adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity full_adder
+# -- Compiling architecture structure of full_adder
+# End time: 09:42:29 on Mar 05,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:42:29 on Mar 05,2026
+# vcom -reportprogress 300 -2008 ripple_carry_adderN.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity ripple_carry_adderN
+# -- Compiling architecture structural of ripple_carry_adderN
+# End time: 09:42:29 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:42:29 on Mar 05,2026
+# vcom -reportprogress 300 -2008 fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity fetch_unit_sandbox
+# -- Compiling architecture structure of fetch_unit_sandbox
+# End time: 09:42:29 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:42:29 on Mar 05,2026
+# vcom -reportprogress 300 -2008 tb_fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_fetch_unit_sandbox
+# -- Compiling architecture behavioral of tb_fetch_unit_sandbox
+# End time: 09:42:29 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" work.tb_fetch_unit_sandbox 
+# Start time: 09:42:29 on Mar 05,2026
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_fetch_unit_sandbox(behavioral)#1
+# Loading work.fetch_unit_sandbox(structure)#1
+# Loading work.andg2(dataflow)#1
+# Loading work.org2(dataflow)#1
+# Loading work.mux2t1_n(structural)#1
+# Loading work.mux2t1(structure)#1
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(0)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(1)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(2)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(3)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(4)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(5)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(6)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(7)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(8)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(9)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(10)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(11)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(12)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(13)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(14)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(15)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(16)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(17)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(18)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(19)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(20)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(21)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(22)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(23)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(24)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(25)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(26)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(27)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(28)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(29)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(30)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(31)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(0)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(1)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(2)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(3)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(4)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(5)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(6)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(7)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(8)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(9)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(10)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(11)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(12)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(13)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(14)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(15)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(16)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(17)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(18)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(19)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(20)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(21)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(22)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(23)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(24)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(25)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(26)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(27)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(28)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(29)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(30)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(31)/MUXI File: mux2t1.vhd
+# Loading work.ripple_carry_addern(structural)#1
+# Loading work.full_adder(structure)#1
+# Loading work.xorg2(dataflow)#1
+# project one sandbox -- COMPILED!
+ls -r work
+# _vmake
+# _tempmsg
+# _temp
+# _opt__lock
+# _lib1_4.qtl
+# _lib1_4.qpg
+# _lib1_4.qdb
+# _lib.qdb
+# _info
+# @_opt
+ls
+# RISCV_Processor.vhd
+# RISCV_Processor.vhd.bak
+# andg2.vhd
+# dosandbox.do
+# dosandbox.do.bak
+# fetch_unit_sandbox.vhd
+# fetch_unit_sandbox.vhd.bak
+# full_adder.vhd
+# invg.vhd
+# mem.vhd
+# mux2t1.vhd
+# mux2t1_N.vhd
+# org2.vhd
+# ripple_carry_adderN.vhd
+# tb_fetch_unit_sandbox.vhd
+# tb_fetch_unit_sandbox.vhd.bak
+# transcript
+# vsim.wlf
+# work
+# xorg2.vhd
+do dosandbox.do
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:45:17 on Mar 05,2026
+# vcom -reportprogress 300 -2008 invg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity invg
+# -- Compiling architecture dataflow of invg
+# End time: 09:45:17 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:45:17 on Mar 05,2026
+# vcom -reportprogress 300 -2008 andg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity andg2
+# -- Compiling architecture dataflow of andg2
+# End time: 09:45:17 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:45:17 on Mar 05,2026
+# vcom -reportprogress 300 -2008 org2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity org2
+# -- Compiling architecture dataflow of org2
+# End time: 09:45:17 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:45:17 on Mar 05,2026
+# vcom -reportprogress 300 -2008 xorg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity xorg2
+# -- Compiling architecture dataflow of xorg2
+# End time: 09:45:17 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:45:17 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1
+# -- Compiling architecture structure of mux2t1
+# End time: 09:45:18 on Mar 05,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:45:18 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1_N.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1_N
+# -- Compiling architecture structural of mux2t1_N
+# End time: 09:45:18 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:45:18 on Mar 05,2026
+# vcom -reportprogress 300 -2008 full_adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity full_adder
+# -- Compiling architecture structure of full_adder
+# End time: 09:45:18 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:45:18 on Mar 05,2026
+# vcom -reportprogress 300 -2008 ripple_carry_adderN.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity ripple_carry_adderN
+# -- Compiling architecture structural of ripple_carry_adderN
+# End time: 09:45:18 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:45:18 on Mar 05,2026
+# vcom -reportprogress 300 -2008 fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity fetch_unit_sandbox
+# -- Compiling architecture structure of fetch_unit_sandbox
+# End time: 09:45:18 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:45:18 on Mar 05,2026
+# vcom -reportprogress 300 -2008 tb_fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_fetch_unit_sandbox
+# -- Compiling architecture behavioral of tb_fetch_unit_sandbox
+# End time: 09:45:18 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 09:45:18 on Mar 05,2026, Elapsed time: 0:02:49
+# Errors: 0, Warnings: 64
+# vsim -voptargs=""+acc"" work.tb_fetch_unit_sandbox 
+# Start time: 09:45:18 on Mar 05,2026
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_fetch_unit_sandbox(behavioral)#1
+# Loading work.fetch_unit_sandbox(structure)#1
+# Loading work.andg2(dataflow)#1
+# Loading work.org2(dataflow)#1
+# Loading work.mux2t1_n(structural)#1
+# Loading work.mux2t1(structure)#1
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(0)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(1)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(2)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(3)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(4)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(5)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(6)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(7)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(8)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(9)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(10)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(11)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(12)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(13)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(14)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(15)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(16)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(17)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(18)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(19)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(20)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(21)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(22)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(23)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(24)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(25)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(26)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(27)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(28)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(29)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(30)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_AUX/G_NBit_MUX(31)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(0)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(1)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(2)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(3)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(4)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(5)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(6)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(7)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(8)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(9)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(10)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(11)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(12)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(13)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(14)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(15)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(16)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(17)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(18)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(19)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(20)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(21)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(22)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(23)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(24)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(25)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(26)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(27)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(28)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(29)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(30)/MUXI File: mux2t1.vhd
+# ** Warning: (vsim-3473) Component instance "select_not : invg" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /tb_fetch_unit_sandbox/DUT/PC_BASE/G_NBit_MUX(31)/MUXI File: mux2t1.vhd
+# Loading work.ripple_carry_addern(structural)#1
+# Loading work.full_adder(structure)#1
+# Loading work.xorg2(dataflow)#1
+# project one sandbox -- COMPILED!
+.main clear
+do dosandbox.do
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:47:31 on Mar 05,2026
+# vcom -reportprogress 300 -2008 invg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity invg
+# -- Compiling architecture dataflow of invg
+# End time: 09:47:31 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:47:31 on Mar 05,2026
+# vcom -reportprogress 300 -2008 andg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity andg2
+# -- Compiling architecture dataflow of andg2
+# End time: 09:47:31 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:47:31 on Mar 05,2026
+# vcom -reportprogress 300 -2008 org2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity org2
+# -- Compiling architecture dataflow of org2
+# End time: 09:47:31 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:47:31 on Mar 05,2026
+# vcom -reportprogress 300 -2008 xorg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity xorg2
+# -- Compiling architecture dataflow of xorg2
+# End time: 09:47:32 on Mar 05,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:47:32 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1
+# -- Compiling architecture structure of mux2t1
+# End time: 09:47:32 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:47:32 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1_N.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1_N
+# -- Compiling architecture structural of mux2t1_N
+# End time: 09:47:32 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:47:32 on Mar 05,2026
+# vcom -reportprogress 300 -2008 full_adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity full_adder
+# -- Compiling architecture structure of full_adder
+# End time: 09:47:32 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:47:32 on Mar 05,2026
+# vcom -reportprogress 300 -2008 ripple_carry_adderN.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity ripple_carry_adderN
+# -- Compiling architecture structural of ripple_carry_adderN
+# End time: 09:47:32 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:47:32 on Mar 05,2026
+# vcom -reportprogress 300 -2008 fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity fetch_unit_sandbox
+# -- Compiling architecture structure of fetch_unit_sandbox
+# End time: 09:47:32 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 09:47:32 on Mar 05,2026
+# vcom -reportprogress 300 -2008 tb_fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_fetch_unit_sandbox
+# -- Compiling architecture behavioral of tb_fetch_unit_sandbox
+# End time: 09:47:32 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 09:47:32 on Mar 05,2026, Elapsed time: 0:02:14
+# Errors: 0, Warnings: 64
+# vsim -voptargs=""+acc"" work.tb_fetch_unit_sandbox 
+# Start time: 09:47:32 on Mar 05,2026
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_fetch_unit_sandbox(behavioral)#1
+# Loading work.fetch_unit_sandbox(structure)#1
+# Loading work.andg2(dataflow)#1
+# Loading work.org2(dataflow)#1
+# Loading work.mux2t1_n(structural)#1
+# Loading work.mux2t1(structure)#1
+# Loading work.invg(dataflow)#1
+# Loading work.ripple_carry_addern(structural)#1
+# Loading work.full_adder(structure)#1
+# Loading work.xorg2(dataflow)#1
+# project one sandbox -- COMPILED!
+# LICENSE RECOVERY SUCCESS: All of the required licenses have been successfully recovered. Simulation will now continue.
+quit -sim
+# End time: 11:42:55 on Mar 05,2026, Elapsed time: 1:55:23
+# Errors: 0, Warnings: 1
+add wave -position insertpoint std_logic_vector
+do dosandbox.do
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:56:26 on Mar 05,2026
+# vcom -reportprogress 300 -2008 invg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity invg
+# -- Compiling architecture dataflow of invg
+# End time: 12:56:26 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:56:26 on Mar 05,2026
+# vcom -reportprogress 300 -2008 andg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity andg2
+# -- Compiling architecture dataflow of andg2
+# End time: 12:56:26 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:56:26 on Mar 05,2026
+# vcom -reportprogress 300 -2008 org2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity org2
+# -- Compiling architecture dataflow of org2
+# End time: 12:56:26 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:56:26 on Mar 05,2026
+# vcom -reportprogress 300 -2008 xorg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity xorg2
+# -- Compiling architecture dataflow of xorg2
+# End time: 12:56:26 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:56:26 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1
+# -- Compiling architecture structure of mux2t1
+# End time: 12:56:26 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:56:26 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1_N.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1_N
+# -- Compiling architecture structural of mux2t1_N
+# End time: 12:56:26 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:56:26 on Mar 05,2026
+# vcom -reportprogress 300 -2008 full_adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity full_adder
+# -- Compiling architecture structure of full_adder
+# End time: 12:56:26 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:56:26 on Mar 05,2026
+# vcom -reportprogress 300 -2008 ripple_carry_adderN.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity ripple_carry_adderN
+# -- Compiling architecture structural of ripple_carry_adderN
+# End time: 12:56:26 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:56:26 on Mar 05,2026
+# vcom -reportprogress 300 -2008 fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity fetch_unit_sandbox
+# -- Compiling architecture structure of fetch_unit_sandbox
+# End time: 12:56:26 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:56:27 on Mar 05,2026
+# vcom -reportprogress 300 -2008 tb_fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_fetch_unit_sandbox
+# -- Compiling architecture behavioral of tb_fetch_unit_sandbox
+# End time: 12:56:27 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:56:27 on Mar 05,2026
+# vcom -reportprogress 300 -2008 bitextender_12to32.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# ** Error: (vcom-11) Could not find work.types_package.
+# ** Error (suppressible): bitextender_12to32.vhd(16): (vcom-1195) Cannot find expanded name "work.types_package".
+# ** Error: bitextender_12to32.vhd(16): Unknown expanded name.
+# ** Note: bitextender_12to32.vhd(18): VHDL Compiler exiting
+# End time: 12:56:27 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 3, Warnings: 0
+# ** Error: /usr/local/mentor/questasim/linux_x86_64/vcom failed.
+# Error in macro ./dosandbox.do line 26
+# /usr/local/mentor/questasim/linux_x86_64/vcom failed.
+#     while executing
+# "vcom -2008 bitextender_12to32.vhd"
+do dosandbox.do
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:57:04 on Mar 05,2026
+# vcom -reportprogress 300 -2008 invg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity invg
+# -- Compiling architecture dataflow of invg
+# End time: 12:57:04 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:57:04 on Mar 05,2026
+# vcom -reportprogress 300 -2008 andg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity andg2
+# -- Compiling architecture dataflow of andg2
+# End time: 12:57:04 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:57:04 on Mar 05,2026
+# vcom -reportprogress 300 -2008 org2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity org2
+# -- Compiling architecture dataflow of org2
+# End time: 12:57:04 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:57:04 on Mar 05,2026
+# vcom -reportprogress 300 -2008 xorg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity xorg2
+# -- Compiling architecture dataflow of xorg2
+# End time: 12:57:04 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:57:04 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1
+# -- Compiling architecture structure of mux2t1
+# End time: 12:57:04 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:57:04 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1_N.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1_N
+# -- Compiling architecture structural of mux2t1_N
+# End time: 12:57:04 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:57:04 on Mar 05,2026
+# vcom -reportprogress 300 -2008 full_adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity full_adder
+# -- Compiling architecture structure of full_adder
+# End time: 12:57:04 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:57:04 on Mar 05,2026
+# vcom -reportprogress 300 -2008 ripple_carry_adderN.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity ripple_carry_adderN
+# -- Compiling architecture structural of ripple_carry_adderN
+# End time: 12:57:05 on Mar 05,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:57:05 on Mar 05,2026
+# vcom -reportprogress 300 -2008 fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity fetch_unit_sandbox
+# -- Compiling architecture structure of fetch_unit_sandbox
+# End time: 12:57:05 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:57:05 on Mar 05,2026
+# vcom -reportprogress 300 -2008 tb_fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_fetch_unit_sandbox
+# -- Compiling architecture behavioral of tb_fetch_unit_sandbox
+# End time: 12:57:05 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:57:05 on Mar 05,2026
+# vcom -reportprogress 300 -2008 bitextender_12to32.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity bitextender_12to32
+# -- Compiling architecture behavioral of bitextender_12to32
+# End time: 12:57:05 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:57:05 on Mar 05,2026
+# vcom -reportprogress 300 -2008 bitextender_20to32.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity bitextender_20to32
+# -- Compiling architecture behavioral of bitextender_20to32
+# End time: 12:57:05 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:57:05 on Mar 05,2026
+# vcom -reportprogress 300 -2008 immediate_generator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity immediate_generator
+# ** Error: immediate_generator.vhd(21): (vcom-1136) Unknown identifier "immediate_generate".
+# ** Error: immediate_generator.vhd(21): Bad resolution function (STD_LOGIC_VECTOR) for type (error).
+# ** Error: immediate_generator.vhd(21): near ":": (vcom-1576) expecting ';' or ')'.
+# ** Note: immediate_generator.vhd(21): VHDL Compiler exiting
+# End time: 12:57:05 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 3, Warnings: 0
+# ** Error: /usr/local/mentor/questasim/linux_x86_64/vcom failed.
+# Error in macro ./dosandbox.do line 28
+# /usr/local/mentor/questasim/linux_x86_64/vcom failed.
+#     while executing
+# "vcom -2008 immediate_generator.vhd"
+do dosandbox.do
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:58:49 on Mar 05,2026
+# vcom -reportprogress 300 -2008 invg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity invg
+# -- Compiling architecture dataflow of invg
+# End time: 12:58:49 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:58:49 on Mar 05,2026
+# vcom -reportprogress 300 -2008 andg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity andg2
+# -- Compiling architecture dataflow of andg2
+# End time: 12:58:49 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:58:49 on Mar 05,2026
+# vcom -reportprogress 300 -2008 org2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity org2
+# -- Compiling architecture dataflow of org2
+# End time: 12:58:49 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:58:49 on Mar 05,2026
+# vcom -reportprogress 300 -2008 xorg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity xorg2
+# -- Compiling architecture dataflow of xorg2
+# End time: 12:58:49 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:58:49 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1
+# -- Compiling architecture structure of mux2t1
+# End time: 12:58:49 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:58:49 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1_N.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1_N
+# -- Compiling architecture structural of mux2t1_N
+# End time: 12:58:49 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:58:49 on Mar 05,2026
+# vcom -reportprogress 300 -2008 full_adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity full_adder
+# -- Compiling architecture structure of full_adder
+# End time: 12:58:49 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:58:49 on Mar 05,2026
+# vcom -reportprogress 300 -2008 ripple_carry_adderN.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity ripple_carry_adderN
+# -- Compiling architecture structural of ripple_carry_adderN
+# End time: 12:58:49 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:58:49 on Mar 05,2026
+# vcom -reportprogress 300 -2008 fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity fetch_unit_sandbox
+# -- Compiling architecture structure of fetch_unit_sandbox
+# End time: 12:58:49 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:58:49 on Mar 05,2026
+# vcom -reportprogress 300 -2008 tb_fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_fetch_unit_sandbox
+# -- Compiling architecture behavioral of tb_fetch_unit_sandbox
+# End time: 12:58:49 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:58:49 on Mar 05,2026
+# vcom -reportprogress 300 -2008 bitextender_12to32.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity bitextender_12to32
+# -- Compiling architecture behavioral of bitextender_12to32
+# End time: 12:58:50 on Mar 05,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:58:50 on Mar 05,2026
+# vcom -reportprogress 300 -2008 bitextender_20to32.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity bitextender_20to32
+# -- Compiling architecture behavioral of bitextender_20to32
+# End time: 12:58:50 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:58:50 on Mar 05,2026
+# vcom -reportprogress 300 -2008 immediate_generator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity immediate_generator
+# -- Compiling architecture dataflow of immediate_generator
+# ** Error: immediate_generator.vhd(93): (vcom-1136) Unknown identifier "imm12_in".
+# ** Error: immediate_generator.vhd(94): (vcom-1136) Unknown identifier "sign_select".
+# ** Error: immediate_generator.vhd(95): (vcom-1136) Unknown identifier "imm32_out".
+# ** Error: immediate_generator.vhd(93): Type error resolving infix expression "<=" as type ieee.std_logic_1164.STD_LOGIC_VECTOR.
+# ** Error: immediate_generator.vhd(94): Type error resolving infix expression "<=" as type ieee.std_logic_1164.STD_LOGIC.
+# ** Error: immediate_generator.vhd(95): (vcom-1454) Formal "imm32_out" of mode OUT cannot be associated with an expression.
+# ** Error: immediate_generator.vhd(99): (vcom-1136) Unknown identifier "imm12_in".
+# ** Error: immediate_generator.vhd(100): (vcom-1136) Unknown identifier "sign_select".
+# ** Error: immediate_generator.vhd(101): (vcom-1136) Unknown identifier "imm32_out".
+# ** Error: immediate_generator.vhd(99): Type error resolving infix expression "<=" as type ieee.std_logic_1164.STD_LOGIC_VECTOR.
+# ** Error: immediate_generator.vhd(100): Type error resolving infix expression "<=" as type ieee.std_logic_1164.STD_LOGIC.
+# ** Error: immediate_generator.vhd(101): (vcom-1454) Formal "imm32_out" of mode OUT cannot be associated with an expression.
+# ** Error: immediate_generator.vhd(105): (vcom-1136) Unknown identifier "imm12_in".
+# ** Error: immediate_generator.vhd(106): (vcom-1136) Unknown identifier "sign_select".
+# ** Error: immediate_generator.vhd(107): (vcom-1136) Unknown identifier "imm32_out".
+# ** Error: immediate_generator.vhd(105): Type error resolving infix expression "<=" as type ieee.std_logic_1164.STD_LOGIC_VECTOR.
+# ** Error: immediate_generator.vhd(106): Type error resolving infix expression "<=" as type ieee.std_logic_1164.STD_LOGIC.
+# ** Error: immediate_generator.vhd(107): (vcom-1454) Formal "imm32_out" of mode OUT cannot be associated with an expression.
+# ** Error: immediate_generator.vhd(111): (vcom-1136) Unknown identifier "imm20_in".
+# ** Error: immediate_generator.vhd(112): (vcom-1136) Unknown identifier "sign_select".
+# ** Error: immediate_generator.vhd(113): (vcom-1136) Unknown identifier "imm32_out".
+# ** Error: immediate_generator.vhd(111): Type error resolving infix expression "<=" as type ieee.std_logic_1164.STD_LOGIC_VECTOR.
+# ** Error: immediate_generator.vhd(112): Type error resolving infix expression "<=" as type ieee.std_logic_1164.STD_LOGIC.
+# ** Error: immediate_generator.vhd(113): (vcom-1454) Formal "imm32_out" of mode OUT cannot be associated with an expression.
+# ** Note: immediate_generator.vhd(131): VHDL Compiler exiting
+# End time: 12:58:50 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 24, Warnings: 0
+# ** Error: /usr/local/mentor/questasim/linux_x86_64/vcom failed.
+# Error in macro ./dosandbox.do line 28
+# /usr/local/mentor/questasim/linux_x86_64/vcom failed.
+#     while executing
+# "vcom -2008 immediate_generator.vhd"
+.main clear
+do dosandbox.do
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 13:00:59 on Mar 05,2026
+# vcom -reportprogress 300 -2008 invg.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity invg
+# -- Compiling architecture dataflow of invg
+# End time: 13:00:59 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 13:00:59 on Mar 05,2026
+# vcom -reportprogress 300 -2008 andg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity andg2
+# -- Compiling architecture dataflow of andg2
+# End time: 13:01:00 on Mar 05,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 13:01:00 on Mar 05,2026
+# vcom -reportprogress 300 -2008 org2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity org2
+# -- Compiling architecture dataflow of org2
+# End time: 13:01:00 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 13:01:00 on Mar 05,2026
+# vcom -reportprogress 300 -2008 xorg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity xorg2
+# -- Compiling architecture dataflow of xorg2
+# End time: 13:01:00 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 13:01:00 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1
+# -- Compiling architecture structure of mux2t1
+# End time: 13:01:00 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 13:01:00 on Mar 05,2026
+# vcom -reportprogress 300 -2008 mux2t1_N.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity mux2t1_N
+# -- Compiling architecture structural of mux2t1_N
+# End time: 13:01:00 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 13:01:00 on Mar 05,2026
+# vcom -reportprogress 300 -2008 full_adder.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity full_adder
+# -- Compiling architecture structure of full_adder
+# End time: 13:01:00 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 13:01:00 on Mar 05,2026
+# vcom -reportprogress 300 -2008 ripple_carry_adderN.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity ripple_carry_adderN
+# -- Compiling architecture structural of ripple_carry_adderN
+# End time: 13:01:00 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 13:01:00 on Mar 05,2026
+# vcom -reportprogress 300 -2008 fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity fetch_unit_sandbox
+# -- Compiling architecture structure of fetch_unit_sandbox
+# End time: 13:01:00 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 13:01:00 on Mar 05,2026
+# vcom -reportprogress 300 -2008 tb_fetch_unit_sandbox.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_fetch_unit_sandbox
+# -- Compiling architecture behavioral of tb_fetch_unit_sandbox
+# End time: 13:01:00 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 13:01:00 on Mar 05,2026
+# vcom -reportprogress 300 -2008 bitextender_12to32.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity bitextender_12to32
+# -- Compiling architecture behavioral of bitextender_12to32
+# End time: 13:01:00 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 13:01:00 on Mar 05,2026
+# vcom -reportprogress 300 -2008 bitextender_20to32.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity bitextender_20to32
+# -- Compiling architecture behavioral of bitextender_20to32
+# End time: 13:01:00 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 13:01:00 on Mar 05,2026
+# vcom -reportprogress 300 -2008 immediate_generator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity immediate_generator
+# -- Compiling architecture dataflow of immediate_generator
+# End time: 13:01:00 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 13:01:00 on Mar 05,2026
+# vcom -reportprogress 300 -2008 tb_immediate_generator.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity tb_immediate_generator
+# -- Compiling architecture behavior of tb_immediate_generator
+# End time: 13:01:00 on Mar 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" work.tb_immediate_generator 
+# Start time: 13:01:00 on Mar 05,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_immediate_generator(behavior)#1
+# Loading work.immediate_generator(dataflow)#1
+# Loading work.bitextender_12to32(behavioral)#1
+# Loading work.bitextender_20to32(behavioral)#1
+# project one sandbox -- COMPILED!
+# Causality operation skipped due to absence of debug database file

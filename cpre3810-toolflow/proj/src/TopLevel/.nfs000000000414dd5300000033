@@ -22,32 +22,14 @@ vcom -2008 ripple_carry_adderN.vhd
 vcom -2008 fetch_unit_sandbox.vhd
 vcom -2008 tb_fetch_unit_sandbox.vhd
 
-
-vcom -2008 bitextender_12to32.vhd
-vcom -2008 bitextender_20to32.vhd
-vcom -2008 immediate_generator.vhd
-vcom -2008 tb_immediate_generator.vhd
-
 ## --- UNCOMMENT THIS IF YOU WANT TO SANDBOX TEST THE FETCH UNIT --- ##
-##vsim -voptargs="+acc" work.tb_fetch_unit_sandbox
+vsim -voptargs="+acc" work.tb_fetch_unit_sandbox
 
 
-##add wave -radix hex sim:/tb_fetch_unit_sandbox/*
+add wave -radix hex sim:/tb_fetch_unit_sandbox/*
 
 
-
-##run 1000
-
-## --- UNCOMMENT THIS IF YOU WANT TO SANDBOX TEST THE FETCH UNIT --- ##
-
-
-
-## --- UNCOMMENT THIS IF YOU WANT TO SANDBOX TEST THE IMMEDIATE GENERATOR --- ## 
-vsim -voptargs="+acc" work.tb_immediate_generator
-
-add wave -radix hex sim:/tb_immediate_generator/*
 
 run 1000
 
-## --- UNCOMMENT THIS IF YOU WANT TO SANDBOX TEST THE IMMEDIATE GENERATOR --- ## 
 echo "project one sandbox -- COMPILED!" 
