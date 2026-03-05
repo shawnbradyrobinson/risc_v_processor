@@ -114,21 +114,5 @@ begin
 
   -- TODO: Implement the rest of your processor below this comment! 
 
-
-  -- ===== FETCH UNIT ==== -- 
-
-
-
-
-
-
- -- ====== CONTROLS ====== -- 
-
-
--- ======= IMMEDIATE ===== -- 
-
--- ====== ALU ======== -- 
-
-
 end structure;
 
