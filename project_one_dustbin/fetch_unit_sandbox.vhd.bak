@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------
 -- Shawn Robinson 
 -------------------------------------------------------------------------
-
+--NEW COMMENT NEW COMMENT
 
 -- fetch_unit_sandbox.vhd
 -------------------------------------------------------------------------
@@ -96,7 +96,7 @@ begin
     generic map(N => 32)
     port map(   i_S	=> s_branch_or_jump,
 		i_D0	=> c_immediate_four,
-		i_D1	=> immediate_generate,
+		i_D1	=> s_imm_shifted,
 		o_O	=>  s_pc_offset
 		);
   PC_BASE: mux2t1_N
