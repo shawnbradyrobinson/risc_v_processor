@@ -37,7 +37,7 @@ architecture structure of fetch_unit_sandbox is
 	signal s_pc_offset			: std_logic_vector(31 downto 0); 
 	signal s_branch_or_jump		: std_logic; 
 	signal s_branch_and_zero	: std_logic; 
-
+	signal s_signal_signal_signal	: std_logic; 
 	--handling a risc-v shift left one requirement
 	signal s_imm_shifted		: std_logic_vector(31 downto 0); 
 	
