@@ -283,7 +283,7 @@ begin
 
   -- ===== FETCH UNIT ==== -- 
 
-F_UNIT: fetch_unit
+FETCH_UNIT: fetch_unit
   generic map( N => N)
   port map(	iCLK            	=> iCLK,
 		iRST            	=> iRST,
