@@ -1,6 +1,6 @@
 QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
-Start time: 19:48:07 on Mar 11,2026
-vcom -2008 -work internal/ModelSimContainer/work proj/src/RISCV_types.vhd internal/testpy/tb.vhd proj/src/RISCV_types.vhd proj/src/TopLevel/RISCV_Processor.vhd proj/src/TopLevel/mem.vhd proj/src/TopLevel/components/mux2t1.vhd proj/src/TopLevel/components/mux2t1_N.vhd proj/src/TopLevel/components/sc_processor_control_unit.vhd proj/src/TopLevel/components/ripple_carry_adderN.vhd proj/src/TopLevel/components/invg.vhd proj/src/TopLevel/components/alu_32.vhd proj/src/TopLevel/components/andg2.vhd proj/src/TopLevel/components/fetch_unit.vhd proj/src/TopLevel/components/immediate_generator.vhd proj/src/TopLevel/components/register_NBit.vhd proj/src/TopLevel/components/full_adder.vhd proj/src/TopLevel/components/branch_resolver.vhd proj/src/TopLevel/components/barrel_shifter.vhd proj/src/TopLevel/components/xorg2.vhd proj/src/TopLevel/components/sc_processor_alu_control.vhd proj/src/TopLevel/components/addsub_32.vhd proj/src/TopLevel/components/bitextender_20to32.vhd proj/src/TopLevel/components/register_file.vhd proj/src/TopLevel/components/org2.vhd proj/src/TopLevel/components/bitextender_12to32.vhd 
+Start time: 15:05:22 on Mar 12,2026
+vcom -2008 -work internal/ModelSimContainer/work proj/src/RISCV_types.vhd internal/testpy/tb.vhd proj/src/RISCV_types.vhd proj/src/TopLevel/RISCV_Processor.vhd proj/src/TopLevel/mem.vhd proj/src/TopLevel/components/bitextender_12to32.vhd proj/src/TopLevel/components/sc_processor_control_unit.vhd proj/src/TopLevel/components/org2.vhd proj/src/TopLevel/components/alu_32.vhd proj/src/TopLevel/components/sc_processor_alu_control.vhd proj/src/TopLevel/components/mux2t1_N.vhd proj/src/TopLevel/components/bitextender_20to32.vhd proj/src/TopLevel/components/ripple_carry_adderN.vhd proj/src/TopLevel/components/register_file.vhd proj/src/TopLevel/components/andg2.vhd proj/src/TopLevel/components/fetch_unit.vhd proj/src/TopLevel/components/immediate_generator.vhd proj/src/TopLevel/components/mux2t1.vhd proj/src/TopLevel/components/full_adder.vhd proj/src/TopLevel/components/xorg2.vhd proj/src/TopLevel/components/addsub_32.vhd proj/src/TopLevel/components/branch_resolver.vhd proj/src/TopLevel/components/barrel_shifter.vhd proj/src/TopLevel/components/invg.vhd proj/src/TopLevel/components/register_NBit.vhd 
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
@@ -19,8 +19,44 @@ vcom -2008 -work internal/ModelSimContainer/work proj/src/RISCV_types.vhd intern
 -- Loading package RISCV_types
 -- Compiling entity RISCV_Processor
 -- Compiling architecture structure of RISCV_Processor
-** Error: proj/src/TopLevel/RISCV_Processor.vhd(286): Symbol "fetch_unit" has already been declared in this region.
-** Error (suppressible): proj/src/TopLevel/RISCV_Processor.vhd(286): (vcom-1141) Identifier "FETCH_UNIT" does not identify a component declaration.
-** Note: proj/src/TopLevel/RISCV_Processor.vhd(409): VHDL Compiler exiting
-End time: 19:48:08 on Mar 11,2026, Elapsed time: 0:00:01
-Errors: 2, Warnings: 2
+-- Loading package NUMERIC_STD
+-- Compiling entity mem
+-- Compiling architecture rtl of mem
+-- Compiling entity bitextender_12to32
+-- Compiling architecture behavioral of bitextender_12to32
+-- Compiling entity sc_processor_control_unit
+-- Compiling architecture dataflow of sc_processor_control_unit
+-- Compiling entity org2
+-- Compiling architecture dataflow of org2
+-- Compiling entity alu_32
+-- Compiling architecture structural of alu_32
+-- Compiling entity sc_processor_alu_control
+-- Compiling architecture dataflow of sc_processor_alu_control
+-- Compiling entity mux2t1_N
+-- Compiling architecture structural of mux2t1_N
+-- Compiling entity bitextender_20to32
+-- Compiling architecture behavioral of bitextender_20to32
+-- Compiling entity ripple_carry_adderN
+-- Compiling architecture structural of ripple_carry_adderN
+-- Compiling entity register_file
+-- Compiling architecture structural of register_file
+-- Compiling entity andg2
+-- Compiling architecture dataflow of andg2
+-- Compiling entity fetch_unit
+-- Compiling architecture structure of fetch_unit
+-- Compiling entity immediate_generator
+-- Compiling architecture dataflow of immediate_generator
+-- Compiling entity mux2t1
+-- Compiling architecture structure of mux2t1
+-- Compiling entity full_adder
+-- Compiling architecture structure of full_adder
+-- Compiling entity xorg2
+-- Compiling architecture dataflow of xorg2
+-- Compiling entity addsub_32
+-- Compiling architecture structural of addsub_32
+** Error: (vcom-11) Could not find work.types_package.
+** Error (suppressible): proj/src/TopLevel/components/branch_resolver.vhd(22): (vcom-1195) Cannot find expanded name "work.types_package".
+** Error: proj/src/TopLevel/components/branch_resolver.vhd(22): Unknown expanded name.
+** Note: proj/src/TopLevel/components/branch_resolver.vhd(24): VHDL Compiler exiting
+End time: 15:05:22 on Mar 12,2026, Elapsed time: 0:00:00
+Errors: 3, Warnings: 2

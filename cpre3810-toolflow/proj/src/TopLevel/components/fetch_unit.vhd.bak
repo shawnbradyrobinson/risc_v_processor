@@ -94,7 +94,7 @@ architecture structure of fetch_unit is
 begin
   s_imm_shifted <= immediate_generate; 
 
-  o_PC 		<= s_current_PC; 
+  s_PC 		<= s_current_PC; 
   PC_plus4	<= s_pc_plus4; 
 
   PC_REG: register_NBit
