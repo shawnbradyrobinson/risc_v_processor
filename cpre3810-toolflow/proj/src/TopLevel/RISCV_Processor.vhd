@@ -76,22 +76,188 @@ architecture structure of RISCV_Processor is
  -- ======= ADDED SIGNALS ========= -- 
 
 
+  signal s_MemToReg	: std_logic_vector(1 downto 0); 
+  signal s_PC_plus4	: std_logic_vector(N-1 downto 0); 
 
+  signal s_BranchTaken 	: std_logic; 
+  signal s_funct3	: std_logic_vector(2 downto 0); 
+  signal s_ALU_Zero	: std_logic;
+  signal s_ALU_SLT	: std_logic_vector(N-1 downto 0); 
+  signal s_ALU_SLTU	: std_logic_vector(N-1 downto 0); 
 
+  signal s_rs1_data	: std_logic_vector(N-1 downto 0); 
+  signal s_rs2_data	: std_logic_vector(N-1 downto 0); 
+  signal s_B_ALU_choice	: std_logic_vector(N-1 downto 0); 
 
+  signal s_ALUOut	: std_logic_vector(N-1 downto 0); 
 
+  signal s_ALUSrc	: std_logic; 
+  signal s_Jump		: std_logic; 
+  signal s_Branch	: std_logic; 
+  signal s_PC_SRC	: std_logic; 
+  signal s_ALUOp	: std_logic_vector(2 downto 0); 
+  signal s_ALUCtrl	: std_logic_vector(3 downto 0); 
+  signal s_RegWrite	: std_logic; 
+  signal s_MemWrite	: std_logic; 
+  signal s_MemRead	: std_logic; 
+  signal s_immediate	: std_logic_vector(N-1 downto 0); 
+
+  
+
+  -- First mux: select between rs1 and PC (for AUIPC)
+  -- Second mux: select between that and zero (for LUI)
+
+  signal s_ALU_A_auipc : std_logic_vector(N-1 downto 0);
+  signal s_ALU_A       : std_logic_vector(N-1 downto 0);
+  signal s_isLUI       : std_logic;
+  signal s_isAUIPC     : std_logic;
+  
 
 -- ========= END OF ADDED SIGNALS ===== -- 
 
 
+
+ -- ======= ADDED COMPONENTS ========= --
+component fetch_unit is
+  generic(N : integer := 32);
+  port(iCLK            		: in std_logic;
+       iRST            		: in std_logic;
+       rs1			: in std_logic_vector(31 downto 0); 
+       PC_SRC			: in std_logic; 
+       JUMP			: in std_logic; 
+       BRANCH			: in std_logic; 
+       ZERO			: in std_logic; 
+       immediate_generate 	: in std_logic_vector(31 downto 0);
+       o_PC         		: out std_logic_vector(31 downto 0); --THIS WIRES DIRECTLY TO SKELETON s_PC! 
+       Pc_plus4			: out std_logic_vector(31 downto 0)); 
+end  component;
+
+component mux2t1 is 
+Port( i_D0, i_D1, i_S : in std_logic; 
+	o_O : out std_logic);
+
+end component; 
+
+
+component mux2t1_N is
+  generic(N : integer := 32); -- Generic of type integer for input/output data width. Default value is 16.
+  port(i_S          : in std_logic;
+       i_D0         : in std_logic_vector(N-1 downto 0);
+       i_D1         : in std_logic_vector(N-1 downto 0);
+       o_O          : out std_logic_vector(N-1 downto 0));
+
+end component;
+
+component sc_processor_control_unit is
+  port(
+    i_opcode   : in  std_logic_vector(6 downto 0);  -- instruction [6:0]
+
+    o_ALUSrc   : out std_logic;                      -- 0=rs2  1=imm
+    o_MemToReg : out std_logic_vector(1 downto 0);                      -- 0=ALU  1=mem
+    o_RegWrite : out std_logic;                      -- 1=write rd
+    o_MemRead  : out std_logic;                      -- 1=read  data mem
+    o_MemWrite : out std_logic;                      -- 1=write data mem
+    o_Branch   : out std_logic;                      -- 1=conditional branch
+    o_Jump     : out std_logic;                      -- 1=unconditional jump (jal/jalr)
+    o_PC_SRC   : out std_logic; 		     -- 1= use rs1 as PC base (JALR only) 
+    o_ALUOp    : out std_logic_vector(2 downto 0);   -- ALU operation selector
+    o_Halt     : out std_logic		     	     -- 1=halt (WFI instruction)
+  );
+end component;
+
+component sc_processor_alu_control is
+  port(
+    i_ALUOp   : in  std_logic_vector(2 downto 0);  -- from control_unit
+    i_funct3  : in  std_logic_vector(2 downto 0);  -- instruction [14:12]
+    i_funct7_5: in  std_logic;                      -- instruction bit 30 (funct7[5])
+
+    o_ALUCtrl : out std_logic_vector(3 downto 0)   -- to ALU operation select
+  );
+end component;
+
+component branch_resolver is
+
+port(i_funct3		: in std_logic_vector(2 downto 0); 
+     i_Zero		: in std_logic; 
+     i_SLT		: in std_logic_vector(31 downto 0); 
+     i_SLTU		: in std_logic_vector(31 downto 0); 
+     o_taken		: out std_logic
+);
+
+end component;
+
+
+component register_file is
+
+port(clk 		: in std_logic; 
+     reset		: in std_logic; 
+     write_enable	: in std_logic; 
+     rd_address		: in std_logic_vector(4 downto 0); 
+     rd_data		: in std_logic_vector(31 downto 0); 
+     rs1_address	: in std_logic_vector(4 downto 0); 
+     rs2_address	: in std_logic_vector(4 downto 0); 
+     rs1_out		: out std_logic_vector(31 downto 0); 
+     rs2_out		: out std_logic_vector(31 downto 0)
+);
+
+end component;
+
+component immediate_generator is
+  port(
+    instruction        : in  std_logic_vector(31 downto 0);
+    immediate_generate : out std_logic_vector(31 downto 0)
+  );
+end component;
+
+component alu_32 is
+  port(
+    i_A      : in  std_logic_vector(31 downto 0);  -- operand A (rs1, PC, or zero -- see datapath)
+    i_B      : in  std_logic_vector(31 downto 0);  -- operand B (rs2 or imm)
+    i_ALUCtrl: in  std_logic_vector(3  downto 0);  -- from alu_control.vhd
+
+    o_Result : out std_logic_vector(31 downto 0);
+    o_Zero   : out std_logic;                       -- 1 when result == 0
+    o_SLT    : out std_logic_vector(31 downto 0);   -- exposed for branch logic (resolver) 
+    o_SLTU   : out std_logic_vector(31 downto 0)    -- exposed for branch logic (resolver)
+  );
+end component;
+
+
+
+-- ========= END OF ADDED COMPONENTS ===== -- 
+
+
 begin
-  s_Ovfl <= '0'; -- RISC-V does not have hardware overflow detection.
+
+  -- all the necessary concurrent signals? --  
+  s_Ovfl 		<= '0'; -- RISC-V does not have hardware overflow detection.
+  s_funct3 		<= s_Inst(14 downto 12); 
+  s_RegWrAddr		<= s_Inst(11 downto 7); 
+  s_RegWr		<= s_RegWrite; 
+  s_DMemWr		<= s_MemWrite; 
+  s_DMemAddr		<= s_ALUOut; 
+  s_DMemData		<= s_rs2_data;
+  oALUOut		<= s_ALUOut; 
+  
+
+  s_isLUI   <= '1' when s_Inst(6 downto 0) = "0110111" else '0';
+  s_isAUIPC <= '1' when s_Inst(6 downto 0) = "0010111" else '0';
+
   -- TODO: This is required to be your final input to your instruction memory. This provides a feasible method to externally load the memory module which means that the synthesis tool must assume it knows nothing about the values stored in the instruction memory. If this is not included, much, if not all of the design is optimized out because the synthesis tool will believe the memory to be all zeros.
   with iInstLd select
     s_IMemAddr <= s_PC when '0',
       iInstAddr when others;
 
 
+ --MUX FOR WHAT GOES TO RD DATA-- 
+  with s_MemToReg select
+  s_RegWrData <= s_ALUOut    when "00",
+                 s_DMemOut   when "01",
+                 s_PC_plus4  when "10",
+                 s_ALUOut    when others;
+
+
+ 
   IMem: mem
     generic map(ADDR_WIDTH => ADDR_WIDTH,
                 DATA_WIDTH => N)
@@ -110,25 +276,135 @@ begin
              we   => s_DMemWr,
              q    => s_DMemOut);
 
-  -- TODO: Ensure that s_Halt is connected to an output control signal produced from decoding the Halt instruction (Opcode: 01 0100)
+ 
 
   -- TODO: Implement the rest of your processor below this comment! 
 
 
   -- ===== FETCH UNIT ==== -- 
 
-
+FETCH_UNIT: fetch_unit
+  generic map( N => N)
+  port map(	iCLK            	=> iCLK,
+		iRST            	=> iRST,
+		rs1			=> s_rs1_data,
+       		PC_SRC			=> s_PC_SRC,
+       		JUMP			=> s_Jump,
+       		BRANCH	        	=> s_Branch,
+       		ZERO			=> s_BranchTaken,
+       		immediate_generate	=> s_immediate,
+       		o_PC         		=> s_PC,
+       		Pc_plus4		=> s_PC_plus4
+	 ); 
 
 
 
 
  -- ====== CONTROLS ====== -- 
+MAIN_CONTROL: sc_processor_control_unit
+  port map(
+    		i_opcode   		=> s_Inst(6 downto 0),
+    		o_ALUSrc   		=> s_ALUSrc,
+    		o_MemToReg 		=> s_MemToReg,                     
+    		o_RegWrite 		=> s_RegWrite,
+    		o_MemRead  		=> s_MemRead,
+    		o_MemWrite 		=> s_MemWrite,
+    		o_Branch   		=> s_Branch,
+    		o_Jump     		=> s_Jump,
+    		o_PC_SRC   		=> s_PC_SRC,
+    		o_ALUOp    		=> s_ALUOp,
+    		o_Halt     		=> s_Halt
+  );	
 
+ALU_CONTROL: sc_processor_alu_control
+  port map(
+    		i_ALUOp   		=> s_ALUOp,
+    		i_funct3  		=> s_Inst(14 downto 12), 
+    		i_funct7_5 		=> s_Inst(30),                     -- instruction bit 30 (funct7[5])
+
+    		o_ALUCtrl		=>  s_ALUCtrl
+  );
 
 -- ======= IMMEDIATE ===== -- 
+IMM_GEN: immediate_generator
+	port map(
+		instruction	 	=> s_Inst,
+		immediate_generate	=> s_immediate
+		); 
+
+
+-- ======= REGISTER FILE ===== -- 
+REG_FILE: register_file
+	port map(
+		clk		=> iCLK,
+		reset		=> iRST,
+		write_enable	=> s_RegWr,
+		rd_address	=> s_RegWrAddr,
+		rd_data		=> s_RegWrData,
+		rs1_address	=> s_Inst(19 downto 15), -- direct instruction bits
+		rs2_address	=> s_Inst(24 downto 20), -- direct instruction bits
+		rs1_out		=> s_rs1_data,
+		rs2_out		=> s_rs2_data
+		); 
+
+
+-- ====== B MUX ====== -- 
+B_SRC_MUX: mux2t1_N
+	generic map(N => N) 
+	Port map( i_D0		=>  s_rs2_data,
+		  i_D1		=>  s_immediate,
+		  i_S		=>  s_ALUSrc,
+		  o_O		=>  s_B_ALU_choice
+		);
+
+
+
+
+-- ======= A MUX ====== -- 
+ AUIPC_MUX: mux2t1_N
+  	generic map(N => N)
+  	port map(
+    		i_S  => s_isAUIPC,
+    		i_D0 => s_rs1_data,
+    		i_D1 => s_PC,
+    		o_O  => s_ALU_A_auipc
+  		);
+
+
+LUI_MUX: mux2t1_N
+  	generic map(N => N)
+  	port map(
+    		i_S  => s_isLUI,
+    		i_D0 => s_ALU_A_auipc,
+    		i_D1 => (others => '0'),
+    		o_O  => s_ALU_A
+  		);
+
 
 -- ====== ALU ======== -- 
+ALU: alu_32
+  port map(
+    		i_A      	=> s_ALU_A, 
+   		i_B		=> s_B_ALU_choice,
+    		i_ALUCtrl	=> s_ALUCtrl,  -- from alu_control.vhd
 
+    		o_Result	=> s_ALUOut,
+    		o_Zero   	=> s_ALU_Zero,
+    		o_SLT    	=> s_ALU_SLT,
+    		o_SLTU   	=> s_ALU_SLTU
+  );
+
+
+
+-- ====== BRANCH RESOLVER ===== -- 
+BRANCH_COND: branch_resolver
+  port map(
+	i_funct3	=> s_funct3,
+	i_Zero		=> s_ALU_Zero,
+	i_SLT		=> s_ALU_SLT,
+	i_SLTU		=> s_ALU_SLTU,
+	o_taken		=> s_BranchTaken
+	); 
 
 end structure;
 
