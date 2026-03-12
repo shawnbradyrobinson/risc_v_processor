@@ -23,7 +23,11 @@ package RISCV_types is
     reg_wr : std_logic;
     reg_to_mem : std_logic;
   end record control_t;
+  
+  -- bus type for the register file --shawn  
+  type bus_32_t is array(31 downto 0) of std_logic_vector(31 downto 0); 
 
+  
 end package RISCV_types;
 
 package body RISCV_types is
