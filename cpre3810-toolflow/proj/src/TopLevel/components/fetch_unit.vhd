@@ -139,6 +139,7 @@ begin
     port map(	A	=> s_pc_offset,
 		B	=> s_pc_base,
 		Sum 	=> s_next_PC,
+		Cin  => '0',  
 		Cout	=> open
 		); 
   PC4_ADD:	ripple_carry_adderN
