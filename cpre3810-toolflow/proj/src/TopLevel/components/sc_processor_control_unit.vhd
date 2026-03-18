@@ -70,7 +70,7 @@ begin
 with i_opcode select
   s_ctrl <=
     -- R-type:  PC_SRC=0 ALUSrc=0 MTR=00 RW=1 MR=0 MW=0 Br=0 Jmp=0 ALUOp=010
-    "0000001000010" when "0110011",
+    "0000010000010" when "0110011",
 
     -- I-ALU:   PC_SRC=0 ALUSrc=1 MTR=00 RW=1 MR=0 MW=0 Br=0 Jmp=0 ALUOp=011
     "0010010000011" when "0010011",
@@ -79,10 +79,10 @@ with i_opcode select
     "0010111000000" when "0000011",
 
     -- Store:   PC_SRC=0 ALUSrc=1 MTR=00 RW=0 MR=0 MW=1 Br=0 Jmp=0 ALUOp=000
-    "0010000010000" when "0100011",
+    "0010000100000" when "0100011",
 
     -- Branch:  PC_SRC=0 ALUSrc=0 MTR=00 RW=0 MR=0 MW=0 Br=1 Jmp=0 ALUOp=001
-    "0000000001001" when "1100011",
+    "0000000010001" when "1100011",
 
     -- JAL:     PC_SRC=0 ALUSrc=0 MTR=10 RW=1 MR=0 MW=0 Br=0 Jmp=1 ALUOp=000
     "0001010001000" when "1101111",

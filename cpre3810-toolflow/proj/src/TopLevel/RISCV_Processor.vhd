@@ -4,7 +4,7 @@
 -- Iowa State University
 -------------------------------------------------------------------------
 
-
+---export SALT_LICENSE_SERVER="1717@io.ece.iastate.edu"
 -- RISCV_Processor.vhd
 -------------------------------------------------------------------------
 -- DESCRIPTION: This file contains a skeleton of a RISCV_Processor  
