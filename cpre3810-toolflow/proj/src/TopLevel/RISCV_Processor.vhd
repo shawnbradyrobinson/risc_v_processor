@@ -5,6 +5,8 @@
 -------------------------------------------------------------------------
 
 ---export SALT_LICENSE_SERVER="1717@io.ece.iastate.edu"
+ ---./3810_tf.sh test --summary proj/riscv/cpre3810_test_assembly_program/*.s
+
 -- RISCV_Processor.vhd
 -------------------------------------------------------------------------
 -- DESCRIPTION: This file contains a skeleton of a RISCV_Processor  

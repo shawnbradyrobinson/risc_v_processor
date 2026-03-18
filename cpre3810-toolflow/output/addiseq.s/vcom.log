@@ -1,5 +1,5 @@
 QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
-Start time: 21:30:14 on Mar 17,2026
+Start time: 16:20:27 on Mar 18,2026
 vcom -2008 -work internal/ModelSimContainer/work proj/src/RISCV_types.vhd internal/testpy/tb.vhd proj/src/RISCV_types.vhd proj/src/TopLevel/RISCV_Processor.vhd proj/src/TopLevel/mem.vhd proj/src/TopLevel/components/branch_resolver.vhd proj/src/TopLevel/components/immediate_generator.vhd proj/src/TopLevel/components/xorg2.vhd proj/src/TopLevel/components/source_register.vhd proj/src/TopLevel/components/addsub_32.vhd proj/src/TopLevel/components/sc_processor_control_unit.vhd proj/src/TopLevel/components/mux_32to1.vhd proj/src/TopLevel/components/sc_processor_alu_control.vhd proj/src/TopLevel/components/invg.vhd proj/src/TopLevel/components/decoder_5to32.vhd proj/src/TopLevel/components/ripple_carry_adderN.vhd proj/src/TopLevel/components/register_NBit.vhd proj/src/TopLevel/components/dffg.vhd proj/src/TopLevel/components/org2.vhd proj/src/TopLevel/components/full_adder.vhd proj/src/TopLevel/components/fetch_unit.vhd proj/src/TopLevel/components/alu_32.vhd proj/src/TopLevel/components/bitextender_12to32.vhd proj/src/TopLevel/components/barrel_shifter.vhd proj/src/TopLevel/components/mux2t1_N.vhd proj/src/TopLevel/components/register_file.vhd proj/src/TopLevel/components/andg2.vhd proj/src/TopLevel/components/bitextender_20to32.vhd proj/src/TopLevel/components/mux2t1.vhd 
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -70,5 +70,5 @@ vcom -2008 -work internal/ModelSimContainer/work proj/src/RISCV_types.vhd intern
 -- Compiling architecture behavioral of bitextender_20to32
 -- Compiling entity mux2t1
 -- Compiling architecture structure of mux2t1
-End time: 21:30:14 on Mar 17,2026, Elapsed time: 0:00:00
+End time: 16:20:28 on Mar 18,2026, Elapsed time: 0:00:01
 Errors: 0, Warnings: 2
