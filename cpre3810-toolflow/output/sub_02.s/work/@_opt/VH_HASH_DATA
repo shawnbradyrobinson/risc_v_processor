@@ -15,7 +15,7 @@
 3
 3 rtl
 1
-103 /home/jaypp123/Desktop/CPRE3810/project1/maintoolflow/cpre3810-toolflow/containers/sim_container_0/work
+83 /home/shawnr/CPRE_381/project_one/cpre3810-toolflow/containers/sim_container_0/work
 12
 9 structure
 11
@@ -44,6 +44,20 @@
 9 gCLK_HPER
 18
 9 iInstAddr
+]
+[G
+1
+2
+3
+1
+5
+1
+0
+10
+0
+0 0
+0
+0
 ]
 [G
 1
@@ -188,17 +202,13 @@
 1
 1 8 1 1
 ]
-[G
+[P
 1
+13
+7
+14
+15
 2
-3
-1
-5
-1
-0
-10
-0
-0 0
 0
 0
 ]
@@ -209,16 +219,6 @@
 17
 18
 1
-0
-0
-]
-[P
-1
-13
-7
-14
-15
-2
 0
 0
 ]
