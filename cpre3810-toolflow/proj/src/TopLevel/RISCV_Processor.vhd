@@ -6,6 +6,7 @@
   --- first use this 
 ---export SALT_LICENSE_SERVER="1717@io.ece.iastate.edu"
     --- then for summary use this line it will show all file summary 
+    -- we just need to figure out show signal problems 
  ---./3810_tf.sh test --summary proj/riscv/cpre3810_test_assembly_program/*.s
 
 -- RISCV_Processor.vhd
