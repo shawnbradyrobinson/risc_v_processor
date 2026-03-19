@@ -33,6 +33,8 @@ end  fetch_unit;
 architecture structure of fetch_unit is
 
 	constant c_immediate_four 	: std_logic_vector(31 downto 0) := x"00000004"; 
+	constant c_PC_RESET : std_logic_vector(31 downto 0) := x"00400000";
+        signal s_pc_reg_input : std_logic_vector(31 downto 0);
 	signal s_next_PC		: std_logic_vector(31 downto 0); 
 	signal s_pc_base		: std_logic_vector(31 downto 0); 
 	signal s_pc_offset			: std_logic_vector(31 downto 0); 
@@ -96,14 +98,16 @@ begin
 
   o_PC 		<= s_current_PC; 
   PC_plus4	<= s_pc_plus4; 
+  s_pc_reg_input <= c_PC_RESET when iRST = '1' else s_next_PC;
+  
 
-  PC_REG: register_NBit
-	generic map(N => 32)
-	port map(D	=> s_next_PC,
-		 RST	=> iRST,
-		 WE	=> '1', -- pc always updates every cycle
-		 CLK	=> iCLK,
-		 Q	=> s_current_PC); 
+     PC_REG: register_NBit
+     generic map(N => 32)
+     port map(D   => s_pc_reg_input, 
+             RST => '0',             
+             WE  => '1',
+             CLK => iCLK,
+             Q   => s_current_PC);
 
 
 
