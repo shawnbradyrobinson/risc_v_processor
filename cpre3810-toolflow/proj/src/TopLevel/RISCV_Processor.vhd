@@ -1,7 +1,6 @@
 -------------------------------------------------------------------------
--- Henry Duwe
--- Department of Electrical and Computer Engineering
--- Iowa State University
+-- Shawn Robinson and Jay Patel 
+
 -------------------------------------------------------------------------
   --- first use this 
 ---export SALT_LICENSE_SERVER="1717@io.ece.iastate.edu"
@@ -105,8 +104,8 @@ architecture structure of RISCV_Processor is
   signal s_MemWrite	: std_logic; 
   signal s_MemRead	: std_logic; 
   signal s_immediate	: std_logic_vector(N-1 downto 0); 
-  signal s_LoadData  : std_logic_vector(N-1 downto 0);
-  signal s_HaltCtrl  : std_logic;
+  signal s_LoadData  	: std_logic_vector(N-1 downto 0);
+  signal s_HaltCtrl  	: std_logic;
   
 
   -- First mux: select between rs1 and PC (for AUIPC)
@@ -247,30 +246,47 @@ begin
 
   s_isLUI   <= '1' when s_Inst(6 downto 0) = "0110111" else '0';
   s_isAUIPC <= '1' when s_Inst(6 downto 0) = "0010111" else '0';
-  s_Halt <= '1' when (s_Inst(6 downto 0) = "1110011" and
-                    s_Inst(31 downto 20) = "000100000101")
-          else '0';
+  s_Halt    <= s_HaltCtrl; -- Hook this up to the control unit's decode, don't decode it in isolation --shawn 
+
+
+
+--this halt decode is a good instinct when we implement ecall and other things, but for now we should stick to control's decode --shawn 
+-- s_Halt <= '1' when (s_Inst(6 downto 0) = "1110011" and
+  --                  s_Inst(31 downto 20) = "000100000101")
+  --        else '0';
   
   -- Load data sign/zero extender
- process(s_DMemOut, s_funct3)
-begin
-  case s_funct3 is
-    when "000" =>  -- lb: sign extend byte
-      s_LoadData <= (31 downto 8 => s_DMemOut(7)) & s_DMemOut(7 downto 0);
-    when "001" =>  -- lh: sign extend halfword
-      s_LoadData <= (31 downto 16 => s_DMemOut(15)) & s_DMemOut(15 downto 0);
-    when "010" =>  -- lw: full word
-      s_LoadData <= s_DMemOut;
-    when "100" =>  -- lbu: zero extend byte
-      s_LoadData <= (31 downto 8 => '0') & s_DMemOut(7 downto 0);
-    when "101" =>  -- lhu: zero extend halfword
-      s_LoadData <= (31 downto 16 => '0') & s_DMemOut(15 downto 0);
-    when others =>
-      s_LoadData <= s_DMemOut;
-  end case;
-end process;
+-- Load data sign/zero extender (replaces process statement)
+with s_funct3 select
+  s_LoadData <= (31 downto 8  => s_DMemOut(7))  & s_DMemOut(7  downto 0) when "000",  -- lb
+                (31 downto 16 => s_DMemOut(15)) & s_DMemOut(15 downto 0) when "001",  -- lh
+                s_DMemOut                                                when "010",  -- lw
+                (31 downto 8  => '0')           & s_DMemOut(7  downto 0) when "100",  -- lbu
+                (31 downto 16 => '0')           & s_DMemOut(15 downto 0) when "101",  -- lhu
+                s_DMemOut                                                when others; 
 
-  -- TODO: This is required to be your final input to your instruction memory. This provides a feasible method to externally load the memory module which means that the synthesis tool must assume it knows nothing about the values stored in the instruction memory. If this is not included, much, if not all of the design is optimized out because the synthesis tool will believe the memory to be all zeros.
+
+
+--process(s_DMemOut, s_funct3)
+--begin
+  --case s_funct3 is
+    --when "000" =>  -- lb: sign extend byte
+      --s_LoadData <= (31 downto 8 => s_DMemOut(7)) & s_DMemOut(7 downto 0);
+    --when "001" =>  -- lh: sign extend halfword
+      --s_LoadData <= (31 downto 16 => s_DMemOut(15)) & s_DMemOut(15 downto 0);
+    --when "010" =>  -- lw: full word
+      --s_LoadData <= s_DMemOut;
+    --when "100" =>  -- lbu: zero extend byte
+      --s_LoadData <= (31 downto 8 => '0') & s_DMemOut(7 downto 0);
+    --when "101" =>  -- lhu: zero extend halfword
+   --   s_LoadData <= (31 downto 16 => '0') & s_DMemOut(15 downto 0);
+--    when others =>
+ --     s_LoadData <= s_DMemOut;
+ -- end case;
+--end process;
+
+  -- TODO: This is required to be your final input to your instruction memory. 
+  --This provides a feasible method to externally load the memory module which means that the synthesis tool must assume it knows nothing about the values stored in the instruction memory. If this is not included, much, if not all of the design is optimized out because the synthesis tool will believe the memory to be all zeros.
   with iInstLd select
     s_IMemAddr <= s_PC when '0',
       iInstAddr when others;

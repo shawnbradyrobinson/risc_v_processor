@@ -24,9 +24,6 @@
 --   "100" = LUI force pass through 
 --   "101" = AUIPC PC+imm 
 --
--- NOTE: o_MemToReg will be expanded to 2-bits later when JAL/JALR
---       need to write PC+4 back to rd.  For now it is 1-bit:
---         '0' = ALU result    '1' = data memory
 -------------------------------------------------------------------------
 
 library IEEE;
@@ -97,7 +94,7 @@ with i_opcode select
     "0010010000101" when "0010111",
 
     -- Halt: WFI 
-    "0000000000000" when "1110011",
+    "1000000000000" when "1110011",
     -- Default: all disabled
     "0000000000000" when others;
 
