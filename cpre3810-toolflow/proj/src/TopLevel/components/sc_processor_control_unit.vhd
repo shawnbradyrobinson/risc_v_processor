@@ -97,7 +97,7 @@ with i_opcode select
     "0010010000101" when "0010111",
 
     -- Halt: WFI 
-    "1000000000000" when "1110011",
+    "0000000000000" when "1110011",
     -- Default: all disabled
     "0000000000000" when others;
 
