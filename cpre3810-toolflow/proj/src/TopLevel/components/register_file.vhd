@@ -70,7 +70,7 @@ begin
 
 -- Disclosure: I researched with Gemini to make sure I got this masking right in VHDL 
 	write_e_mask <= (others => write_enable); 
-	gated_write_enable <= decoder_out and write_e_mask and x"FFFFFFFE";
+	gated_write_enable <= (decoder_out and write_e_mask) and x"FFFFFFFE";
 
 --RISC-V x0 always zero 
 	risc_registers(0) <= x"00000000";

@@ -1,0 +1,6 @@
+.data
+    array: .word 1, 2, 3
+.text
+    la a0, array
+    lw a1, 0(a0)
+    wfi

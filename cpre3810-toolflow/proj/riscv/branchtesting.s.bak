@@ -1,0 +1,46 @@
+.text
+    # --- BOILERPLATE (Manual) ---
+    lui x2, 0x80000        
+    addi x2, x2, -4        # sp = 0x7FFFFFFC
+    
+    # --- TEST: Simple Call Depth ---
+    addi x10, x0, 5        # a0 = 5
+    jal x1, func1          # Call 1
+    
+    # --- EXIT ---
+    wfi
+
+func1:
+    addi x2, x2, -4
+    sw   x1, 0(x2)         # Push RA
+    jal  x1, func2         # Call 2
+    lw   x1, 0(x2)         # Pop RA
+    addi x2, x2, 4
+    jalr x0, 0(x1)         # ret
+
+func2:
+    addi x2, x2, -4
+    sw   x1, 0(x2)
+    jal  x1, func3         # Call 3
+    lw   x1, 0(x2)
+    addi x2, x2, 4
+    jalr x0, 0(x1)
+
+func3:
+    addi x2, x2, -4
+    sw   x1, 0(x2)
+    jal  x1, func4         # Call 4
+    lw   x1, 0(x2)
+    addi x2, x2, 4
+    jalr x0, 0(x1)
+
+func4:
+    addi x2, x2, -4
+    sw   x1, 0(x2)
+    jal  x1, func5         # Call 5 (Depth 5 reached)
+    lw   x1, 0(x2)
+    addi x2, x2, 4
+    jalr x0, 0(x1)
+
+func5:
+    jalr x0, 0(x1)
