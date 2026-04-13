@@ -14,7 +14,7 @@ entity IFID_PipelineRegister is
 
 port(	iCLK: 		in std_logic;
 	iRST: 		in std_logic;
-	iWE:		in std_logic; -- for stall control?
+	iWE:		in std_logic;  -- for stall control?
 	--iFLUSH -- for squashing flushing eventually?
 
 	--IF INPUTS 

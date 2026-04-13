@@ -108,18 +108,37 @@ architecture structure of RISCV_Processor is
 
 -- ====== PIPELINE REGISTER SIGNALS ======= --
 -- ====== IF/ID REGISTER SIGNALS==========
-signal ID_PC		: std_logic_vector(31 downto 0); 
-signal ID_Instr		: std_logic_vector(31 downto 0); 
+signal s_ID_PC		: std_logic_vector(31 downto 0); 
+signal s_ID_Instr		: std_logic_vector(31 downto 0); 
 
-signal ID_opcode	: std_logic_vector(6 downto 0); 
-signal ID_rs1_addr	: std_logic_vector(4 downto 0); 
-signal ID_rs2_addr	: std_logic_vector(4 downto 0); 
-signal ID_rd_addr	: std_logic_vector(4 downto 0); 
-signal ID_funct3	: std_logic_vector(2 downto 0); 
+signal s_ID_opcode	: std_logic_vector(6 downto 0); 
+signal s_ID_rs1_addr	: std_logic_vector(4 downto 0); 
+signal s_ID_rs2_addr	: std_logic_vector(4 downto 0); 
+signal s_ID_rd_addr	: std_logic_vector(4 downto 0); 
+signal s_ID_funct3	: std_logic_vector(2 downto 0); 
 
 -- ========= ID/EX REGISTER SIGNALS======== 
 
+signal s_EX_PC		: std_logic_vector(31 downto 0);
+signal s_EX_Instr	: std_logic_vector(31 downto 0);
+signal s_EX_rs1_out	: std_logic_vector(31 downto 0);
+signal s_EX_rs2_out	: std_logic_vector(31 downto 0);
+signal s_EX_ImmGen	: std_logic_vector(31 downto 0);
+signal s_EX_ALUSrc	: std_logic_vector(31 downto 0);
+signal s_EX_ALUCtrl	: std_logic_vector(3 downto 0);
+signal s_EX_isLUI	: std_logic;
+signal s_EX_isAUIPC	: std_logic;
+signal s_EX_MemWrite	: std_logic;
+signal s_EX_MemRead	: std_logic;
+signal s_EX_RegWrite	: std_logic;
+signal s_EX_MemToReg	: std_logic_vector(1 downto 0);
 
+
+signal s_EX_funct3	: std_logic_vector(2 downto 0);
+signal s_EX_funt7_5	: std_logic;
+signal s_EX_rd_addr	: std_logic_vector(4 downto 0);
+signal s_EX_rs1_addr	: std_logic_vector(4 downto 0);
+signal s_EX_rs2_addr	: std_logic_vector(4 downto 0);
 
 
 
@@ -254,20 +273,76 @@ component alu_32 is
 end component;
 
 
-
-
-
 -- ========== PIPELINE REGISTER COMPONENTS ========= -- 
 
 component IFID_PipelineRegister is 
 	port(
 
+		iCLK: 		in std_logic;
+		iRST: 		in std_logic;
+		iWE:		in std_logic;  -- for stall control?
+		--iFLUSH -- for squashing flushing eventually?
 
+		--IF INPUTS 
+		IF_PC:	  	in std_logic_vector(31 downto 0); 
+		IF_Instr: 	in std_logic_vector(31 downto 0); 
 
+		--ID OUTPUTS
+		ID_PC:		out std_logic_vector(31 downto 0); 
+		ID_Instr: 	out std_logic_vector(31 downto 0); 	
 	);
 end component;  
 
 
+component IDEX_PipelineRegister is
+	port(	iCLK: 		in std_logic;
+		iRST: 		in std_logic;
+		iWE:		in std_logic;  -- for stall control?
+		--iFLUSH -- for squashing flushing eventually?
+
+		--ID INPUTS: datapath 
+		ID_PC:	  		in std_logic_vector(31 downto 0); 
+		ID_Instr: 		in std_logic_vector(31 downto 0); 
+
+		ID_rs1_out:		in std_logic_vector(31 downto 0); 
+		ID_rs2_out:		in std_logic_vector(31 downto 0);
+
+		ID_ImmGen:		in std_logic_vector(31 downto 0); 
+
+		--ID INPUTS: control signals, ex-stage consumers
+		ID_ALUSrc:		in std_logic;
+		ID_ALUCtrl:		in std_logic_vector(3 downto 0);
+		ID_isLUI:		in std_logic;
+		ID_isAUIPC:		in std_logic;
+
+		--ID INPUTS: control signals, mem-stage consumers --> passing through 
+		ID_MemWrite:		in std_logic;
+		ID_MemRead:		in std_logic;
+	
+		--ID INPUTS: control signals, wb-stage consumers --> passing through 
+		ID_RegWrite:		in std_logic;
+		ID_MemToReg:		in std_logic_vector(1 downto 0);
+
+
+		--EX OUTPUTS: datapath 
+		EX_PC:			out std_logic_vector(31 downto 0); 
+		EX_Instr:		out std_logic_vector(31 downto 0);
+		EX_rs1_out:		out std_logic_vector(31 downto 0);
+		EX_rs2_out:		out std_logic_vector(31 downto 0);
+		EX_ImmGen:		out std_logic_vector(31 downto 0);
+
+
+		--EX OUTPUTS: control signals 
+		EX_ALUSrc:		out std_logic;
+		EX_ALUCtrl:		out std_logic_vector(3 downto 0);
+		EX_isLUI:		out std_logic;
+		EX_isAUIPC:		out std_logic;
+		EX_MemWrite:		out std_logic;
+		EX_MemRead:		out std_logic;
+		EX_RegWrite:		out std_logic;
+		EX_MemToReg:		out std_logic_vector(1 downto 0)
+	); 
+end component;
 -- ========= END OF ADDED COMPONENTS ===== -- 
 
 
@@ -294,11 +369,19 @@ begin
 
  --ID OUTPUT SLICING 
  
- ID_opcode	<= ID_Instr(6 downto 0); 
- ID_rs1_addr	<= ID_Instr(19 downto 15); 
- ID_rs2_addr	<= ID_Instr(24 downto 20); 
- ID_rd_addr	<= ID_Instr(11 downto 7); 
- ID_funct3	<= ID_Instr(14 downto 12); 
+ s_ID_opcode	<= s_ID_Instr(6 downto 0); 
+ s_ID_rs1_addr	<= s_ID_Instr(19 downto 15); 
+ s_ID_rs2_addr	<= s_ID_Instr(24 downto 20); 
+ s_ID_rd_addr	<= s_ID_Instr(11 downto 7); 
+ s_ID_funct3	<= s_ID_Instr(14 downto 12); 
+
+--EX OUTPUT SLICING
+
+s_EX_funct3	<= EX_Instr(14 downto 12);
+s_EX_funt7_5	<= EX_Instr(30);
+s_EX_rd_addr	<= EX_Instr(11 downto 7);
+s_EX_rs1_addr	<= EX_Instr(19 downto 15); -- FOR FORWARDING!
+s_EX_rs2_addr	<= EX_Instr(24 downto 20); -- FOR FORWARDING!
 
 
 
@@ -398,6 +481,67 @@ F_UNIT: fetch_unit
 
 
 
+
+
+-- ====== IF/ID PIPELINE REGISTER ======= -- 
+IFID_REG: IFID_PipelineRegister
+	port map(
+		iCLK		=> iCLK,
+		iRST		=> iRST,
+		iWE		=> '1' -- map it to stalling later 
+		--iFLUSH?
+		IF_PC		=> s_PC,
+		IF_Instr	=> s_Inst,
+		ID_PC		=> ID_PC,
+		ID_Instr	=> ID_Instr
+
+
+		);
+
+
+-- ====== ID/EX PIPELINE REGISTER ===== -- 
+IDEX_REG: IDEX_PipelineRegister
+	port map(
+		iCLK		=> iCLK,
+		iRST		=> iRST,
+		iWE		=> '1', -- map to stalling later
+		
+		--datapath inputs--
+
+		ID_PC		=> ID_PC 	-- from IF/ID register output
+		ID_Instr	=> ID_Instr	-- from IF/ID register output
+		ID_rs1_out	=> s_rs1_data	-- from register file
+		ID_rs2_out	=> s_rs2_data	-- from register file
+		ID_ImmGen	=> s_immediate  -- from immediate generator 
+
+		--Control inputs
+
+		ID_ALUSrc	=> s_ALUSrc,	-- from proc control
+		ID_ALUCtrl	=> s_ALUCtrl,	-- from alu control
+		ID_isLUI	=> s_isLUI,	-- from concurrent assign
+		ID_isAUIPC	=> s_isAUIPIC,	-- from concurrent assign
+		ID_MemWrite	=> s_MemWrite, 	-- from proc control
+		ID_MemRead	=> s_MemRead,	-- from proc control
+		ID_RegWrite	=> s_RegWrite,  -- from proc control
+		ID_MemToReg	=> s_MemToReg,  -- from proc control 
+
+		--Datapath outputs
+		EX_PC		=> s_EX_PC,
+		EX_Instr	=> s_EX_Instr,
+		EX_rs1_out	=> s_EX_rs1_out,
+		EX_rs2_out	=> s_EX_rs2_out,
+		EX_ImmGen	=> s_EX_ImmGen,
+		
+		--Control outputs
+		EX_ALUSrc	=> s_EX_ALUSrc,
+		EX_ALUCtrl	=> s_EX_ALUCtrl,
+		EX_isLUI	=> s_EX_isLUI,
+		EX_isAUIPC	=> s_isAUIPC,
+		EX_MemWrite	=> s_EX_MemWrite,
+		EX_MemRead	=> s_EX_MemRead,
+		EX_RegWrite	=> s_EX_RegWrite,
+		EX_MemToReg	=> s_EX_MemToReg
+	);
 
  -- ====== CONTROLS ====== -- 
 MAIN_CONTROL: sc_processor_control_unit

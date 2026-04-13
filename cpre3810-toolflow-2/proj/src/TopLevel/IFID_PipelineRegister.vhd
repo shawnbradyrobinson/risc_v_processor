@@ -28,7 +28,7 @@ port(	iCLK: 		in std_logic;
 
 end IFID_PipelineRegister
 
-architecture structural of IFID_PipeplineRegister is 
+architecture structural of IFID_PipelineRegister is 
 
 	component register_NBit is
     		generic(N : integer := 32);
