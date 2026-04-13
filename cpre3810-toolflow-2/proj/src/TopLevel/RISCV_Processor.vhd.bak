@@ -144,10 +144,18 @@ signal s_EX_rs2_addr	: std_logic_vector(4 downto 0);
 
 -- ========= EX/MEM REGISTER SIGNALS======== 
 
+signal s_MEM_PC		: std_logic_vector(31 downto 0);
+signal s_MEM_Instr	: std_logic_vector(31 downto 0);
+signal s_MEM_ALU_Result	: std_logic_vector(31 downto 0);
+signal s_MEM_rs2_out	: std_logic_vector(31 downto 0);
+signal s_MEM_rd_addr	: std_logic_vector(4 downto 0);
+signal s_MEM_MemWrite	: std_logic;
+signal s_MEM_MemRead	: std_logic;
+signal s_MEM_RegWrite	: std_logic;
+signal s_MEM_MemToReg	: std_logic_vector(1 downto 0);
 
 
-
-
+signal s_MEM_funct3	: std_logic_vector(2 downto 0);
 
 -- ========= MEM/WB REGISTER SIGNALS======== 
 
@@ -343,6 +351,64 @@ component IDEX_PipelineRegister is
 		EX_MemToReg:		out std_logic_vector(1 downto 0)
 	); 
 end component;
+
+component EXMEM_PipelineRegister is
+
+	port(	iCLK: 		in std_logic;
+		iRST: 		in std_logic;
+		iWE:		in std_logic;  -- for stall control?
+		--iFLUSH -- for squashing flushing eventually?
+
+		--EX INPUTS: datapath 
+		EX_PC:	  		in std_logic_vector(31 downto 0); 
+		EX_Instr: 		in std_logic_vector(31 downto 0); 
+
+		EX_Branch_Taken:	in std_logic; --see what Jay does with branch resolver repositioning 
+		EX_ALU_Result:		in std_logic_vector(31 downto 0);
+		EX_rs2_out:		in std_logic_vector(31 downto 0);
+		EX_rd_addr:		in std_logic_vector(31 downto 0);
+
+		--EX INPUTS: control signals, mem-stage consumers --> 
+		EX_MemWrite:		in std_logic;
+		EX_MemRead:		in std_logic;
+	
+		--EX INPUTS: control signals, wb-stage consumers --> passing through 
+		EX_RegWrite:		in std_logic;
+		EX_MemToReg:		in std_logic_vector(1 downto 0);
+
+
+		--MEM OUTPUTS: datapath 
+		MEM_PC:			out std_logic_vector(31 downto 0); 
+		MEM_Instr:		out std_logic_vector(31 downto 0);
+		MEM_ALU_Result:		out std_logic_vector(31 downto 0);
+		MEM_rs2_out:		out std_logic_vector(31 downto 0);
+		MEM_rd_addr:		out std_logic_vector(31 downto 0);
+
+		--MEM OUTPUTS: control
+
+		MEM_MemWrite:		out std_logic;
+		MEM_MemRead:		out std_logic;
+		MEM_RegWrite:		out std_logic;
+		MEM_MemToReg:		out std_logic_vector(1 downto 0);
+	); 
+end component;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 -- ========= END OF ADDED COMPONENTS ===== -- 
 
 
@@ -353,9 +419,9 @@ begin
   s_funct3 		<= s_Inst(14 downto 12); 
   s_RegWrAddr		<= s_Inst(11 downto 7); 
   s_RegWr		<= s_RegWrite; 
-  s_DMemWr		<= s_MemWrite; 
-  s_DMemAddr		<= s_ALUOut; 
-  s_DMemData		<= s_rs2_data;
+  s_DMemWr		<= s_MEM_MemWrite; 	--PIPELINE CHANGE 
+  s_DMemAddr		<= s_MEM_ALU_Result;	--PIPELINE CHANGE 
+  s_DMemData		<= s_MEM_rs2_out;	--call me mario with all these pipes
   oALUOut		<= s_ALUOut; 
   
 
@@ -384,6 +450,9 @@ s_EX_rs1_addr	<= EX_Instr(19 downto 15); -- FOR FORWARDING!
 s_EX_rs2_addr	<= EX_Instr(24 downto 20); -- FOR FORWARDING!
 
 
+--MEM OUTPUT SLICING
+s_MEM_funct3	<= MEM_Instr(14 downto 12);
+
 
 
 
@@ -396,7 +465,7 @@ s_EX_rs2_addr	<= EX_Instr(24 downto 20); -- FOR FORWARDING!
   
   -- Load data sign/zero extender
 -- Load data sign/zero extender (replaces process statement)
-with s_funct3 select
+with s_MEM_funct3 select
   s_LoadData <= (31 downto 8  => s_DMemOut(7))  & s_DMemOut(7  downto 0) when "000",  -- lb
                 (31 downto 16 => s_DMemOut(15)) & s_DMemOut(15 downto 0) when "001",  -- lh
                 s_DMemOut                                                when "010",  -- lw
@@ -405,24 +474,6 @@ with s_funct3 select
                 s_DMemOut                                                when others; 
 
 
-
---process(s_DMemOut, s_funct3)
---begin
-  --case s_funct3 is
-    --when "000" =>  -- lb: sign extend byte
-      --s_LoadData <= (31 downto 8 => s_DMemOut(7)) & s_DMemOut(7 downto 0);
-    --when "001" =>  -- lh: sign extend halfword
-      --s_LoadData <= (31 downto 16 => s_DMemOut(15)) & s_DMemOut(15 downto 0);
-    --when "010" =>  -- lw: full word
-      --s_LoadData <= s_DMemOut;
-    --when "100" =>  -- lbu: zero extend byte
-      --s_LoadData <= (31 downto 8 => '0') & s_DMemOut(7 downto 0);
-    --when "101" =>  -- lhu: zero extend halfword
-   --   s_LoadData <= (31 downto 16 => '0') & s_DMemOut(15 downto 0);
---    when others =>
- --     s_LoadData <= s_DMemOut;
- -- end case;
---end process;
 
   -- TODO: This is required to be your final input to your instruction memory. 
   --This provides a feasible method to externally load the memory module which means that the synthesis tool must assume it knows nothing about the values stored in the instruction memory. If this is not included, much, if not all of the design is optimized out because the synthesis tool will believe the memory to be all zeros.
@@ -453,9 +504,9 @@ with s_MemToReg select
     generic map(ADDR_WIDTH => ADDR_WIDTH,
                 DATA_WIDTH => N)
     port map(clk  => iCLK,
-             addr => s_DMemAddr(11 downto 2),
-             data => s_DMemData,
-             we   => s_DMemWr,
+             addr => s_MEM_ALU_Result(11 downto 2), -- pipelining, bayBEE!
+             data => s_MEM_rs2_out,
+             we   => s_MEM_MemWrite,
              q    => s_DMemOut);
 
  
@@ -590,6 +641,47 @@ REG_FILE: register_file
 		rs2_out		=> s_rs2_data
 		); 
 
+
+
+
+
+
+-- ========= EX/MEM PIPELINE REGISTER ======= -- 
+
+EXMEM_REG: EXMEM_PipelineRegister
+	port map(
+		iCLK		=> iCLK,
+		iRST		=> iRST,
+		iWE		=> '1', 	--implement stalling eventually
+		
+		--datapath inputs--
+		EX_PC		=> EX_PC,	--from ID/EX output
+		EX_Instr	=> EX_Instr,	--from ID/EX output
+		EX_ALU_Result	=> s_ALUOut,	--from ALU output
+		EX_rs2_out	=> EX_rs2_out,	--from ID/EX output
+		EX_rd_addr	=> s_EX_rd_addr,--from ID/EX slice
+		
+		--Control inputs-- 
+		EX_MemWrite	=> EX_MemWrite,	--from ID/EX output
+		EX_MemRead	=> EX_MemRead,	--from ID/EX output
+		EX_RegWrite	=> EX_RegWrite,	--from ID/EX output
+		EX_MemToReg	=> EX_MemToReg,	--from ID/EX output
+
+		--Datapath outputs
+
+		MEM_PC		=> s_MEM_PC,
+		MEM_Instr	=> s_MEM_Instr,
+		MEM_ALU_Result	=> s_MEM_ALU_Result,
+		MEM_rs2_out	=> s_MEM_rs2_out,
+		MEM_rd_addr	=> s_MEM_rd_addr,
+		
+		--Control outputs
+		
+		MEM_MemWrite	=> s_MEM_MemWrite,
+		MEM_MemRead	=> s_MEM_MemRead,
+		MEM_RegWrite	=> s_MEM_RegWrite,
+		MEM_MemToReg	=> s_MEM_MemToReg
+		);
 
 -- ====== B MUX ====== -- 
 B_SRC_MUX: mux2t1_N
