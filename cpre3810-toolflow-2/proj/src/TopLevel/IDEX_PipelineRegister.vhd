@@ -1,0 +1,169 @@
+-------------------------------------------------------------------------
+-- IDEX_PipelineRegister.vhd
+-------------------------------------------------------------------------
+-- DESCRIPTION: ID/EX Pipeline Register for RISC-V 5-stage pipeline.
+-
+-------------------------------------------------------------------------
+
+library IEEE; 
+use IEEE.std_logic_1164.all; 
+
+entity IDEX_PipelineRegister is 
+
+port(	iCLK: 		in std_logic;
+	iRST: 		in std_logic;
+	iWE:		in std_logic;  -- for stall control?
+	--iFLUSH -- for squashing flushing eventually?
+
+	--ID INPUTS: datapath 
+	ID_PC:	  		in std_logic_vector(31 downto 0); 
+	ID_Instr: 		in std_logic_vector(31 downto 0); 
+
+	ID_rs1_out:		in std_logic_vector(31 downto 0); 
+	ID_rs2_out:		in std_logic_vector(31 downto 0);
+
+	ID_ImmGen:		in std_logic_vector(31 downto 0); 
+
+	--ID INPUTS: control signals, ex-stage consumers
+	ID_ALUSrc:		in std_logic;
+	ID_ALUCtrl:		in std_logic_vector(3 downto 0);
+	ID_isLUI:		in std_logic;
+	ID_isAUIPC:		in std_logic;
+
+	--ID INPUTS: control signals, mem-stage consumers --> passing through 
+	ID_MemWrite:		in std_logic;
+	ID_MemRead:		in std_logic;
+	
+	--ID INPUTS: control signals, wb-stage consumers --> passing through 
+	ID_RegWrite:		in std_logic;
+	ID_MemToReg:		in std_logic_vector(1 downto 0);
+
+
+	--EX OUTPUTS: datapath 
+	EX_PC:			out std_logic_vector(31 downto 0); 
+	EX_Instr:		out std_logic_vector(31 downto 0);
+	EX_rs1_out:		out std_logic_vector(31 downto 0);
+	EX_rs2_out:		out std_logic_vector(31 downto 0);
+	EX_ImmGen:		out std_logic_vector(31 downto 0);
+
+
+	--EX OUTPUTS: control signals 
+	EX_ALUSrc:		out std_logic;
+	EX_ALUCtrl:		out std_logic_vector(3 downto 0);
+	EX_isLUI:		out std_logic;
+	EX_isAUIPC:		out std_logic;
+	EX_MemWrite:		out std_logic;
+	EX_MemRead:		out std_logic;
+	EX_RegWrite:		out std_logic;
+	EX_MemToReg:		out std_logic_vector(1 downto 0)
+); 
+
+end IDEX_PipelineRegister
+
+architecture structural of IDEX_PipelineRegister is 
+
+	component register_NBit is
+    		generic(N : integer := 32);
+    		port(	D   : in  std_logic_vector(N-1 downto 0);
+         		RST : in  std_logic;
+         		WE  : in  std_logic;
+         		CLK : in  std_logic;
+         		Q   : out std_logic_vector(N-1 downto 0));
+  	end component;
+
+	--Design idea: pack all the one bit control signals into a single vector register thing so we just write one 8-bit
+	-- rather than a ton of one-bit instances
+  	-- Bit assignments:
+ 	 --   7: RegWrite
+  	--   6: MemToReg(1)
+  	--   5: MemToReg(0)
+  	--   4: MemRead
+  	--   3: MemWrite
+  	--   2: ALUSrc
+  	--   1: isAUIPC
+  	--   0: isLUI
+	signal s_ctrl_in	: std_logic_vector(7 downto 0);
+	signal s_ctrl_out	: std_logic_vector(7 downto 0);
+
+begin 
+
+
+  -- Pack control inputs
+  s_ctrl_in <= ID_RegWrite &
+               ID_MemToReg &
+               ID_MemRead  &
+               ID_MemWrite &
+               ID_ALUSrc   &
+               ID_isAUIPC  &
+               ID_isLUI;
+
+  -- Unpack control outputs
+  EX_RegWrite  <= s_ctrl_out(7);
+  EX_MemToReg  <= s_ctrl_out(6 downto 5);
+  EX_MemRead   <= s_ctrl_out(4);
+  EX_MemWrite  <= s_ctrl_out(3);
+  EX_ALUSrc    <= s_ctrl_out(2);
+  EX_isAUIPC   <= s_ctrl_out(1);
+  EX_isLUI     <= s_ctrl_out(0);
+
+  REG_PC: register_NBit
+    generic map(N => 32)
+    port map(	D => ID_PC,    
+		RST => iRST, 
+		WE => iWE, 
+		CLK => iCLK, 
+		Q => EX_PC);
+
+  REG_Instr: register_NBit
+    generic map(N => 32)
+    port map(	D => ID_Instr, 
+		RST => iRST, 
+		WE => iWE, 
+		CLK => iCLK, 
+		Q => EX_Instr);
+
+  REG_rs1: register_NBit
+    generic map(N => 32)
+    port map(	D => ID_rs1_out, 
+		RST => iRST, 
+		WE => iWE, 
+		CLK => iCLK, 
+		Q => EX_rs1_out);
+
+  REG_rs2: register_NBit
+    generic map(N => 32)
+    port map(	D => ID_rs2_out, 
+		RST => iRST, 
+		WE => iWE, 
+		CLK => iCLK, 
+		Q => EX_rs2_out);
+
+  REG_Imm: register_NBit
+    generic map(N => 32)
+    port map(	D => ID_ImmGen, 
+		RST => iRST, 
+		WE => iWE, 
+		CLK => iCLK, 
+		Q => EX_ImmGen);
+
+  REG_ALUCtrl: register_NBit
+    generic map(N => 4)
+    port map(	D => ID_ALUCtrl, 
+		RST => iRST, 
+		WE => iWE, 
+		CLK => iCLK, 
+		Q => EX_ALUCtrl);
+
+  REG_Ctrl: register_NBit
+    generic map(N => 8)
+    port map(	D => s_ctrl_in, 
+		RST => iRST, 
+		WE => iWE, 
+		CLK => iCLK, 
+		Q => s_ctrl_out);
+
+end structural;
+
+
+
+
