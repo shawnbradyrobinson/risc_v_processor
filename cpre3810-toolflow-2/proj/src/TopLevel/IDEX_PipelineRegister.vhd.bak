@@ -18,6 +18,7 @@ port(	iCLK: 		in std_logic;
 	--ID INPUTS: datapath 
 	ID_PC:	  		in std_logic_vector(31 downto 0); 
 	ID_Instr: 		in std_logic_vector(31 downto 0); 
+	ID_PC_Plus4:		in std_logic_vector(31 downto 0);
 
 	ID_rs1_out:		in std_logic_vector(31 downto 0); 
 	ID_rs2_out:		in std_logic_vector(31 downto 0);
@@ -29,6 +30,9 @@ port(	iCLK: 		in std_logic;
 	ID_ALUCtrl:		in std_logic_vector(3 downto 0);
 	ID_isLUI:		in std_logic;
 	ID_isAUIPC:		in std_logic;
+	ID_Jump:		in std_logic;
+	ID_Branch:		in std_logic;
+	ID_PC_SRC:		in std_logic;
 
 	--ID INPUTS: control signals, mem-stage consumers --> passing through 
 	ID_MemWrite:		in std_logic;
@@ -42,6 +46,7 @@ port(	iCLK: 		in std_logic;
 	--EX OUTPUTS: datapath 
 	EX_PC:			out std_logic_vector(31 downto 0); 
 	EX_Instr:		out std_logic_vector(31 downto 0);
+	EX_PC_Plus4:		out std_logic_vector(31 downto 0);
 	EX_rs1_out:		out std_logic_vector(31 downto 0);
 	EX_rs2_out:		out std_logic_vector(31 downto 0);
 	EX_ImmGen:		out std_logic_vector(31 downto 0);
@@ -56,6 +61,9 @@ port(	iCLK: 		in std_logic;
 	EX_MemRead:		out std_logic;
 	EX_RegWrite:		out std_logic;
 	EX_MemToReg:		out std_logic_vector(1 downto 0)
+	EX_Jump:		out std_logic;
+	EX_Branch:		out std_logic;
+	EX_PC_SRC:		out std_logic;
 ); 
 
 end IDEX_PipelineRegister
@@ -74,7 +82,10 @@ architecture structural of IDEX_PipelineRegister is
 	--Design idea: pack all the one bit control signals into a single vector register thing so we just write one 8-bit
 	-- rather than a ton of one-bit instances
   	-- Bit assignments:
- 	 --   7: RegWrite
+        --  10: Jump
+        --   9: Branch
+	--   8: PCSrc
+ 	 --  7: RegWrite
   	--   6: MemToReg(1)
   	--   5: MemToReg(0)
   	--   4: MemRead
@@ -82,14 +93,17 @@ architecture structural of IDEX_PipelineRegister is
   	--   2: ALUSrc
   	--   1: isAUIPC
   	--   0: isLUI
-	signal s_ctrl_in	: std_logic_vector(7 downto 0);
-	signal s_ctrl_out	: std_logic_vector(7 downto 0);
+	signal s_ctrl_in	: std_logic_vector(10 downto 0);
+	signal s_ctrl_out	: std_logic_vector(10 downto 0);
 
 begin 
 
 
   -- Pack control inputs
-  s_ctrl_in <= ID_RegWrite &
+  s_ctrl_in <= ID_Jump	   &
+	       ID_Branch   &
+	       ID_PC_SRC   &
+	       ID_RegWrite &
                ID_MemToReg &
                ID_MemRead  &
                ID_MemWrite &
@@ -98,6 +112,8 @@ begin
                ID_isLUI;
 
   -- Unpack control outputs
+  EX_Branch    <= s_ctrl_out(9);
+  EX_PC_SRC    <= s_ctrl_out(8);
   EX_RegWrite  <= s_ctrl_out(7);
   EX_MemToReg  <= s_ctrl_out(6 downto 5);
   EX_MemRead   <= s_ctrl_out(4);
@@ -121,6 +137,16 @@ begin
 		WE => iWE, 
 		CLK => iCLK, 
 		Q => EX_Instr);
+
+
+  REG_PC_Plus4: register_NBit
+    generic map(N => 32)
+    port map(
+        D   => ID_PC_Plus4,
+        RST => iRST,
+        WE  => iWE,
+        CLK => iCLK,
+        Q   => EX_PC_Plus4);
 
   REG_rs1: register_NBit
     generic map(N => 32)
@@ -156,7 +182,11 @@ begin
 
   REG_Ctrl: register_NBit
     generic map(N => 8)
-    port map(D => s_ctrl_in, RST => iRST, WE => iWE, CLK => iCLK, Q => s_ctrl_out);
+    port map(	D => s_ctrl_in, 
+		RST => iRST, 
+		WE => iWE, 
+		CLK => iCLK, 
+		Q => s_ctrl_out);
 
 end structural;
 
