@@ -2,7 +2,7 @@
 -- EXMEM_PipelineRegister.vhd
 -------------------------------------------------------------------------
 -- DESCRIPTION: ID/EX Pipeline Register for RISC-V 5-stage pipeline.
--
+--
 -------------------------------------------------------------------------
 
 library IEEE; 
@@ -23,7 +23,7 @@ port(	iCLK: 		in std_logic;
 	--EX_Branch_Taken:	in std_logic; --see what Jay does with branch resolver repositioning 
 	EX_ALU_Result:		in std_logic_vector(31 downto 0);
 	EX_rs2_out:		in std_logic_vector(31 downto 0);
-	EX_rd_addr:		in std_logic_vector(31 downto 0);
+	EX_rd_addr:		in std_logic_vector(4 downto 0);
 
 	--EX INPUTS: control signals, mem-stage consumers --> 
 	EX_MemWrite:		in std_logic;
@@ -41,18 +41,18 @@ port(	iCLK: 		in std_logic;
 
 	MEM_ALU_Result:		out std_logic_vector(31 downto 0);
 	MEM_rs2_out:		out std_logic_vector(31 downto 0);
-	MEM_rd_addr:		out std_logic_vector(31 downto 0);
+	MEM_rd_addr:		out std_logic_vector(4 downto 0);
 
 	--MEM OUTPUTS: control
 
 	MEM_MemWrite:		out std_logic;
 	MEM_MemRead:		out std_logic;
 	MEM_RegWrite:		out std_logic;
-	MEM_MemToReg:		out std_logic_vector(1 downto 0);
+	MEM_MemToReg:		out std_logic_vector(1 downto 0)
 
 ); 
 
-end EXMEM_PipelineRegister
+end EXMEM_PipelineRegister;
 
 architecture structural of EXMEM_PipelineRegister is 
 

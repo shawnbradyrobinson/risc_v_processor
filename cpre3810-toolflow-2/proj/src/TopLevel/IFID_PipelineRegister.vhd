@@ -25,10 +25,10 @@ port(	iCLK: 		in std_logic;
 	--ID OUTPUTS
 	ID_PC:		out std_logic_vector(31 downto 0); 
 	ID_Instr: 	out std_logic_vector(31 downto 0);
-	ID_PC_Plus4:	out std_logic_vector(31 downto 0); 
+	ID_PC_Plus4:	out std_logic_vector(31 downto 0)
 ); 
 
-end IFID_PipelineRegister
+end IFID_PipelineRegister;
 
 architecture structural of IFID_PipelineRegister is 
 

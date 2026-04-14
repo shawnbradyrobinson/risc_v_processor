@@ -414,7 +414,7 @@ component EXMEM_PipelineRegister is
 		MEM_MemWrite:		out std_logic;
 		MEM_MemRead:		out std_logic;
 		MEM_RegWrite:		out std_logic;
-		MEM_MemToReg:		out std_logic_vector(1 downto 0);
+		MEM_MemToReg:		out std_logic_vector(1 downto 0)
 	); 
 end component;
 
@@ -448,7 +448,7 @@ component MEMWB_PipelineRegister is
 
 		--WB OUTPUTS: control
 		WB_RegWrite:		out std_logic;
-		WB_MemToReg:		out std_logic_vector(1 downto 0);
+		WB_MemToReg:		out std_logic_vector(1 downto 0)
 	); 
 
 
