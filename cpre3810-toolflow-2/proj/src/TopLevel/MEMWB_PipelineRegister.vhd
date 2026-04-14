@@ -2,7 +2,7 @@
 -- MEMWB_PipelineRegister.vhd
 -------------------------------------------------------------------------
 -- DESCRIPTION: MEM/WB Pipeline Register for RISC-V 5-stage pipeline.
--
+--
 -------------------------------------------------------------------------
 
 library IEEE; 
@@ -38,11 +38,11 @@ port(	iCLK: 		in std_logic;
 
 	--WB OUTPUTS: control
 	WB_RegWrite:		out std_logic;
-	WB_MemToReg:		out std_logic_vector(1 downto 0);
+	WB_MemToReg:		out std_logic_vector(1 downto 0)
 
 ); 
 
-end MEMWB_PipelineRegister
+end MEMWB_PipelineRegister;
 
 architecture structural of MEMWB_PipelineRegister is 
 

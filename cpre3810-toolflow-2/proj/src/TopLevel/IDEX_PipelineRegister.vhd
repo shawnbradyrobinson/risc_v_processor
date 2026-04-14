@@ -2,7 +2,7 @@
 -- IDEX_PipelineRegister.vhd
 -------------------------------------------------------------------------
 -- DESCRIPTION: ID/EX Pipeline Register for RISC-V 5-stage pipeline.
--
+--
 -------------------------------------------------------------------------
 
 library IEEE; 
@@ -60,13 +60,13 @@ port(	iCLK: 		in std_logic;
 	EX_MemWrite:		out std_logic;
 	EX_MemRead:		out std_logic;
 	EX_RegWrite:		out std_logic;
-	EX_MemToReg:		out std_logic_vector(1 downto 0)
+	EX_MemToReg:		out std_logic_vector(1 downto 0);
 	EX_Jump:		out std_logic;
 	EX_Branch:		out std_logic;
-	EX_PC_SRC:		out std_logic;
+	EX_PC_SRC:		out std_logic
 ); 
 
-end IDEX_PipelineRegister
+end IDEX_PipelineRegister;
 
 architecture structural of IDEX_PipelineRegister is 
 
@@ -182,7 +182,7 @@ begin
 		Q => EX_ALUCtrl);
 
   REG_Ctrl: register_NBit
-    generic map(N => 8)
+    generic map(N => 11)
     port map(	D => s_ctrl_in, 
 		RST => iRST, 
 		WE => iWE, 
