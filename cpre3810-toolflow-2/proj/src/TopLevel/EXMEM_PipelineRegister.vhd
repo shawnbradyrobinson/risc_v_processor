@@ -18,8 +18,9 @@ port(	iCLK: 		in std_logic;
 	--EX INPUTS: datapath 
 	EX_PC:	  		in std_logic_vector(31 downto 0); 
 	EX_Instr: 		in std_logic_vector(31 downto 0); 
+	EX_PC_Plus4:		in std_logic_vector(31 downto 0);
 
-	EX_Branch_Taken:	in std_logic; --see what Jay does with branch resolver repositioning 
+	--EX_Branch_Taken:	in std_logic; --see what Jay does with branch resolver repositioning 
 	EX_ALU_Result:		in std_logic_vector(31 downto 0);
 	EX_rs2_out:		in std_logic_vector(31 downto 0);
 	EX_rd_addr:		in std_logic_vector(31 downto 0);
@@ -36,6 +37,8 @@ port(	iCLK: 		in std_logic;
 	--MEM OUTPUTS: datapath 
 	MEM_PC:			out std_logic_vector(31 downto 0); 
 	MEM_Instr:		out std_logic_vector(31 downto 0);
+	MEM_PC_Plus4:		out std_logic_vector(31 downto 0);
+
 	MEM_ALU_Result:		out std_logic_vector(31 downto 0);
 	MEM_rs2_out:		out std_logic_vector(31 downto 0);
 	MEM_rd_addr:		out std_logic_vector(31 downto 0);
@@ -127,6 +130,16 @@ begin
 		WE => iWE, 
 		CLK => iCLK, 
 		Q => MEM_rd_addr);
+
+  REG_PC_Plus4: register_NBit
+    generic map(N => 32)
+    port map(
+        D   => EX_PC_Plus4,
+        RST => iRST,
+        WE  => iWE,
+        CLK => iCLK,
+        Q   => MEM_PC_Plus4
+    );
 
    REG_Ctrl: register_NBit
     generic map(N => 5)

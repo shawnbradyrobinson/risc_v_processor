@@ -20,10 +20,12 @@ port(	iCLK: 		in std_logic;
 	--IF INPUTS 
 	IF_PC:	  	in std_logic_vector(31 downto 0); 
 	IF_Instr: 	in std_logic_vector(31 downto 0); 
+	IF_PC_Plus4:	in std_logic_vector(31 downto 0);
 
 	--ID OUTPUTS
 	ID_PC:		out std_logic_vector(31 downto 0); 
-	ID_Instr: 	out std_logic_vector(31 downto 0); 
+	ID_Instr: 	out std_logic_vector(31 downto 0);
+	ID_PC_Plus4:	out std_logic_vector(31 downto 0); 
 ); 
 
 end IFID_PipelineRegister
@@ -69,6 +71,20 @@ begin
 			CLK 	=> iCLK,
 			Q	=> ID_Instr
 		);
+
+	REG_PC_Plus4: register_NBit
+    		generic map(N => 32)
+    		port map(
+        		D   => IF_PC_Plus4,
+        		RST => iRST,
+       			WE  => iWE,
+        		CLK => iCLK,
+        		Q   => ID_PC_Plus4
+		);
+
+
+
+	
 end structural; 
 
 
