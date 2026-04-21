@@ -21,13 +21,14 @@ port(	iCLK: 		in std_logic;
 	MEM_ALU_Result:		in std_logic_vector(31 downto 0);
 	MEM_DMemOut:		in std_logic_vector(31 downto 0);
 	MEM_rd_addr:		in std_logic_vector(4 downto 0);
+	
 
 
 	
 	--MEM INPUTS: control signals, wb-stage consumers --> 
 	MEM_RegWrite:		in std_logic;
 	MEM_MemToReg:		in std_logic_vector(1 downto 0);
-
+	MEM_Halt:		in std_logic; 
 
 	--WB OUTPUTS: datapath 
 	WB_PC:			out std_logic_vector(31 downto 0); 
@@ -37,12 +38,13 @@ port(	iCLK: 		in std_logic;
 	WB_rd_addr:		out std_logic_vector(4 downto 0);
 
 	--WB OUTPUTS: control
+	WB_Halt:		out std_logic; 
 	WB_RegWrite:		out std_logic;
 	WB_MemToReg:		out std_logic_vector(1 downto 0)
 
 ); 
 
-end MEMWB_PipelineRegister
+end MEMWB_PipelineRegister;
 
 architecture structural of MEMWB_PipelineRegister is 
 
@@ -57,21 +59,24 @@ architecture structural of MEMWB_PipelineRegister is
 
 	--Design idea: pack all the one bit control signals into a single vector register thing so we just write one 8-bit
 	-- rather than a ton of one-bit instances
-  	--2: RegWrite
+  	--3: Halt
+	--2: RegWrite
 	--1: MemToReg(1)
 	--0: MemToReg(0)
 
-	signal s_ctrl_in	: std_logic_vector(2 downto 0);
-	signal s_ctrl_out	: std_logic_vector(2 downto 0);
+	signal s_ctrl_in	: std_logic_vector(3 downto 0);
+	signal s_ctrl_out	: std_logic_vector(3 downto 0);
 
 begin 
 
 
   -- Pack control inputs
-  s_ctrl_in <= MEM_RegWrite &
+  s_ctrl_in <= MEM_Halt     &
+	       MEM_RegWrite &
                MEM_MemToReg;
 
   -- Unpack control outputs
+  WB_Halt	<= s_ctrl_out(3);
   WB_RegWrite	<= s_ctrl_out(2);
   WB_MemToReg	<= s_ctrl_out(1 downto 0);
 
