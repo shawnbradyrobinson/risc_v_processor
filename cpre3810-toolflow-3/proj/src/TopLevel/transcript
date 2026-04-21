@@ -12,3 +12,536 @@
 # // of the Customer's facilities without the express written permission of SISW,
 # // and may not be used in any way not expressly authorized by SISW.
 # //
+vlib work
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+vmap work work
+# QuestaSim-64 vmap 2025.1_2 Lib Mapping Utility 2025.04 Apr  7 2025
+# vmap work work 
+# Copying /usr/local/mentor/questasim/linux_x86_64/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+vcom -2008 -work work *.vhd
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 18:07:29 on Apr 21,2026
+# vcom -reportprogress 300 -2008 -work work EXMEM_PipelineRegister.vhd IDEX_PipelineRegister.vhd IFID_PipelineRegister.vhd MEMWB_PipelineRegister.vhd RISCV_Processor.vhd hazard_detection_unit.vhd mem.vhd sw_fetch_unit.vhd tb_PipelineRegisters.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity EXMEM_PipelineRegister
+# -- Compiling architecture structural of EXMEM_PipelineRegister
+# -- Compiling entity IDEX_PipelineRegister
+# -- Compiling architecture structural of IDEX_PipelineRegister
+# -- Compiling entity IFID_PipelineRegister
+# -- Compiling architecture structural of IFID_PipelineRegister
+# -- Compiling entity MEMWB_PipelineRegister
+# -- Compiling architecture structural of MEMWB_PipelineRegister
+# ** Error: (vcom-11) Could not find work.riscv_types.
+# ** Error (suppressible): RISCV_Processor.vhd(23): (vcom-1195) Cannot find expanded name "work.RISCV_types".
+# ** Error: RISCV_Processor.vhd(23): Unknown expanded name.
+# ** Note: RISCV_Processor.vhd(25): VHDL Compiler exiting
+# End time: 18:07:30 on Apr 21,2026, Elapsed time: 0:00:01
+# Errors: 3, Warnings: 0
+# /usr/local/mentor/questasim/linux_x86_64/vcom failed.
+do compile.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vmap 2025.1_2 Lib Mapping Utility 2025.04 Apr  7 2025
+# vmap work work 
+# Modifying modelsim.ini
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 18:08:26 on Apr 21,2026
+# vcom -reportprogress 300 -2008 -work work RISCV_types.vhd 
+# ** Error: (vcom-7) Failed to open design unit file "RISCV_types.vhd" in read mode.
+# No such file or directory. (errno = ENOENT)
+# End time: 18:08:26 on Apr 21,2026, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: /usr/local/mentor/questasim/linux_x86_64/vcom failed.
+# Error in macro ./compile.do line 4
+# /usr/local/mentor/questasim/linux_x86_64/vcom failed.
+#     while executing
+# "vcom -2008 -work work RISCV_types.vhd"
+find . -name "*.vhd" | sort
+# unknown or ambiguous subcommand ".": must be blocks, classes, connections, drivers, infiles, insource, instances, loads, nets, objects, signals, or virtuals
+ls
+# EXMEM_PipelineRegister.vhd
+# EXMEM_PipelineRegister.vhd.bak
+# IDEX_PipelineRegister.vhd
+# IDEX_PipelineRegister.vhd.bak
+# IFID_PipelineRegister.vhd
+# IFID_PipelineRegister.vhd.bak
+# MEMWB_PipelineRegister.vhd
+# RISCV_Processor.vhd
+# RISCV_Processor.vhd.bak
+# compile.do
+# compile.do.bak
+# hazard_detection_unit.vhd
+# hazard_detection_unit.vhd.bak
+# mem.vhd
+# modelsim.ini
+# sw_fetch_unit.vhd
+# sw_fetch_unit.vhd.bak
+# tb_PipelineRegisters.vhd
+# transcript
+# work
+cd ..
+# reading /usr/local/mentor/questasim/linux_x86_64/../modelsim.ini
+ls
+# README.md
+# RISCV_types.vhd
+# RISCV_types.vhd.bak
+# TopLevel
+# compile.do
+# components
+do compile.do
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 18:12:45 on Apr 21,2026
+# vcom -reportprogress 300 -2008 tRISCV_types.vhd 
+# ** Error: (vcom-7) Failed to open design unit file "tRISCV_types.vhd" in read mode.
+# No such file or directory. (errno = ENOENT)
+# End time: 18:12:45 on Apr 21,2026, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: /usr/local/mentor/questasim/linux_x86_64/vcom failed.
+# Error in macro ./compile.do line 12
+# /usr/local/mentor/questasim/linux_x86_64/vcom failed.
+#     while executing
+# "vcom -2008 tRISCV_types.vhd "
+do compile.do
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 18:13:01 on Apr 21,2026
+# vcom -reportprogress 300 -2008 ./RISCV_types.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling package RISCV_types
+# -- Compiling package body RISCV_types
+# -- Loading package RISCV_types
+# End time: 18:13:01 on Apr 21,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 18:13:01 on Apr 21,2026
+# vcom -reportprogress 300 -2008 ./components/addsub_32.vhd ./components/alu_32.vhd ./components/andg2.vhd ./components/barrel_shifter.vhd ./components/bitextender_12to32.vhd ./components/bitextender_20to32.vhd ./components/branch_resolver.vhd ./components/decoder_5to32.vhd ./components/dffg.vhd ./components/fetch_unit.vhd ./components/full_adder.vhd ./components/immediate_generator.vhd ./components/invg.vhd ./components/mux2t1.vhd ./components/mux2t1_N.vhd ./components/mux_32to1.vhd ./components/org2.vhd ./components/register_NBit.vhd ./components/register_file.vhd ./components/ripple_carry_adderN.vhd ./components/sc_processor_alu_control.vhd ./components/sc_processor_control_unit.vhd ./components/source_register.vhd ./components/xorg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity addsub_32
+# -- Compiling architecture structural of addsub_32
+# -- Compiling entity alu_32
+# -- Compiling architecture structural of alu_32
+# -- Compiling entity andg2
+# -- Compiling architecture dataflow of andg2
+# -- Compiling entity barrel_shifter
+# -- Compiling architecture structural of barrel_shifter
+# -- Compiling entity bitextender_12to32
+# -- Compiling architecture behavioral of bitextender_12to32
+# -- Compiling entity bitextender_20to32
+# -- Compiling architecture behavioral of bitextender_20to32
+# -- Compiling entity branch_resolver
+# -- Compiling architecture dataflow of branch_resolver
+# -- Compiling entity decoder_5to32
+# -- Compiling architecture dataflow of decoder_5to32
+# -- Compiling entity dffg
+# -- Compiling architecture mixed of dffg
+# -- Compiling entity fetch_unit
+# -- Compiling architecture structure of fetch_unit
+# -- Compiling entity full_adder
+# -- Compiling architecture structure of full_adder
+# -- Compiling entity immediate_generator
+# -- Compiling architecture dataflow of immediate_generator
+# -- Compiling entity invg
+# -- Compiling architecture dataflow of invg
+# -- Compiling entity mux2t1
+# -- Compiling architecture structure of mux2t1
+# -- Compiling entity mux2t1_N
+# -- Compiling architecture structural of mux2t1_N
+# -- Compiling entity mux_32to1
+# -- Compiling architecture dataflow of mux_32to1
+# -- Compiling entity org2
+# -- Compiling architecture dataflow of org2
+# -- Compiling entity register_NBit
+# -- Compiling architecture structural of register_NBit
+# -- Loading package RISCV_types
+# -- Compiling entity register_file
+# -- Compiling architecture structural of register_file
+# -- Compiling entity ripple_carry_adderN
+# -- Compiling architecture structural of ripple_carry_adderN
+# -- Compiling entity sc_processor_alu_control
+# -- Compiling architecture dataflow of sc_processor_alu_control
+# -- Compiling entity sc_processor_control_unit
+# -- Compiling architecture dataflow of sc_processor_control_unit
+# -- Compiling entity source_register
+# -- Compiling architecture structural of source_register
+# -- Compiling entity xorg2
+# -- Compiling architecture dataflow of xorg2
+# End time: 18:13:01 on Apr 21,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 18:13:01 on Apr 21,2026
+# vcom -reportprogress 300 -2008 ./TopLevel/EXMEM_PipelineRegister.vhd ./TopLevel/IDEX_PipelineRegister.vhd ./TopLevel/IFID_PipelineRegister.vhd ./TopLevel/MEMWB_PipelineRegister.vhd ./TopLevel/RISCV_Processor.vhd ./TopLevel/hazard_detection_unit.vhd ./TopLevel/mem.vhd ./TopLevel/sw_fetch_unit.vhd ./TopLevel/tb_PipelineRegisters.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity EXMEM_PipelineRegister
+# -- Compiling architecture structural of EXMEM_PipelineRegister
+# -- Compiling entity IDEX_PipelineRegister
+# -- Compiling architecture structural of IDEX_PipelineRegister
+# -- Compiling entity IFID_PipelineRegister
+# -- Compiling architecture structural of IFID_PipelineRegister
+# -- Compiling entity MEMWB_PipelineRegister
+# -- Compiling architecture structural of MEMWB_PipelineRegister
+# -- Loading package RISCV_types
+# -- Compiling entity RISCV_Processor
+# -- Compiling architecture structure of RISCV_Processor
+# -- Compiling entity hazard_detection_unit
+# -- Compiling architecture structural of hazard_detection_unit
+# -- Loading package NUMERIC_STD
+# -- Compiling entity mem
+# -- Compiling architecture rtl of mem
+# -- Compiling entity sw_fetch_unit
+# -- Compiling architecture structure of sw_fetch_unit
+# ** Error: ./TopLevel/sw_fetch_unit.vhd(69): (vcom-1576) Expecting token 'COMPONENT' after 'END'. Syntax is valid with -2019 switch.
+# ** Error: ./TopLevel/sw_fetch_unit.vhd(117): (vcom-1136) Unknown identifier "s_stall_n".
+# ** Error: ./TopLevel/sw_fetch_unit.vhd(116): (vcom-1484) Unknown formal identifier "i_A".
+# ** Error: ./TopLevel/sw_fetch_unit.vhd(117): (vcom-1484) Unknown formal identifier "o_F".
+# ** Error: ./TopLevel/sw_fetch_unit.vhd(160): (vcom-1136) Unknown identifier "s_stall_n".
+# ** Note: ./TopLevel/sw_fetch_unit.vhd(164): VHDL Compiler exiting
+# End time: 18:13:01 on Apr 21,2026, Elapsed time: 0:00:00
+# Errors: 5, Warnings: 0
+# ** Error: /usr/local/mentor/questasim/linux_x86_64/vcom failed.
+# Error in macro ./compile.do line 18
+# /usr/local/mentor/questasim/linux_x86_64/vcom failed.
+#     while executing
+# "vcom -2008 ./TopLevel/*.vhd"
+do compile.do
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 18:13:45 on Apr 21,2026
+# vcom -reportprogress 300 -2008 ./RISCV_types.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling package RISCV_types
+# -- Compiling package body RISCV_types
+# -- Loading package RISCV_types
+# End time: 18:13:45 on Apr 21,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 18:13:45 on Apr 21,2026
+# vcom -reportprogress 300 -2008 ./components/addsub_32.vhd ./components/alu_32.vhd ./components/andg2.vhd ./components/barrel_shifter.vhd ./components/bitextender_12to32.vhd ./components/bitextender_20to32.vhd ./components/branch_resolver.vhd ./components/decoder_5to32.vhd ./components/dffg.vhd ./components/fetch_unit.vhd ./components/full_adder.vhd ./components/immediate_generator.vhd ./components/invg.vhd ./components/mux2t1.vhd ./components/mux2t1_N.vhd ./components/mux_32to1.vhd ./components/org2.vhd ./components/register_NBit.vhd ./components/register_file.vhd ./components/ripple_carry_adderN.vhd ./components/sc_processor_alu_control.vhd ./components/sc_processor_control_unit.vhd ./components/source_register.vhd ./components/xorg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity addsub_32
+# -- Compiling architecture structural of addsub_32
+# -- Compiling entity alu_32
+# -- Compiling architecture structural of alu_32
+# -- Compiling entity andg2
+# -- Compiling architecture dataflow of andg2
+# -- Compiling entity barrel_shifter
+# -- Compiling architecture structural of barrel_shifter
+# -- Compiling entity bitextender_12to32
+# -- Compiling architecture behavioral of bitextender_12to32
+# -- Compiling entity bitextender_20to32
+# -- Compiling architecture behavioral of bitextender_20to32
+# -- Compiling entity branch_resolver
+# -- Compiling architecture dataflow of branch_resolver
+# -- Compiling entity decoder_5to32
+# -- Compiling architecture dataflow of decoder_5to32
+# -- Compiling entity dffg
+# -- Compiling architecture mixed of dffg
+# -- Compiling entity fetch_unit
+# -- Compiling architecture structure of fetch_unit
+# -- Compiling entity full_adder
+# -- Compiling architecture structure of full_adder
+# -- Compiling entity immediate_generator
+# -- Compiling architecture dataflow of immediate_generator
+# -- Compiling entity invg
+# -- Compiling architecture dataflow of invg
+# -- Compiling entity mux2t1
+# -- Compiling architecture structure of mux2t1
+# -- Compiling entity mux2t1_N
+# -- Compiling architecture structural of mux2t1_N
+# -- Compiling entity mux_32to1
+# -- Compiling architecture dataflow of mux_32to1
+# -- Compiling entity org2
+# -- Compiling architecture dataflow of org2
+# -- Compiling entity register_NBit
+# -- Compiling architecture structural of register_NBit
+# -- Loading package RISCV_types
+# -- Compiling entity register_file
+# -- Compiling architecture structural of register_file
+# -- Compiling entity ripple_carry_adderN
+# -- Compiling architecture structural of ripple_carry_adderN
+# -- Compiling entity sc_processor_alu_control
+# -- Compiling architecture dataflow of sc_processor_alu_control
+# -- Compiling entity sc_processor_control_unit
+# -- Compiling architecture dataflow of sc_processor_control_unit
+# -- Compiling entity source_register
+# -- Compiling architecture structural of source_register
+# -- Compiling entity xorg2
+# -- Compiling architecture dataflow of xorg2
+# End time: 18:13:45 on Apr 21,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 18:13:45 on Apr 21,2026
+# vcom -reportprogress 300 -2008 ./TopLevel/EXMEM_PipelineRegister.vhd ./TopLevel/IDEX_PipelineRegister.vhd ./TopLevel/IFID_PipelineRegister.vhd ./TopLevel/MEMWB_PipelineRegister.vhd ./TopLevel/RISCV_Processor.vhd ./TopLevel/hazard_detection_unit.vhd ./TopLevel/mem.vhd ./TopLevel/sw_fetch_unit.vhd ./TopLevel/tb_PipelineRegisters.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity EXMEM_PipelineRegister
+# -- Compiling architecture structural of EXMEM_PipelineRegister
+# -- Compiling entity IDEX_PipelineRegister
+# -- Compiling architecture structural of IDEX_PipelineRegister
+# -- Compiling entity IFID_PipelineRegister
+# -- Compiling architecture structural of IFID_PipelineRegister
+# -- Compiling entity MEMWB_PipelineRegister
+# -- Compiling architecture structural of MEMWB_PipelineRegister
+# -- Loading package RISCV_types
+# -- Compiling entity RISCV_Processor
+# -- Compiling architecture structure of RISCV_Processor
+# -- Compiling entity hazard_detection_unit
+# -- Compiling architecture structural of hazard_detection_unit
+# -- Loading package NUMERIC_STD
+# -- Compiling entity mem
+# -- Compiling architecture rtl of mem
+# -- Compiling entity sw_fetch_unit
+# -- Compiling architecture structure of sw_fetch_unit
+# ** Error: ./TopLevel/sw_fetch_unit.vhd(117): (vcom-1136) Unknown identifier "s_stall_n".
+# ** Error: ./TopLevel/sw_fetch_unit.vhd(160): (vcom-1136) Unknown identifier "s_stall_n".
+# ** Note: ./TopLevel/sw_fetch_unit.vhd(164): VHDL Compiler exiting
+# End time: 18:13:45 on Apr 21,2026, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
+# ** Error: /usr/local/mentor/questasim/linux_x86_64/vcom failed.
+# Error in macro ./compile.do line 18
+# /usr/local/mentor/questasim/linux_x86_64/vcom failed.
+#     while executing
+# "vcom -2008 ./TopLevel/*.vhd"
+do compile.do
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 18:14:59 on Apr 21,2026
+# vcom -reportprogress 300 -2008 ./RISCV_types.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling package RISCV_types
+# -- Compiling package body RISCV_types
+# -- Loading package RISCV_types
+# End time: 18:14:59 on Apr 21,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 18:14:59 on Apr 21,2026
+# vcom -reportprogress 300 -2008 ./components/addsub_32.vhd ./components/alu_32.vhd ./components/andg2.vhd ./components/barrel_shifter.vhd ./components/bitextender_12to32.vhd ./components/bitextender_20to32.vhd ./components/branch_resolver.vhd ./components/decoder_5to32.vhd ./components/dffg.vhd ./components/fetch_unit.vhd ./components/full_adder.vhd ./components/immediate_generator.vhd ./components/invg.vhd ./components/mux2t1.vhd ./components/mux2t1_N.vhd ./components/mux_32to1.vhd ./components/org2.vhd ./components/register_NBit.vhd ./components/register_file.vhd ./components/ripple_carry_adderN.vhd ./components/sc_processor_alu_control.vhd ./components/sc_processor_control_unit.vhd ./components/source_register.vhd ./components/xorg2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity addsub_32
+# -- Compiling architecture structural of addsub_32
+# -- Compiling entity alu_32
+# -- Compiling architecture structural of alu_32
+# -- Compiling entity andg2
+# -- Compiling architecture dataflow of andg2
+# -- Compiling entity barrel_shifter
+# -- Compiling architecture structural of barrel_shifter
+# -- Compiling entity bitextender_12to32
+# -- Compiling architecture behavioral of bitextender_12to32
+# -- Compiling entity bitextender_20to32
+# -- Compiling architecture behavioral of bitextender_20to32
+# -- Compiling entity branch_resolver
+# -- Compiling architecture dataflow of branch_resolver
+# -- Compiling entity decoder_5to32
+# -- Compiling architecture dataflow of decoder_5to32
+# -- Compiling entity dffg
+# -- Compiling architecture mixed of dffg
+# -- Compiling entity fetch_unit
+# -- Compiling architecture structure of fetch_unit
+# -- Compiling entity full_adder
+# -- Compiling architecture structure of full_adder
+# -- Compiling entity immediate_generator
+# -- Compiling architecture dataflow of immediate_generator
+# -- Compiling entity invg
+# -- Compiling architecture dataflow of invg
+# -- Compiling entity mux2t1
+# -- Compiling architecture structure of mux2t1
+# -- Compiling entity mux2t1_N
+# -- Compiling architecture structural of mux2t1_N
+# -- Compiling entity mux_32to1
+# -- Compiling architecture dataflow of mux_32to1
+# -- Compiling entity org2
+# -- Compiling architecture dataflow of org2
+# -- Compiling entity register_NBit
+# -- Compiling architecture structural of register_NBit
+# -- Loading package RISCV_types
+# -- Compiling entity register_file
+# -- Compiling architecture structural of register_file
+# -- Compiling entity ripple_carry_adderN
+# -- Compiling architecture structural of ripple_carry_adderN
+# -- Compiling entity sc_processor_alu_control
+# -- Compiling architecture dataflow of sc_processor_alu_control
+# -- Compiling entity sc_processor_control_unit
+# -- Compiling architecture dataflow of sc_processor_control_unit
+# -- Compiling entity source_register
+# -- Compiling architecture structural of source_register
+# -- Compiling entity xorg2
+# -- Compiling architecture dataflow of xorg2
+# End time: 18:14:59 on Apr 21,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 18:14:59 on Apr 21,2026
+# vcom -reportprogress 300 -2008 ./TopLevel/EXMEM_PipelineRegister.vhd ./TopLevel/IDEX_PipelineRegister.vhd ./TopLevel/IFID_PipelineRegister.vhd ./TopLevel/MEMWB_PipelineRegister.vhd ./TopLevel/RISCV_Processor.vhd ./TopLevel/hazard_detection_unit.vhd ./TopLevel/mem.vhd ./TopLevel/sw_fetch_unit.vhd ./TopLevel/tb_PipelineRegisters.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity EXMEM_PipelineRegister
+# -- Compiling architecture structural of EXMEM_PipelineRegister
+# -- Compiling entity IDEX_PipelineRegister
+# -- Compiling architecture structural of IDEX_PipelineRegister
+# -- Compiling entity IFID_PipelineRegister
+# -- Compiling architecture structural of IFID_PipelineRegister
+# -- Compiling entity MEMWB_PipelineRegister
+# -- Compiling architecture structural of MEMWB_PipelineRegister
+# -- Loading package RISCV_types
+# -- Compiling entity RISCV_Processor
+# -- Compiling architecture structure of RISCV_Processor
+# -- Compiling entity hazard_detection_unit
+# -- Compiling architecture structural of hazard_detection_unit
+# -- Loading package NUMERIC_STD
+# -- Compiling entity mem
+# -- Compiling architecture rtl of mem
+# -- Compiling entity sw_fetch_unit
+# -- Compiling architecture structure of sw_fetch_unit
+# -- Compiling entity tb_PipelineRegisters
+# -- Compiling architecture behavior of tb_PipelineRegisters
+# End time: 18:14:59 on Apr 21,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# hardware ready for testing!
+.main clear
+vsim work.tb_PipelineRegisters
+# vsim work.tb_PipelineRegisters 
+# Start time: 18:17:19 on Apr 21,2026
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_pipelineregisters(behavior)#1
+# Loading work.mux2t1_n(structural)#1
+# Loading work.register_nbit(structural)#1
+# Loading work.mux2t1_n(structural)#2
+# Loading work.mux2t1_n(structural)#3
+# Loading work.mux2t1_n(structural)#4
+add wave -position insertpoint sim:/tb_pipelineregisters/IFID_REG/*
+add wave -position insertpoint sim:/tb_pipelineregisters/IDEX_REG/*
+view -new wave
+# .main_pane.wave1.interior.cs.body.pw.wf
+add wave -position insertpoint sim:/tb_pipelineregisters/EXMEM_REG/*
+add wave -position insertpoint sim:/tb_pipelineregisters/EXMEM_REG/*
+add wave -position insertpoint sim:/tb_pipelineregisters/EXMEM_REG/*
+add wave -position insertpoint sim:/tb_pipelineregisters/MEMWB_REG/*
+add wave -position insertpoint sim:/tb_pipelineregisters/line__377/*
+# (vish-4014) No objects found matching 'sim:/tb_pipelineregisters/line__377/*'.
+add wave -position insertpoint sim:/tb_pipelineregisters/line__248/*
+# ** UI-Msg (Warning): (vish-4014) No objects found matching '/tb_pipelineregisters/line__248/*'.
+run 1000
+# ** Note: TEST 1: Reset
+#    Time: 0 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 2: Normal flow - marker value propagates through all 4 registers
+#    Time: 30 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 2 complete - check waveform for WB_PC = 0xDEADBEEF
+#    Time: 70 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 3: New values inserted every cycle
+#    Time: 70 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 3 complete
+#    Time: 120 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 4: Individual stall of IF/ID register
+#    Time: 120 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 4 complete
+#    Time: 170 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 5: Individual stall of ID/EX register
+#    Time: 170 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Error: FAIL TEST 5: ID/EX should be frozen with 0xCCCCCCCC
+#    Time: 200 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 5 complete
+#    Time: 200 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 6: Flush IF/ID register
+#    Time: 200 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 6 complete
+#    Time: 220 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 7: Flush ID/EX register
+#    Time: 220 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 7 complete
+#    Time: 250 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 8: Flush EX/MEM register
+#    Time: 250 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 8 complete
+#    Time: 290 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 9: Flush overrides stall (priority check)
+#    Time: 290 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 9 complete
+#    Time: 320 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: ALL TESTS COMPLETE - review waveform for detailed signal inspection
+#    Time: 320 ns  Iteration: 0  Instance: /tb_pipelineregisters
+add wave -position insertpoint sim:/tb_pipelineregisters/EXMEM_REG/*
+quit -sim
+# End time: 18:23:51 on Apr 21,2026, Elapsed time: 0:06:32
+# Errors: 1, Warnings: 0
+vsim work.tb_PipelineRegisters.vhd
+# vsim work.tb_PipelineRegisters.vhd 
+# Start time: 18:24:02 on Apr 21,2026
+# ** Error (suppressible): (vsim-19) Failed to access library 'work.tb_PipelineRegisters' at "work.tb_PipelineRegisters".
+# No such file or directory. (errno = ENOENT)
+# Error loading design
+# End time: 18:24:03 on Apr 21,2026, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 0
+vsim work.tb_PipelineRegisters
+# vsim work.tb_PipelineRegisters 
+# Start time: 18:24:13 on Apr 21,2026
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.tb_pipelineregisters(behavior)#1
+# Loading work.mux2t1_n(structural)#1
+# Loading work.register_nbit(structural)#1
+# Loading work.mux2t1_n(structural)#2
+# Loading work.mux2t1_n(structural)#3
+# Loading work.mux2t1_n(structural)#4
+add wave -position insertpoint sim:/tb_pipelineregisters/IFID_REG/*
+add wave -position insertpoint sim:/tb_pipelineregisters/IDEX_REG/*
+add wave -position insertpoint sim:/tb_pipelineregisters/EXMEM_REG/*
+add wave -position insertpoint sim:/tb_pipelineregisters/MEMWB_REG/*
+run 5000
+# ** Note: TEST 1: Reset
+#    Time: 0 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 2: Normal flow - marker value propagates through all 4 registers
+#    Time: 30 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 2 complete - check waveform for WB_PC = 0xDEADBEEF
+#    Time: 70 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 3: New values inserted every cycle
+#    Time: 70 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 3 complete
+#    Time: 120 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 4: Individual stall of IF/ID register
+#    Time: 120 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 4 complete
+#    Time: 170 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 5: Individual stall of ID/EX register
+#    Time: 170 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Error: FAIL TEST 5: ID/EX should be frozen with 0xCCCCCCCC
+#    Time: 200 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 5 complete
+#    Time: 200 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 6: Flush IF/ID register
+#    Time: 200 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 6 complete
+#    Time: 220 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 7: Flush ID/EX register
+#    Time: 220 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 7 complete
+#    Time: 250 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 8: Flush EX/MEM register
+#    Time: 250 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 8 complete
+#    Time: 290 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 9: Flush overrides stall (priority check)
+#    Time: 290 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: TEST 9 complete
+#    Time: 320 ns  Iteration: 0  Instance: /tb_pipelineregisters
+# ** Note: ALL TESTS COMPLETE - review waveform for detailed signal inspection
+#    Time: 320 ns  Iteration: 0  Instance: /tb_pipelineregisters
