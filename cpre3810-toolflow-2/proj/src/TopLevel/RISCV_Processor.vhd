@@ -9,7 +9,7 @@
 -------------------------------------------------------------------------
 -- DESCRIPTION: THIS IS SHAWN AND JAY'S PIPELINED PROCESSOR! This file will contain software and hardware five-stage
 --pipeline handling 
-
+--  ---./3810_tf.sh test --summary proj/riscv/cpre3810_test_assembly_program/*.s
 -- 01/29/2019 by H3::Design created.
 -- 04/10/2025 by AP::Coverted to RISC-V.
 -- 02/19/2026 by H3::Renamed PC and handled OVFL
@@ -79,7 +79,7 @@ architecture structure of RISCV_Processor is
   signal s_MemToReg	: std_logic_vector(1 downto 0); 
   signal s_PC_plus4	: std_logic_vector(N-1 downto 0); 
 
-  signal s_BranchTaken 	: std_logic; 
+  signal s_EX_BranchTaken 	: std_logic; 
 --  signal s_funct3	: std_logic_vector(2 downto 0); 
   signal s_ALU_Zero	: std_logic;
   signal s_ALU_SLT	: std_logic_vector(N-1 downto 0); 
@@ -103,7 +103,20 @@ architecture structure of RISCV_Processor is
   signal s_immediate	: std_logic_vector(N-1 downto 0); 
   signal s_LoadData  	: std_logic_vector(N-1 downto 0);
   signal s_HaltCtrl  	: std_logic;
+
+
+
+
+
+--FETCH SIGNALS--
+signal s_jal_target	: std_logic_vector(31 downto 0);
+signal s_jalr_target	: std_logic_vector(31 downto 0);
+signal s_branch_target	: std_logic_vector(31 downto 0);
+signal s_jump_target	: std_logic_vector(31 downto 0); -- final jump target (jal vs jalr)
+signal s_final_target	: std_logic_vector(31 downto 0); -- final pc target
+signal s_redirect	: std_logic;
   
+  --signal s_Flush	: std_logic; 
 
 
 -- ====== PIPELINE REGISTER SIGNALS ======= --
@@ -137,6 +150,7 @@ signal s_EX_MemWrite	: std_logic;
 signal s_EX_MemRead	: std_logic;
 signal s_EX_RegWrite	: std_logic;
 signal s_EX_MemToReg	: std_logic_vector(1 downto 0);
+signal s_EX_Halt	: std_logic; 
 
 
 signal s_EX_funct3	: std_logic_vector(2 downto 0);
@@ -152,6 +166,17 @@ signal s_EX_rs2_addr	: std_logic_vector(4 downto 0);
 signal s_MEM_PC		: std_logic_vector(31 downto 0);
 signal s_MEM_Instr	: std_logic_vector(31 downto 0);
 signal s_MEM_PC_Plus4	: std_logic_vector(31 downto 0);
+
+
+
+signal s_MEM_BranchTaken : std_logic; 
+signal s_MEM_rs1_out	: std_logic_vector(31 downto 0);
+signal s_MEM_Jump	: std_logic; 
+signal s_MEM_PC_SRC	: std_logic; 
+signal s_MEM_Branch	: std_logic; 
+signal s_MEM_ImmGen	: std_logic_vector(31 downto 0);
+
+
 signal s_MEM_ALU_Result	: std_logic_vector(31 downto 0);
 signal s_MEM_rs2_out	: std_logic_vector(31 downto 0);
 signal s_MEM_rd_addr	: std_logic_vector(4 downto 0);
@@ -160,6 +185,7 @@ signal s_MEM_MemRead	: std_logic;
 signal s_MEM_RegWrite	: std_logic;
 signal s_MEM_MemToReg	: std_logic_vector(1 downto 0);
 
+signal s_MEM_Halt	: std_logic; 
 
 signal s_MEM_funct3	: std_logic_vector(2 downto 0);
 
@@ -172,6 +198,7 @@ signal s_WB_DMemOut	: std_logic_vector(31 downto 0);
 signal s_WB_rd_addr	: std_logic_vector(4 downto 0);
 signal s_WB_RegWrite	: std_logic;
 signal s_WB_MemToReg	: std_logic_vector(1 downto 0);
+signal s_WB_Halt	: std_logic; 
 
 
   -- First mux: select between rs1 and PC (for AUIPC)
@@ -198,6 +225,7 @@ component fetch_unit is
        BRANCH			: in std_logic; 
        ZERO			: in std_logic; 
        immediate_generate 	: in std_logic_vector(31 downto 0);
+       PC_ID			: in std_logic_vector(31 downto 0);
        o_PC         		: out std_logic_vector(31 downto 0); --THIS WIRES DIRECTLY TO SKELETON s_PC! 
        Pc_plus4			: out std_logic_vector(31 downto 0)); 
 end  component;
@@ -348,7 +376,8 @@ component IDEX_PipelineRegister is
 		--ID INPUTS: control signals, wb-stage consumers --> passing through 
 		ID_RegWrite:		in std_logic;
 		ID_MemToReg:		in std_logic_vector(1 downto 0);
-
+		ID_Halt:		in std_logic; 
+	
 
 		--EX OUTPUTS: datapath 
 		EX_PC:			out std_logic_vector(31 downto 0); 
@@ -370,12 +399,13 @@ component IDEX_PipelineRegister is
 		EX_MemToReg:		out std_logic_vector(1 downto 0);
 		EX_Jump:		out std_logic;
 		EX_Branch:		out std_logic;
-		EX_PC_SRC:		out std_logic
+		EX_PC_SRC:		out std_logic;
+		EX_Halt:		out std_logic
 	); 
 
 end component;
 
-component EXMEM_PipelineRegister is
+component EXMEM_PipelineRegister is 
 
 	port(	iCLK: 		in std_logic;
 		iRST: 		in std_logic;
@@ -396,30 +426,55 @@ component EXMEM_PipelineRegister is
 		EX_MemWrite:		in std_logic;
 		EX_MemRead:		in std_logic;
 	
+
+		--mem-stage consumers, fetch unit signals --
+		EX_BranchTaken:		in std_logic;
+		EX_Jump: 		in std_logic; 
+		EX_PC_SRC:		in std_logic; 
+		EX_rs1_out:		in std_logic_vector(31 downto 0); 
+		EX_ImmGen:		in std_logic_vector(31 downto 0); 
+		EX_Branch:		in std_logic; 
+	
+
+	
 		--EX INPUTS: control signals, wb-stage consumers --> passing through 
 		EX_RegWrite:		in std_logic;
 		EX_MemToReg:		in std_logic_vector(1 downto 0);
+		EX_Halt:		in std_logic; 
 
 
 		--MEM OUTPUTS: datapath 
 		MEM_PC:			out std_logic_vector(31 downto 0); 
 		MEM_Instr:		out std_logic_vector(31 downto 0);
 		MEM_PC_Plus4:		out std_logic_vector(31 downto 0);
+	
+		--MEM OUTPUTS: fetching 
+		MEM_BranchTaken:	out std_logic;
+		MEM_Jump:		out std_logic;
+		MEM_PC_SRC:		out std_logic; 
+		MEM_rs1_out:		out std_logic_vector(31 downto 0);
+		MEM_Branch:		out std_logic;
+		MEM_ImmGen:		out std_logic_vector(31 downto 0);
+
+		--
 		MEM_ALU_Result:		out std_logic_vector(31 downto 0);
 		MEM_rs2_out:		out std_logic_vector(31 downto 0);
 		MEM_rd_addr:		out std_logic_vector(4 downto 0);
 
 		--MEM OUTPUTS: control
-
+		MEM_Halt:		out std_logic; 
 		MEM_MemWrite:		out std_logic;
 		MEM_MemRead:		out std_logic;
 		MEM_RegWrite:		out std_logic;
 		MEM_MemToReg:		out std_logic_vector(1 downto 0)
+
 	); 
+
 end component;
 
 
 component MEMWB_PipelineRegister is 
+
 	port(	iCLK: 		in std_logic;
 		iRST: 		in std_logic;
 		iWE:		in std_logic;  -- for stall control?
@@ -431,13 +486,14 @@ component MEMWB_PipelineRegister is
 		MEM_ALU_Result:		in std_logic_vector(31 downto 0);
 		MEM_DMemOut:		in std_logic_vector(31 downto 0);
 		MEM_rd_addr:		in std_logic_vector(4 downto 0);
+	
 
 
 	
 		--MEM INPUTS: control signals, wb-stage consumers --> 
 		MEM_RegWrite:		in std_logic;
 		MEM_MemToReg:		in std_logic_vector(1 downto 0);
-
+		MEM_Halt:		in std_logic; 
 
 		--WB OUTPUTS: datapath 
 		WB_PC:			out std_logic_vector(31 downto 0); 
@@ -447,17 +503,33 @@ component MEMWB_PipelineRegister is
 		WB_rd_addr:		out std_logic_vector(4 downto 0);
 
 		--WB OUTPUTS: control
+		WB_Halt:		out std_logic; 
 		WB_RegWrite:		out std_logic;
 		WB_MemToReg:		out std_logic_vector(1 downto 0)
-	); 
 
+	); 
 
 end component;
 
+component ripple_carry_adderN is
+  generic(N : integer := 32); -- Generic of type integer for input/output data width. Default value is 16.
+  port(A         : in std_logic_vector(N-1 downto 0);
+       B         : in std_logic_vector(N-1 downto 0);
+       Cin       : in std_logic;
+       Sum	 : out std_logic_vector(N-1 downto 0);  
+       Cout      : out std_logic); 
 
+end component;
 
-
-
+component sw_fetch_unit is
+  generic(N : integer := 32);
+  port(iCLK            		: in std_logic;
+       iRST            		: in std_logic;
+       i_target			: in std_logic_vector(31 downto 0); -- precomputed target
+       i_taken			: in std_logic; 
+       o_PC         		: out std_logic_vector(31 downto 0); --THIS WIRES DIRECTLY TO SKELETON s_PC! 
+       Pc_plus4			: out std_logic_vector(31 downto 0)); 
+end  component;
 
 
 
@@ -479,9 +551,13 @@ begin
   oALUOut		<= s_ALUOut; 
   
 
+  s_redirect <= (s_EX_Jump) or (s_EX_Branch and s_EX_BranchTaken);
+
   s_isLUI   <= '1' when s_ID_Instr(6 downto 0) = "0110111" else '0';
   s_isAUIPC <= '1' when s_ID_Instr(6 downto 0) = "0010111" else '0';
-  s_Halt    <= s_HaltCtrl; -- Hook this up to the control unit's decode, don't decode it in isolation --shawn 
+  s_Halt    <= s_WB_Halt; --Pipeline halt 
+  --s_Flush	<= (s_MEM_BranchTaken and s_MEM_Branch) or s_MEM_Jump; 
+
 
 
 
@@ -571,23 +647,70 @@ with s_WB_MemToReg select
 
   -- ===== FETCH UNIT ==== -- 
 
-F_UNIT: fetch_unit
-  generic map( N => N)
-  port map(	iCLK            	=> iCLK,
-		iRST            	=> iRST,
-		rs1			=> s_EX_rs1_out,
-       		PC_SRC			=> s_EX_PC_SRC,
-       		JUMP			=> s_EX_Jump,
-       		BRANCH	        	=> s_EX_Branch,
-       		ZERO			=> s_BranchTaken,
-       		immediate_generate	=> s_EX_ImmGen,
-       		o_PC         		=> s_PC,
-       		Pc_plus4		=> s_PC_plus4
-	 ); 
+--F_UNIT: fetch_unit
+  --generic map( N => N)
+  --port map(	iCLK            	=> iCLK,
+		--iRST            	=> iRST,
+		--rs1			=> s_rs1_data, -- straight up register file output, change for hw pipepline 
+       		--PC_SRC			=> s_PC_SRC, -- from proc_control
+       		--JUMP			=> s_Jump,   -- from proc_control
+       		--BRANCH	        	=> s_EX_Branch,
+       		--ZERO			=> s_EX_BranchTaken,
+       		--immediate_generate	=> s_immediate,
+		--PC_ID			=> s_ID_PC,
+       		--o_PC         		=> s_PC,
+       		--Pc_plus4		=> s_PC_plus4
+	-- ); 
+
+F_UNIT_SW: sw_fetch_unit
+  generic map(N => 32)
+  port map(iCLK		=> iCLK,
+       iRST		=> iRST,            	
+       i_target		=> s_final_target,
+       i_taken		=> s_redirect, 
+       o_PC         	=> s_PC,
+       Pc_plus4		=> s_PC_plus4);
+
+-- ====== JUMP CALCULATION ====== -- 
+
+JAL_ADDER: ripple_carry_adderN
+	generic map(N => 32)
+	port map(A	=> s_EX_PC,
+		 B	=> s_EX_ImmGen,
+		 Cin	=> '0',
+		 Sum	=> s_jal_target,
+		 Cout	=> open);
+
+JALR_ADDER: ripple_carry_adderN
+	generic map(N => 32)
+	port map(A	=> s_EX_rs1_out,
+		 B	=> s_EX_ImmGen,
+		 Cin	=> '0',
+		 Sum	=> s_jalr_target,
+		 Cout	=> open);
+
+BRANCH_ADDER: ripple_carry_adderN
+	generic map(N => 32)
+	port map(A	=> s_EX_PC,
+		 B	=> s_EX_ImmGen,
+		 Cin	=> '0',
+		 Sum	=> s_branch_target,
+		 Cout	=> open);
 
 
+JUMP_TARGET_MUX: mux2t1_N
+	generic map(N => 32)
+	port map(i_S 	=> s_EX_PC_SRC,
+		 i_D0	=> s_jal_target,
+		 i_D1	=> s_jalr_target,
+		 o_O	=> s_jump_target);
 
-
+BRANCH_JUMP_MUX: mux2t1_N
+	generic map(N => 32)
+	port map(i_S 	=> s_EX_Jump,
+		 i_D0	=> s_branch_target,
+		 i_D1	=> s_jump_target,
+		 o_O	=> s_final_target);
 
 -- ====== IF/ID PIPELINE REGISTER ======= -- 
 IFID_REG: IFID_PipelineRegister
@@ -630,13 +753,14 @@ IDEX_REG: IDEX_PipelineRegister
 		ID_ALUCtrl	=> s_ALUCtrl,		-- from alu control
 		ID_isLUI	=> s_isLUI,		-- from concurrent assign
 		ID_isAUIPC	=> s_isAUIPC,		-- from concurrent assign
-		ID_Jump		=> s_Jump,
-		ID_Branch	=> s_Branch,
-		ID_PC_SRC	=> s_PC_SRC,
+		ID_Jump		=> s_Jump,		-- from proc control
+		ID_Branch	=> s_Branch,		-- from proc control
+		ID_PC_SRC	=> s_PC_SRC,		-- from proc control
 		ID_MemWrite	=> s_MemWrite, 		-- from proc control
 		ID_MemRead	=> s_MemRead,		-- from proc control
 		ID_RegWrite	=> s_RegWrite,  	-- from proc control
-		ID_MemToReg	=> s_MemToReg,  	-- from proc control 
+		ID_MemToReg	=> s_MemToReg,  	-- from proc control
+		ID_Halt		=> s_HaltCtrl,		-- from proc control
 
 		--Datapath outputs
 		EX_PC		=> s_EX_PC,
@@ -657,7 +781,8 @@ IDEX_REG: IDEX_PipelineRegister
 		EX_MemWrite	=> s_EX_MemWrite,
 		EX_MemRead	=> s_EX_MemRead,
 		EX_RegWrite	=> s_EX_RegWrite,
-		EX_MemToReg	=> s_EX_MemToReg
+		EX_MemToReg	=> s_EX_MemToReg,
+		EX_Halt		=> s_EX_Halt
 	);
 
  -- ====== CONTROLS ====== -- 
@@ -721,12 +846,12 @@ EXMEM_REG: EXMEM_PipelineRegister
 		iWE		=> '1', 	--implement stalling eventually
 		
 		--datapath inputs--
-		EX_PC		=> s_EX_PC,	--from ID/EX output
-		EX_Instr	=> s_EX_Instr,	--from ID/EX output
-		EX_PC_Plus4	=> s_EX_PC_Plus4, --from ID/EX output
-		EX_ALU_Result	=> s_ALUOut,	--from ALU output
+		EX_PC		=> s_EX_PC,		--from ID/EX output
+		EX_Instr	=> s_EX_Instr,		--from ID/EX output
+		EX_PC_Plus4	=> s_EX_PC_Plus4, 	--from ID/EX output
+		EX_ALU_Result	=> s_ALUOut,		--from ALU output
 		EX_rs2_out	=> s_EX_rs2_out,	--from ID/EX output
-		EX_rd_addr	=> s_EX_rd_addr,--from ID/EX slice
+		EX_rd_addr	=> s_EX_rd_addr,	--from ID/EX slice
 		
 		--Control inputs-- 
 		EX_MemWrite	=> s_EX_MemWrite,	--from ID/EX output
@@ -734,6 +859,15 @@ EXMEM_REG: EXMEM_PipelineRegister
 		EX_RegWrite	=> s_EX_RegWrite,	--from ID/EX output
 		EX_MemToReg	=> s_EX_MemToReg,	--from ID/EX output
 
+		--Fetching inputs--
+		EX_BranchTaken	=> s_EX_BranchTaken,	--from the branch resolver
+		EX_Jump		=> s_EX_Jump,		--from ID/EX output
+		EX_PC_SRC	=> s_EX_PC_SRC,		--from ID/EX output
+		EX_rs1_out	=> s_EX_rs1_out,	--from ID/EX output
+		EX_Branch	=> s_EX_Branch,		--from ID/EX output
+		EX_ImmGen	=> s_EX_ImmGen, 	--from ID/EX output
+		EX_Halt		=> s_EX_Halt,		--from ID/EX output
+		
 		--Datapath outputs
 
 		MEM_PC		=> s_MEM_PC,
@@ -743,12 +877,24 @@ EXMEM_REG: EXMEM_PipelineRegister
 		MEM_rs2_out	=> s_MEM_rs2_out,
 		MEM_rd_addr	=> s_MEM_rd_addr,
 		
+
+
+		--Fetch outputs (CONSUMED HERE IN THE FETCH UNIT!) 
+
+		MEM_BranchTaken => s_MEM_BranchTaken,
+		MEM_Jump	=> s_MEM_Jump,
+		MEM_PC_SRC	=> s_MEM_PC_SRC,
+		MEM_rs1_out	=> s_MEM_rs1_out,
+		MEM_Branch	=> s_MEM_Branch, 
+		MEM_ImmGen	=> s_MEM_ImmGen,
+		
 		--Control outputs
 		
 		MEM_MemWrite	=> s_MEM_MemWrite,
 		MEM_MemRead	=> s_MEM_MemRead,
 		MEM_RegWrite	=> s_MEM_RegWrite,
-		MEM_MemToReg	=> s_MEM_MemToReg
+		MEM_MemToReg	=> s_MEM_MemToReg,
+		MEM_Halt	=> s_MEM_Halt
 		);
 
 -- ====== B MUX ====== -- 
@@ -806,7 +952,7 @@ BRANCH_COND: branch_resolver
 	i_Zero		=> s_ALU_Zero,
 	i_SLT		=> s_ALU_SLT,
 	i_SLTU		=> s_ALU_SLTU,
-	o_taken		=> s_BranchTaken
+	o_taken		=> s_EX_BranchTaken
 	); 
 
 
@@ -828,6 +974,7 @@ MEMWB_REG:	MEMWB_PipelineRegister
 		--Control inputs--
 		MEM_RegWrite	=>	s_MEM_RegWrite,	--EX/MEM output
 		MEM_MemToReg	=> 	s_MEM_MemToReg,	--EX/MEM output
+		MEM_Halt	=>	s_MEM_Halt,	--EX/MEM output
 		
 		--Datapath outputs--
 		WB_PC		=>	s_WB_PC,
@@ -837,6 +984,7 @@ MEMWB_REG:	MEMWB_PipelineRegister
 		WB_rd_addr	=>	s_WB_rd_addr,
 
 		--Control outputs--
+		WB_Halt		=>      s_WB_Halt,
 		WB_RegWrite	=>	s_WB_RegWrite,
 		WB_MemToReg	=>	s_WB_MemToReg
 		);

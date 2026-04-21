@@ -25,6 +25,7 @@ entity fetch_unit is
        BRANCH			: in std_logic; 
        ZERO			: in std_logic; 
        immediate_generate 	: in std_logic_vector(31 downto 0);
+       PC_ID			: in std_logic_vector(31 downto 0);
        o_PC         		: out std_logic_vector(31 downto 0); --THIS WIRES DIRECTLY TO SKELETON s_PC! 
        Pc_plus4			: out std_logic_vector(31 downto 0)); 
 end  fetch_unit;
@@ -33,6 +34,8 @@ end  fetch_unit;
 architecture structure of fetch_unit is
 
 	constant c_immediate_four 	: std_logic_vector(31 downto 0) := x"00000004"; 
+	constant c_PC_RESET : std_logic_vector(31 downto 0) := x"00400000";
+        signal s_pc_reg_input : std_logic_vector(31 downto 0);
 	signal s_next_PC		: std_logic_vector(31 downto 0); 
 	signal s_pc_base		: std_logic_vector(31 downto 0); 
 	signal s_pc_offset			: std_logic_vector(31 downto 0); 
@@ -94,16 +97,18 @@ architecture structure of fetch_unit is
 begin
   s_imm_shifted <= immediate_generate; 
 
-  s_PC 		<= s_current_PC; 
+  o_PC 		<= s_current_PC; 
   PC_plus4	<= s_pc_plus4; 
+  s_pc_reg_input <= c_PC_RESET when iRST = '1' else s_next_PC;
+  
 
-  PC_REG: register_NBit
-	generic map(N => 32)
-	port map(D	=> s_next_PC,
-		 RST	=> iRST,
-		 WE	=> '1', -- pc always updates every cycle
-		 CLK	=> iCLK,
-		 Q	=> s_current_PC); 
+     PC_REG: register_NBit
+     generic map(N => 32)
+     port map(D   => s_pc_reg_input, 
+             RST => '0',             
+             WE  => '1',
+             CLK => iCLK,
+             Q   => s_current_PC);
 
 
 
@@ -139,6 +144,7 @@ begin
     port map(	A	=> s_pc_offset,
 		B	=> s_pc_base,
 		Sum 	=> s_next_PC,
+		Cin  => '0',  
 		Cout	=> open
 		); 
   PC4_ADD:	ripple_carry_adderN

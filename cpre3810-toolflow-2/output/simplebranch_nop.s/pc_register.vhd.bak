@@ -1,0 +1,57 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity pc_register is
+  port(iCLK  : in  std_logic;
+       i_RST : in  std_logic;
+       i_WE  : in  std_logic;
+       i_D   : in  std_logic_vector(31 downto 0);
+       o_Q   : out std_logic_vector(31 downto 0));
+end pc_register;
+
+architecture structure of pc_register is
+
+  component dffg is
+    port(iCLK : in  std_logic;
+         i_RST : in  std_logic;
+         i_WE  : in  std_logic;
+         i_D   : in  std_logic;
+         o_Q   : out std_logic);
+  end component;
+
+  signal s_D22_inv : std_logic;
+  signal s_Q22_inv : std_logic;
+
+begin
+
+  -- Precompute inverted input for bit 22
+  -- (no expressions allowed directly in port maps)
+  s_D22_inv <= not i_D(22);
+  o_Q(22)   <= not s_Q22_inv;
+
+  GEN_TOP: for i in 31 downto 23 generate
+    DFF_i: dffg
+      port map(iCLK => iCLK,
+               i_RST => i_RST,
+               i_WE  => i_WE,
+               i_D   => i_D(i),
+               o_Q   => o_Q(i));
+  end generate;
+
+  DFF_22: dffg
+    port map(iCLK => iCLK,
+             i_RST => i_RST,
+             i_WE  => i_WE,
+             i_D   => s_D22_inv,
+             o_Q   => s_Q22_inv);
+
+  GEN_BOTTOM: for i in 21 downto 0 generate
+    DFF_i: dffg
+      port map(iCLK => iCLK,
+               i_RST => i_RST,
+               i_WE  => i_WE,
+               i_D   => i_D(i),
+               o_Q   => o_Q(i));
+  end generate;
+
+end structure;

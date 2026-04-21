@@ -41,7 +41,8 @@ port(	iCLK: 		in std_logic;
 	--ID INPUTS: control signals, wb-stage consumers --> passing through 
 	ID_RegWrite:		in std_logic;
 	ID_MemToReg:		in std_logic_vector(1 downto 0);
-
+	ID_Halt:		in std_logic; 
+	
 
 	--EX OUTPUTS: datapath 
 	EX_PC:			out std_logic_vector(31 downto 0); 
@@ -63,7 +64,8 @@ port(	iCLK: 		in std_logic;
 	EX_MemToReg:		out std_logic_vector(1 downto 0);
 	EX_Jump:		out std_logic;
 	EX_Branch:		out std_logic;
-	EX_PC_SRC:		out std_logic
+	EX_PC_SRC:		out std_logic;
+	EX_Halt:		out std_logic; 
 ); 
 
 end IDEX_PipelineRegister;
@@ -82,6 +84,7 @@ architecture structural of IDEX_PipelineRegister is
 	--Design idea: pack all the one bit control signals into a single vector register thing so we just write one 8-bit
 	-- rather than a ton of one-bit instances
   	-- Bit assignments:
+	--  11: Halt
         --  10: Jump
         --   9: Branch
 	--   8: PCSrc
@@ -93,14 +96,15 @@ architecture structural of IDEX_PipelineRegister is
   	--   2: ALUSrc
   	--   1: isAUIPC
   	--   0: isLUI
-	signal s_ctrl_in	: std_logic_vector(10 downto 0);
-	signal s_ctrl_out	: std_logic_vector(10 downto 0);
+	signal s_ctrl_in	: std_logic_vector(11 downto 0);
+	signal s_ctrl_out	: std_logic_vector(11 downto 0);
 
 begin 
 
 
   -- Pack control inputs
-  s_ctrl_in <= ID_Jump	   &
+  s_ctrl_in <= ID_Halt	   &
+	       ID_Jump	   &
 	       ID_Branch   &
 	       ID_PC_SRC   &
 	       ID_RegWrite &
@@ -112,6 +116,7 @@ begin
                ID_isLUI;
 
   -- Unpack control outputs
+  EX_Halt      <= s_ctrl_out(11);
   EX_Jump      <= s_ctrl_out(10);
   EX_Branch    <= s_ctrl_out(9);
   EX_PC_SRC    <= s_ctrl_out(8);
@@ -182,7 +187,7 @@ begin
 		Q => EX_ALUCtrl);
 
   REG_Ctrl: register_NBit
-    generic map(N => 8)
+    generic map(N => 12)
     port map(	D => s_ctrl_in, 
 		RST => iRST, 
 		WE => iWE, 

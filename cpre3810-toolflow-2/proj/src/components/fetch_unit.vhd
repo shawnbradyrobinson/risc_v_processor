@@ -25,6 +25,7 @@ entity fetch_unit is
        BRANCH			: in std_logic; 
        ZERO			: in std_logic; 
        immediate_generate 	: in std_logic_vector(31 downto 0);
+       PC_ID			: in std_logic_vector(31 downto 0);
        o_PC         		: out std_logic_vector(31 downto 0); --THIS WIRES DIRECTLY TO SKELETON s_PC! 
        Pc_plus4			: out std_logic_vector(31 downto 0)); 
 end  fetch_unit;
@@ -133,7 +134,7 @@ begin
   PC_BASE: mux2t1_N
     generic map(N => 32)
     port map(   i_S	=> PC_SRC,
-		i_D0	=> s_current_PC,
+		i_D0	=> PC_ID,
 		i_D1	=> rs1,
 		o_O	=>  s_pc_base
 		);
