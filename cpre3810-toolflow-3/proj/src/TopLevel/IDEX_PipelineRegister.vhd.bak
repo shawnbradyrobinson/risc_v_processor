@@ -1,0 +1,281 @@
+-------------------------------------------------------------------------
+-- IDEX_PipelineRegister.vhd
+-------------------------------------------------------------------------
+-- DESCRIPTION: ID/EX Pipeline Register for RISC-V 5-stage pipeline.
+--
+-------------------------------------------------------------------------
+
+library IEEE; 
+use IEEE.std_logic_1164.all; 
+
+entity IDEX_PipelineRegister is 
+
+port(	iCLK: 		in std_logic;
+	iRST: 		in std_logic;
+	iWE:		in std_logic;  -- for stall control?
+	iFLUSH 		in std_logic; 
+
+	--ID INPUTS: datapath 
+	ID_PC:	  		in std_logic_vector(31 downto 0); 
+	ID_Instr: 		in std_logic_vector(31 downto 0); 
+	ID_PC_Plus4:		in std_logic_vector(31 downto 0);
+
+	ID_rs1_out:		in std_logic_vector(31 downto 0); 
+	ID_rs2_out:		in std_logic_vector(31 downto 0);
+
+	ID_ImmGen:		in std_logic_vector(31 downto 0); 
+
+	--ID INPUTS: control signals, ex-stage consumers
+	ID_ALUSrc:		in std_logic;
+	ID_ALUCtrl:		in std_logic_vector(3 downto 0);
+	ID_isLUI:		in std_logic;
+	ID_isAUIPC:		in std_logic;
+	ID_Jump:		in std_logic;
+	ID_Branch:		in std_logic;
+	ID_PC_SRC:		in std_logic;
+
+	--ID INPUTS: control signals, mem-stage consumers --> passing through 
+	ID_MemWrite:		in std_logic;
+	ID_MemRead:		in std_logic;
+	
+	--ID INPUTS: control signals, wb-stage consumers --> passing through 
+	ID_RegWrite:		in std_logic;
+	ID_MemToReg:		in std_logic_vector(1 downto 0);
+	ID_Halt:		in std_logic; 
+	
+
+	--EX OUTPUTS: datapath 
+	EX_PC:			out std_logic_vector(31 downto 0); 
+	EX_Instr:		out std_logic_vector(31 downto 0);
+	EX_PC_Plus4:		out std_logic_vector(31 downto 0);
+	EX_rs1_out:		out std_logic_vector(31 downto 0);
+	EX_rs2_out:		out std_logic_vector(31 downto 0);
+	EX_ImmGen:		out std_logic_vector(31 downto 0);
+
+
+	--EX OUTPUTS: control signals 
+	EX_ALUSrc:		out std_logic;
+	EX_ALUCtrl:		out std_logic_vector(3 downto 0);
+	EX_isLUI:		out std_logic;
+	EX_isAUIPC:		out std_logic;
+	EX_MemWrite:		out std_logic;
+	EX_MemRead:		out std_logic;
+	EX_RegWrite:		out std_logic;
+	EX_MemToReg:		out std_logic_vector(1 downto 0);
+	EX_Jump:		out std_logic;
+	EX_Branch:		out std_logic;
+	EX_PC_SRC:		out std_logic;
+	EX_Halt:		out std_logic 
+); 
+
+end IDEX_PipelineRegister;
+
+architecture structural of IDEX_PipelineRegister is 
+
+	component register_NBit is
+    		generic(N : integer := 32);
+    		port(	D   : in  std_logic_vector(N-1 downto 0);
+         		RST : in  std_logic;
+         		WE  : in  std_logic;
+         		CLK : in  std_logic;
+         		Q   : out std_logic_vector(N-1 downto 0));
+  	end component;
+
+
+	component mux2t1_N is
+        	generic(N : integer := 32);
+        	port(i_S  : in std_logic;
+             		i_D0 : in std_logic_vector(N-1 downto 0);
+             		i_D1 : in std_logic_vector(N-1 downto 0);
+             		o_O  : out std_logic_vector(N-1 downto 0));
+    	end component;
+
+
+	--Design idea: pack all the one bit control signals into a single vector register thing so we just write one 8-bit
+	-- rather than a ton of one-bit instances
+  	-- Bit assignments:
+	--  11: Halt
+        --  10: Jump
+        --   9: Branch
+	--   8: PCSrc
+ 	 --  7: RegWrite
+  	--   6: MemToReg(1)
+  	--   5: MemToReg(0)
+  	--   4: MemRead
+  	--   3: MemWrite
+  	--   2: ALUSrc
+  	--   1: isAUIPC
+  	--   0: isLUI
+	signal s_ctrl_in	: std_logic_vector(11 downto 0);
+	signal s_ctrl_out	: std_logic_vector(11 downto 0);
+
+
+   	 -- flush-gated intermediates
+    	signal s_PC_in      : std_logic_vector(31 downto 0);
+   	 signal s_Instr_in   : std_logic_vector(31 downto 0);
+    	signal s_PC4_in     : std_logic_vector(31 downto 0);
+    	signal s_rs1_in     : std_logic_vector(31 downto 0);
+    	signal s_rs2_in     : std_logic_vector(31 downto 0);
+    	signal s_Imm_in     : std_logic_vector(31 downto 0);
+    	signal s_ALUCtrl_in : std_logic_vector(3 downto 0);
+    	signal s_ctrl_gated : std_logic_vector(11 downto 0);
+
+    	signal s_WE_gated   : std_logic;
+
+begin 
+
+  s_WE_gated <= iWE or iFLUSH; 
+
+     -- Pack control inputs
+    s_ctrl_in <= ID_Halt    &
+                 ID_Jump    &
+                 ID_Branch  &
+                 ID_PC_SRC  &
+                 ID_RegWrite &
+                 ID_MemToReg &
+                 ID_MemRead  &
+                 ID_MemWrite &
+                 ID_ALUSrc   &
+                 ID_isAUIPC  &
+                 ID_isLUI;
+
+    -- Flush muxes
+    MUX_PC: mux2t1_N
+        generic map(N => 32)
+        port map(i_S  => iFLUSH,
+                 i_D0 => ID_PC,
+                 i_D1 => (others => '0'),
+                 o_O  => s_PC_in);
+
+    MUX_Instr: mux2t1_N
+        generic map(N => 32)
+        port map(i_S  => iFLUSH,
+                 i_D0 => ID_Instr,
+                 i_D1 => x"00000013",  -- NOP
+                 o_O  => s_Instr_in);
+
+    MUX_PC4: mux2t1_N
+        generic map(N => 32)
+        port map(i_S  => iFLUSH,
+                 i_D0 => ID_PC_Plus4,
+                 i_D1 => (others => '0'),
+                 o_O  => s_PC4_in);
+
+    MUX_rs1: mux2t1_N
+        generic map(N => 32)
+        port map(i_S  => iFLUSH,
+                 i_D0 => ID_rs1_out,
+                 i_D1 => (others => '0'),
+                 o_O  => s_rs1_in);
+
+    MUX_rs2: mux2t1_N
+        generic map(N => 32)
+        port map(i_S  => iFLUSH,
+                 i_D0 => ID_rs2_out,
+                 i_D1 => (others => '0'),
+                 o_O  => s_rs2_in);
+
+    MUX_Imm: mux2t1_N
+        generic map(N => 32)
+        port map(i_S  => iFLUSH,
+                 i_D0 => ID_ImmGen,
+                 i_D1 => (others => '0'),
+                 o_O  => s_Imm_in);
+
+    MUX_ALUCtrl: mux2t1_N
+        generic map(N => 4)
+        port map(i_S  => iFLUSH,
+                 i_D0 => ID_ALUCtrl,
+                 i_D1 => (others => '0'),
+                 o_O  => s_ALUCtrl_in);
+
+    -- Control flush mux: zeroing all control signals is the key safety requirement
+    MUX_Ctrl: mux2t1_N
+        generic map(N => 12)
+        port map(i_S  => iFLUSH,
+                 i_D0 => s_ctrl_in,
+                 i_D1 => (others => '0'),
+                 o_O  => s_ctrl_gated);
+
+    -- Unpack control outputs
+    EX_Halt      <= s_ctrl_out(11);
+    EX_Jump      <= s_ctrl_out(10);
+    EX_Branch    <= s_ctrl_out(9);
+    EX_PC_SRC    <= s_ctrl_out(8);
+    EX_RegWrite  <= s_ctrl_out(7);
+    EX_MemToReg  <= s_ctrl_out(6 downto 5);
+    EX_MemRead   <= s_ctrl_out(4);
+    EX_MemWrite  <= s_ctrl_out(3);
+    EX_ALUSrc    <= s_ctrl_out(2);
+    EX_isAUIPC   <= s_ctrl_out(1);
+    EX_isLUI     <= s_ctrl_out(0);
+
+    -- Registers now use gated signals
+    REG_PC: register_NBit
+        generic map(N => 32)
+        port map(	D => s_PC_in, 
+			RST => iRST, 
+			WE => s_WE_gated, 
+			CLK => iCLK, 
+			Q => EX_PC);
+
+    REG_Instr: register_NBit
+        generic map(N => 32)
+        port map(	D => s_Instr_in, 
+			RST => iRST, 
+			WE => s_WE_gated, 
+			CLK => iCLK, 
+			Q => EX_Instr);
+
+    REG_PC_Plus4: register_NBit
+        generic map(N => 32)
+        port map(	D => s_PC4_in, 
+			RST => iRST, 
+			WE => s_WE_gated, 
+			CLK => iCLK, 
+			Q => EX_PC_Plus4);
+
+    REG_rs1: register_NBit
+        generic map(N => 32)
+        port map(	D => s_rs1_in, 
+			RST => iRST, 
+			WE => s_WE_gated, 
+			CLK => iCLK, 
+			Q => EX_rs1_out);
+
+    REG_rs2: register_NBit
+        generic map(N => 32)
+        port map(	D => s_rs2_in, 
+			RST => iRST, 
+			WE => s_WE_gated, 
+			CLK => iCLK, 
+			Q => EX_rs2_out);
+
+    REG_Imm: register_NBit
+        generic map(N => 32)
+        port map(	D => s_Imm_in,
+			RST => iRST, 
+			WE => s_WE_gated, 
+			CLK => iCLK, 
+			Q => EX_ImmGen);
+
+    REG_ALUCtrl: register_NBit
+        generic map(N => 4)
+        port map(	D => s_ALUCtrl_in, 
+			RST => iRST, 
+			WE => s_WE_gated, 
+			CLK => iCLK, 
+			Q => EX_ALUCtrl);
+
+    REG_Ctrl: register_NBit
+        generic map(N => 12)
+        port map(	D => s_ctrl_gated, 
+			RST => iRST, 
+			WE => s_WE_gated, 
+			CLK => iCLK, 
+			Q => s_ctrl_out);
+
+end structural;
+
+
+
