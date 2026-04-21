@@ -105,7 +105,7 @@ architecture structure of RISCV_Processor is
   signal s_HaltCtrl  	: std_logic;
 
 -- FLUSH SIGNALS -- 
---signal s_WE_gated	: std_logic; 
+signal s_WE_gated	: std_logic; 
 signal s_flush_IFID	: std_logic; 
 signal s_flush_IDEX	: std_logic; 
 
