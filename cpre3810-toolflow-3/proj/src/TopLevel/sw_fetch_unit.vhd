@@ -66,7 +66,7 @@ architecture structure of sw_fetch_unit is
 	port(i_A          : in std_logic;
        		o_F          : out std_logic);
 
-	end invg;
+	end component;
 
   component pc_register is
   	port(	iCLK            	: in std_logic;
@@ -114,7 +114,7 @@ begin
   
    STALL_INV: invg
 	port map(i_A	=> i_stall,
-		 o_F	=> s_stall_n);
+		 o_F	=> s_stall_inverted);
 
    PC4_ADD:	ripple_carry_adderN
 	generic map(N => 32)
@@ -157,7 +157,7 @@ PC_REG: register_NBit
     generic map(N => 32)
     port map(D   => s_pc_reg_input,
              RST => '0',
-             WE  => s_stall_n, -- FREEZE PC ON STALL! 
+             WE  => s_stall_inverted, -- FREEZE PC ON STALL! 
              CLK => iCLK,
              Q   => s_current_PC);
 
