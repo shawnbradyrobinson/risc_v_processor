@@ -1,0 +1,72 @@
+-------------------------------------------------------------------------
+-- hazard_detection_unit.vhd
+-------------------------------------------------------------------------
+-- DESCRIPTION: full hazard detection unit for five stage pipeline hardware design 
+-------------------------------------------------------------------------
+
+library IEEE; 
+use IEEE.std_logic_1164.all; 
+
+entity hazard_detection_unit is 
+	port(
+		EX_MemRead	: in std_logic;
+		EX_rd_addr	: in std_logic_vector(4 downto 0);
+		ID_rs1_addr	: in std_logic_vector(4 downto 0);
+		ID_rs2_addr	: in std_logic_vector(4 downto 0);
+		o_stall		: out std_logic; 
+	); 
+
+end hazard_detection_unit;
+
+architecture structural of hazard_detection_unit is 
+
+    component andg2 is
+        port(i_A : in std_logic;
+             i_B : in std_logic;
+             o_F : out std_logic);
+    end component;
+
+    component org2 is
+        port(i_A : in std_logic;
+             i_B : in std_logic;
+             o_F : out std_logic);
+    end component;
+
+  	signal s_rs1_match	: std_logic; 
+ 	signal s_rs2_match	: std_logic;
+	signal s_rd_nonzero	: std_logic;
+	signal s_rs1_or_rs2	: std_logic;
+	signal s_match_nonzero	: std_logic;           
+
+begin 
+
+    -- EX_rd == ID_rs1?
+    s_rs1_match <= '1' when (EX_rd_addr = ID_rs1_addr) else '0';
+
+    -- EX_rd == ID_rs2?
+    s_rs2_match <= '1' when (EX_rd_addr = ID_rs2_addr) else '0';
+
+    -- EX_rd != x0?
+    s_rd_nonzero <= '1' when (EX_rd_addr /= "00000") else '0';
+
+    -- rs1 match OR rs2 match
+    RS1_OR_RS2: org2
+        port map(i_A => s_rs1_match,
+                 i_B => s_rs2_match,
+                 o_F => s_rs1_or_rs2);
+
+    -- AND with rd != x0
+    MATCH_NONZERO: andg2
+        port map(i_A => s_rs1_or_rs2,
+                 i_B => s_rd_nonzero,
+                 o_F => s_match_nonzero);
+
+    -- AND with EX_MemRead to get final stall
+    STALL_OUT: andg2
+        port map(i_A => s_match_nonzero,
+                 i_B => EX_MemRead,
+                 o_F => o_stall);
+
+end structural;
+
+

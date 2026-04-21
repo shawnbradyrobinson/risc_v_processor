@@ -1,0 +1,75 @@
+# //  Questa Sim-64
+# //  Version 2025.1_2 linux_x86_64 Apr  7 2025
+# //
+# // Unpublished work. Copyright 2025 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+ls
+# EXMEM_PipelineRegister.vhd
+# EXMEM_PipelineRegister.vhd.bak
+# IDEX_PipelineRegister.vhd
+# IDEX_PipelineRegister.vhd.bak
+# IFID_PipelineRegister.vhd
+# IFID_PipelineRegister.vhd.bak
+# MEMWB_PipelineRegister.vhd
+# RISCV_Processor.vhd
+# RISCV_Processor.vhd.bak
+# hazard_detection_unit.vhd
+# hazard_detection_unit.vhd.bak
+# mem.vhd
+# sw_fetch_unit.vhd
+# sw_fetch_unit.vhd.bak
+# tb_PipelineRegisters.vhd
+# transcript
+vcom -2008 -work work *.vhd
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:53:41 on Apr 21,2026
+# vcom -reportprogress 300 -2008 -work work EXMEM_PipelineRegister.vhd IDEX_PipelineRegister.vhd IFID_PipelineRegister.vhd MEMWB_PipelineRegister.vhd RISCV_Processor.vhd hazard_detection_unit.vhd mem.vhd sw_fetch_unit.vhd tb_PipelineRegisters.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity EXMEM_PipelineRegister
+# -- Compiling architecture structural of EXMEM_PipelineRegister
+# -- Compiling entity IDEX_PipelineRegister
+# -- Compiling architecture structural of IDEX_PipelineRegister
+# -- Compiling entity IFID_PipelineRegister
+# -- Compiling architecture structural of IFID_PipelineRegister
+# -- Compiling entity MEMWB_PipelineRegister
+# -- Compiling architecture structural of MEMWB_PipelineRegister
+# ** Error: (vcom-11) Could not find work.riscv_types.
+# ** Error (suppressible): RISCV_Processor.vhd(23): (vcom-1195) Cannot find expanded name "work.RISCV_types".
+# ** Error: RISCV_Processor.vhd(23): Unknown expanded name.
+# ** Note: RISCV_Processor.vhd(25): VHDL Compiler exiting
+# End time: 12:53:41 on Apr 21,2026, Elapsed time: 0:00:00
+# Errors: 3, Warnings: 0
+# /usr/local/mentor/questasim/linux_x86_64/vcom failed.
+vcom -2008 -work work *.vhd
+# QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
+# Start time: 12:55:08 on Apr 21,2026
+# vcom -reportprogress 300 -2008 -work work EXMEM_PipelineRegister.vhd IDEX_PipelineRegister.vhd IFID_PipelineRegister.vhd MEMWB_PipelineRegister.vhd RISCV_Processor.vhd hazard_detection_unit.vhd mem.vhd sw_fetch_unit.vhd tb_PipelineRegisters.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity EXMEM_PipelineRegister
+# -- Compiling architecture structural of EXMEM_PipelineRegister
+# -- Compiling entity IDEX_PipelineRegister
+# -- Compiling architecture structural of IDEX_PipelineRegister
+# -- Compiling entity IFID_PipelineRegister
+# -- Compiling architecture structural of IFID_PipelineRegister
+# -- Compiling entity MEMWB_PipelineRegister
+# -- Compiling architecture structural of MEMWB_PipelineRegister
+# ** Error: (vcom-11) Could not find work.riscv_types.
+# ** Error (suppressible): RISCV_Processor.vhd(23): (vcom-1195) Cannot find expanded name "work.RISCV_types".
+# ** Error: RISCV_Processor.vhd(23): Unknown expanded name.
+# ** Note: RISCV_Processor.vhd(25): VHDL Compiler exiting
+# End time: 12:55:08 on Apr 21,2026, Elapsed time: 0:00:00
+# Errors: 3, Warnings: 0
+# /usr/local/mentor/questasim/linux_x86_64/vcom failed.

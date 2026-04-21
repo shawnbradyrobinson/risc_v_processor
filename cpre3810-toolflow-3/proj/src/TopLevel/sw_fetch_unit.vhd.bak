@@ -157,7 +157,7 @@ PC_REG: register_NBit
     generic map(N => 32)
     port map(D   => s_pc_reg_input,
              RST => '0',
-             WE  => s_stall_n, -- FREEZE PC ON STALL! 
+             WE  => not i_stall, -- FREEZE PC ON STALL! 
              CLK => iCLK,
              Q   => s_current_PC);
 

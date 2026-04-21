@@ -105,11 +105,14 @@ architecture structure of RISCV_Processor is
   signal s_HaltCtrl  	: std_logic;
 
 -- FLUSH SIGNALS -- 
-signal s_WE_gated	: std_logic; 
+--signal s_WE_gated	: std_logic; 
 signal s_flush_IFID	: std_logic; 
 signal s_flush_IDEX	: std_logic; 
 
 
+-- STALL SIGNALS -- 
+signal s_stall		: std_logic; 
+signal s_stall_n	: std_logic; 
 --FETCH SIGNALS--
 signal s_jal_target	: std_logic_vector(31 downto 0);
 signal s_jalr_target	: std_logic_vector(31 downto 0);
@@ -530,13 +533,22 @@ component sw_fetch_unit is
        iRST            		: in std_logic;
        i_target			: in std_logic_vector(31 downto 0); -- precomputed target
        i_taken			: in std_logic; 
+       i_stall			: in std_logic; 
        o_PC         		: out std_logic_vector(31 downto 0); --THIS WIRES DIRECTLY TO SKELETON s_PC! 
        Pc_plus4			: out std_logic_vector(31 downto 0)); 
 end  component;
 
 
+component hazard_detection_unit is 
+	port(
+		EX_MemRead	: in std_logic;
+		EX_rd_addr	: in std_logic_vector(4 downto 0);
+		ID_rs1_addr	: in std_logic_vector(4 downto 0);
+		ID_rs2_addr	: in std_logic_vector(4 downto 0);
+		o_stall		: out std_logic; 
+	); 
 
-
+end component;
 
 
 -- ========= END OF ADDED COMPONENTS ===== -- 
@@ -563,7 +575,8 @@ begin
   s_Halt    <= s_WB_Halt; --Pipeline halt 
   --s_Flush	<= (s_MEM_BranchTaken and s_MEM_Branch) or s_MEM_Jump; 
   s_flush_IFID	<= s_redirect; 
-  s_flush_IDEX	<= s_redirect; 
+  s_flush_IDEX	<= s_stall or s_redirect;
+  s_stall_n	<= not s_stall; 
 
 
 
@@ -674,6 +687,7 @@ F_UNIT_SW: sw_fetch_unit
        iRST		=> iRST,            	
        i_target		=> s_final_target,
        i_taken		=> s_redirect, 
+       i_stall		=> s_stall, -- change after you add the hazard detection unit 
        o_PC         	=> s_PC,
        Pc_plus4		=> s_PC_plus4);
 
@@ -723,7 +737,7 @@ IFID_REG: IFID_PipelineRegister
 	port map(
 		iCLK		=> iCLK,
 		iRST		=> iRST,
-		iWE		=> '1', -- map it to stalling later 
+		iWE		=> s_stall_n, -- map it to stalling later 
 		iFLUSH		=> s_flush_IFID,
 		IF_PC		=> s_PC,
 		IF_Instr	=> s_Inst,
@@ -742,7 +756,7 @@ IDEX_REG: IDEX_PipelineRegister
 	port map(
 		iCLK		=> iCLK,
 		iRST		=> iRST,
-		iWE		=> '1', --stalling 
+		iWE		=> s_stall_n, --stalling 
 		iFLUSH		=> s_flush_IDEX,
 		--datapath inputs--
 
@@ -790,6 +804,20 @@ IDEX_REG: IDEX_PipelineRegister
 		EX_MemToReg	=> s_EX_MemToReg,
 		EX_Halt		=> s_EX_Halt
 	);
+
+
+
+
+-- ======= HAZARD DETECTION ========== --
+HAZARD_DETECT:	hazard_detection_unit
+	port map(
+		EX_MemRead	=> s_EX_MemRead,
+		EX_rd_addr	=> s_EX_rd_addr,
+		ID_rs1_addr	=> s_ID_rs1_addr,
+		ID_rs2_addr	=> s_ID_rs2_addr,
+		o_stall		=> s_stall
+	);
+
 
  -- ====== CONTROLS ====== -- 
 MAIN_CONTROL: sc_processor_control_unit
