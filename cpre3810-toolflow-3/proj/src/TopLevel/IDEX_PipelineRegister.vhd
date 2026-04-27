@@ -107,7 +107,7 @@ architecture structural of IDEX_PipelineRegister is
   	--   1: isAUIPC
   	--   0: isLUI
 	signal s_ctrl_in	: std_logic_vector(11 downto 0);
-	signal s_ctrl_out	: std_logic_vector(11 downto 0);
+	signal s_ctrl_out	: std_logic_vector(11 downto 0) := (others => '1');
 
 
    	 -- flush-gated intermediates

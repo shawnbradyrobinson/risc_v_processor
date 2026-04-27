@@ -108,7 +108,7 @@ architecture structural of EXMEM_PipelineRegister is
 	-- 1: MemWrite
 	-- 0: BranchTaken
 	signal s_ctrl_in	: std_logic_vector(9 downto 0);
-	signal s_ctrl_out	: std_logic_vector(9 downto 0);
+	signal s_ctrl_out	: std_logic_vector(9 downto 0) := (others => '1');
 
     	signal s_ctrl_gated : std_logic_vector(9 downto 0);  
     	signal s_WE_gated   : std_logic;                     
