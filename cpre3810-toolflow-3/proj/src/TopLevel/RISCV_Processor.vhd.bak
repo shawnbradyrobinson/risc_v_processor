@@ -742,7 +742,7 @@ JAL_ADDER: ripple_carry_adderN
 
 JALR_ADDER: ripple_carry_adderN
 	generic map(N => 32)
-	port map(A	=> s_EX_rs1_out,
+	port map(A	=> s_EX_rs1_fwd,
 		 B	=> s_EX_ImmGen,
 		 Cin	=> '0',
 		 Sum	=> s_jalr_target,
