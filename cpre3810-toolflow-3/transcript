@@ -1,0 +1,548 @@
+# //  Questa Sim-64
+# //  Version 2025.1_2 linux_x86_64 Apr  7 2025
+# //
+# // Unpublished work. Copyright 2025 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+ls
+# 3810_tf.sh
+# cpre3810-toolflow.pdf
+# internal
+# output
+# proj
+# transcript
+cd output
+ls
+# add_1.s
+# add_1.s_1
+# add_2.s
+# add_3.s
+# addi1.s
+# addi2.s
+# addi3.s
+# addi_01.s
+# addi_02.s
+# addiseq.s
+# and_0.s
+# and_1.s
+# and_2.s
+# and_3.s
+# andi1.s
+# andi2.s
+# andi3.s
+# auipc_1.s
+# auipc_2.s
+# auipc_3.s
+# beq_1.s
+# beq_2.s
+# beq_3.s
+# bge_1.s
+# bge_2.s
+# bge_3.s
+# bgeu_1.s
+# bgeu_2.s
+# bgeu_3.s
+# blt1.s
+# blt2.s
+# blt3.s
+# bltu_test1.s
+# bltu_test2.s
+# bltu_test3.s
+# bne_1.s
+# bne_2.s
+# bne_3.s
+# grendel.s
+# jal_1.s
+# jal_2.s
+# jal_3.s
+# jalr_1.s
+# jalr_2.s
+# jalr_3.s
+# lb_0.s
+# lb_1.s
+# lb_2.s
+# lbu_1.s
+# lbu_2.s
+# lbu_3.s
+# lh_1.s
+# lh_2.s
+# lh_3.s
+# lhu_1.s
+# lhu_2.s
+# lhu_3.s
+# lui_1.s
+# lui_2.s
+# lui_3.s
+# lw_0.s
+# lw_1.s
+# lw_2.s
+# or_1.s
+# or_2.s
+# or_3.s
+# ori_1.s
+# ori_2.s
+# ori_3.s
+# sll_1.s
+# sll_2.s
+# sll_3.s
+# slli_0.s
+# slli_1.s
+# slli_2.s
+# slt1.s
+# slt2.s
+# slt_1.s
+# slt_2.s
+# slt_3.s
+# slti_1.s
+# slti_2.s
+# slti_3.s
+# sltiu_1.s
+# sltiu_2.s
+# sltiu_3.s
+# sra_1.s
+# sra_2.s
+# sra_3.s
+# sra_4.s
+# sra_5.s
+# srai_1.s
+# srai_2.s
+# srai_3.s
+# srl1.s
+# srl2.s
+# srl_1.s
+# srl_2.s
+# srl_3.s
+# srli_1.s
+# srli_2.s
+# srli_3.s
+# srli_4.s
+# srli_5.s
+# sub_0.s
+# sub_00.s
+# sub_01.s
+# sub_02.s
+# sub_1.s
+# sub_3.s
+# sw_0.s
+# sw_1.s
+# sw_2.s
+# test_failures.txt
+# vcom.log
+# xor_0.s
+# xor_1.s
+# xor_2.s
+# xori_1.s
+# xori_2.s
+# xori_3.s
+cd jal_1.s
+ls
+# compare.txt
+# dmem.hex
+# imem.hex
+# ms.trace
+# rars.trace
+# vcom.log
+# vsim.dbg
+# vsim.log
+# vsim.wlf
+# work
+vsim -view vsim.wlf
+# ** Error: (vish-7) Failed to open info file "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/containers/sim_container_0/work/_info" in read mode.
+# No such file or directory. (errno = ENOENT)
+# ** Error: (vish-7) Failed to open info file "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/containers/sim_container_0/work/_info" in read mode.
+# No such file or directory. (errno = ENOENT)
+# ** Error: (vish-7) Failed to open info file "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/containers/sim_container_0/work/_info" in read mode.
+# No such file or directory. (errno = ENOENT)
+# ** Error: (vish-7) Failed to open info file "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/containers/sim_container_0/work/_info" in read mode.
+# No such file or directory. (errno = ENOENT)
+# ** Error: (vish-7) Failed to open info file "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/containers/sim_container_0/work/_info" in read mode.
+# No such file or directory. (errno = ENOENT)
+# ** Error: (vish-7) Failed to open info file "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/containers/sim_container_0/work/_info" in read mode.
+# No such file or directory. (errno = ENOENT)
+# ** Error: (vish-7) Failed to open info file "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/containers/sim_container_0/work/_info" in read mode.
+# No such file or directory. (errno = ENOENT)
+# ** Error: (vish-7) Failed to open info file "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/containers/sim_container_0/work/_info" in read mode.
+# No such file or directory. (errno = ENOENT)
+# vsim.wlf opened as dataset "vsim"
+add wave -position insertpoint vsim:/tb/MyRiscv/*
+add wave -position insertpoint vsim:/tb/MyRiscv/REG_FILE/*
+quit -sim
+cd
+cd ..
+ls
+# shawnr
+cd shawnr
+ls
+# CPRE_381
+# Desktop
+# Documents
+# Downloads
+# Lab1_DEMO
+# Music
+# Pictures
+# Public
+# RARS_CPRE3810.jar
+# Templates
+# Videos
+# cpre185
+# transcript
+# tsclient
+cd CPRE_381
+ls
+# Lab1(1).zip
+# Lab2
+# Lab2.zip
+# Proj1_team_contract(1).pdf
+# free_range_vhdl.pdf
+# project_one
+cd project_one
+ls
+# CprE3810_ProjPart1.pdf
+# Proj1_control_signals.xlsx
+# Proj1_report.doc
+# Proj1_report.odt
+# Proj1_report_SHAWN_AND_JAY.odt
+# Proj1_team_contract.doc
+# Proj2_report_shawn_and_jay.odt
+# README.md
+# RISCV_types.vhd
+# cpre3810-toolflow-1
+# cpre3810-toolflow-2
+# cpre3810-toolflow-3
+# cpre3810-toolflow.zip
+# old_labs
+# project_one_dustbin
+# reference_processor_path.png
+# tb_immediate_generator.vhd
+# transcript
+cd cpre3810-toolflow-3
+ls
+# 3810_tf.sh
+# cpre3810-toolflow.pdf
+# internal
+# output
+# proj
+# transcript
+cd output
+ls
+# add_1.s
+# add_1.s_1
+# add_2.s
+# add_3.s
+# addi1.s
+# addi2.s
+# addi3.s
+# addi_01.s
+# addi_02.s
+# addiseq.s
+# and_0.s
+# and_1.s
+# and_2.s
+# and_3.s
+# andi1.s
+# andi2.s
+# andi3.s
+# auipc_1.s
+# auipc_2.s
+# auipc_3.s
+# beq_1.s
+# beq_2.s
+# beq_3.s
+# bge_1.s
+# bge_2.s
+# bge_3.s
+# bgeu_1.s
+# bgeu_2.s
+# bgeu_3.s
+# blt1.s
+# blt2.s
+# blt3.s
+# bltu_test1.s
+# bltu_test2.s
+# bltu_test3.s
+# bne_1.s
+# bne_2.s
+# bne_3.s
+# grendel.s
+# jal_1.s
+# jal_1.s_1
+# jal_2.s
+# jal_3.s
+# jalr_1.s
+# jalr_2.s
+# jalr_3.s
+# lb_0.s
+# lb_1.s
+# lb_2.s
+# lbu_1.s
+# lbu_2.s
+# lbu_3.s
+# lh_1.s
+# lh_2.s
+# lh_3.s
+# lhu_1.s
+# lhu_2.s
+# lhu_3.s
+# lui_1.s
+# lui_2.s
+# lui_3.s
+# lw_0.s
+# lw_1.s
+# lw_2.s
+# or_1.s
+# or_2.s
+# or_3.s
+# ori_1.s
+# ori_2.s
+# ori_3.s
+# sll_1.s
+# sll_2.s
+# sll_3.s
+# slli_0.s
+# slli_1.s
+# slli_2.s
+# slt1.s
+# slt2.s
+# slt_1.s
+# slt_2.s
+# slt_3.s
+# slti_1.s
+# slti_2.s
+# slti_3.s
+# sltiu_1.s
+# sltiu_2.s
+# sltiu_3.s
+# sra_1.s
+# sra_2.s
+# sra_3.s
+# sra_4.s
+# sra_5.s
+# srai_1.s
+# srai_2.s
+# srai_3.s
+# srl1.s
+# srl2.s
+# srl_1.s
+# srl_2.s
+# srl_3.s
+# srli_1.s
+# srli_2.s
+# srli_3.s
+# srli_4.s
+# srli_5.s
+# sub_0.s
+# sub_00.s
+# sub_01.s
+# sub_02.s
+# sub_1.s
+# sub_3.s
+# sw_0.s
+# sw_1.s
+# sw_2.s
+# test_failures.txt
+# vcom.log
+# xor_0.s
+# xor_1.s
+# xor_2.s
+# xori_1.s
+# xori_2.s
+# xori_3.s
+cd jal_2.s
+vsim -view vsim.wlf
+# ** Error: (vish-7) Failed to open info file "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/containers/sim_container_0/work/_info" in read mode.
+# No such file or directory. (errno = ENOENT)
+# ** Error: (vish-7) Failed to open info file "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/containers/sim_container_0/work/_info" in read mode.
+# No such file or directory. (errno = ENOENT)
+# ** Error: (vish-7) Failed to open info file "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/containers/sim_container_0/work/_info" in read mode.
+# No such file or directory. (errno = ENOENT)
+# ** Error: (vish-7) Failed to open info file "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/containers/sim_container_0/work/_info" in read mode.
+# No such file or directory. (errno = ENOENT)
+# ** Error: (vish-7) Failed to open info file "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/containers/sim_container_0/work/_info" in read mode.
+# No such file or directory. (errno = ENOENT)
+# ** Error: (vish-7) Failed to open info file "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/containers/sim_container_0/work/_info" in read mode.
+# No such file or directory. (errno = ENOENT)
+# ** Error: (vish-7) Failed to open info file "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/containers/sim_container_0/work/_info" in read mode.
+# No such file or directory. (errno = ENOENT)
+# ** Error: (vish-7) Failed to open info file "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/containers/sim_container_0/work/_info" in read mode.
+# No such file or directory. (errno = ENOENT)
+# vsim.wlf opened as dataset "vsim1"
+add wave -position insertpoint vsim1:/tb/MyRiscv/*
+add wave -position insertpoint vsim1:/tb/MyRiscv/REG_FILE/*
+add wave -position insertpoint vsim1:/tb/MyRiscv/F_UNIT_SW/*
+quit -sim
+ls
+# compare.txt
+# dmem.hex
+# imem.hex
+# ms.trace
+# rars.trace
+# vcom.log
+# vsim.dbg
+# vsim.log
+# vsim.wlf
+# work
+cd ..
+s
+# ambiguous command name "s": sampler sbrk scale scaleTime scan sccom sccom_capture scgenmod scintilla scope scrollbar sdfcom search searchlog see seek seetime selection send send_and_receive sequence_image set setCoverageCutoff setMTIArrayProperty setMTIProperty setStructBackground setStructForeground setStructGeometry setStructSelectBackground setStructSelectForeground setTimeFlags setVSIMClient set_vish_error_count set_vish_warning_count set_vsim_state set_window_namespace set_windowobj_namespace setenv settings0 shift show showAssertion showFCover siginterror sim_image slave_mode sm smodule_image socket source source_examine_popup source_highlight_errors spice_du_image spinbox split splitio sqlite sqlite3 stCopy stCut stDelete stPaste startIndProgressBar starter status statusIntHandler step stimulus_image stop stopIndProgressBar stop_image string string'reverse strncmp structure_binding structure_changed_trigger structure_clear_triggers structure_click_env structure_context_trigger structure_dataset_close structure_destroy structure_image structure_is_follow structure_new_root_dialog structure_restart structure_restart_context structure_restart_prep structure_set_root structure_set_selection structure_set_triggers structure_update_procs_after_run student_edition subTime subst suppress sva_cover_image sva_coverbin_image swapSeparators switch sync_encoding systemc_image systemcdu_image systemclib_image
+ls
+# add_1.s
+# add_1.s_1
+# add_2.s
+# add_3.s
+# addi1.s
+# addi2.s
+# addi3.s
+# addi_01.s
+# addi_02.s
+# addiseq.s
+# and_0.s
+# and_1.s
+# and_2.s
+# and_3.s
+# andi1.s
+# andi2.s
+# andi3.s
+# auipc_1.s
+# auipc_2.s
+# auipc_3.s
+# beq_1.s
+# beq_2.s
+# beq_3.s
+# bge_1.s
+# bge_2.s
+# bge_3.s
+# bgeu_1.s
+# bgeu_2.s
+# bgeu_3.s
+# blt1.s
+# blt2.s
+# blt3.s
+# bltu_test1.s
+# bltu_test2.s
+# bltu_test3.s
+# bne_1.s
+# bne_2.s
+# bne_3.s
+# grendel.s
+# jal_1.s
+# jal_1.s_1
+# jal_2.s
+# jal_3.s
+# jalr_1.s
+# jalr_2.s
+# jalr_3.s
+# lb_0.s
+# lb_1.s
+# lb_2.s
+# lbu_1.s
+# lbu_2.s
+# lbu_3.s
+# lh_1.s
+# lh_2.s
+# lh_3.s
+# lhu_1.s
+# lhu_2.s
+# lhu_3.s
+# lui_1.s
+# lui_2.s
+# lui_3.s
+# lw_0.s
+# lw_1.s
+# lw_2.s
+# or_1.s
+# or_2.s
+# or_3.s
+# ori_1.s
+# ori_2.s
+# ori_3.s
+# sll_1.s
+# sll_2.s
+# sll_3.s
+# slli_0.s
+# slli_1.s
+# slli_2.s
+# slt1.s
+# slt2.s
+# slt_1.s
+# slt_2.s
+# slt_3.s
+# slti_1.s
+# slti_2.s
+# slti_3.s
+# sltiu_1.s
+# sltiu_2.s
+# sltiu_3.s
+# sra_1.s
+# sra_2.s
+# sra_3.s
+# sra_4.s
+# sra_5.s
+# srai_1.s
+# srai_2.s
+# srai_3.s
+# srl1.s
+# srl2.s
+# srl_1.s
+# srl_2.s
+# srl_3.s
+# srli_1.s
+# srli_2.s
+# srli_3.s
+# srli_4.s
+# srli_5.s
+# sub_0.s
+# sub_00.s
+# sub_01.s
+# sub_02.s
+# sub_1.s
+# sub_3.s
+# sw_0.s
+# sw_1.s
+# sw_2.s
+# test_failures.txt
+# vcom.log
+# xor_0.s
+# xor_1.s
+# xor_2.s
+# xori_1.s
+# xori_2.s
+# xori_3.s
+cd jal_3.s
+ls
+# compare.txt
+# dmem.hex
+# imem.hex
+# ms.trace
+# rars.trace
+# vcom.log
+# vsim.dbg
+# vsim.log
+# vsim.wlf
+# work
+vsim -view vsim.wlf
+# ** Error: (vish-7) Failed to open info file "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/containers/sim_container_0/work/_info" in read mode.
+# No such file or directory. (errno = ENOENT)
+# ** Error: (vish-7) Failed to open info file "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/containers/sim_container_0/work/_info" in read mode.
+# No such file or directory. (errno = ENOENT)
+# ** Error: (vish-7) Failed to open info file "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/containers/sim_container_0/work/_info" in read mode.
+# No such file or directory. (errno = ENOENT)
+# ** Error: (vish-7) Failed to open info file "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/containers/sim_container_0/work/_info" in read mode.
+# No such file or directory. (errno = ENOENT)
+# ** Error: (vish-7) Failed to open info file "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/containers/sim_container_0/work/_info" in read mode.
+# No such file or directory. (errno = ENOENT)
+# ** Error: (vish-7) Failed to open info file "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/containers/sim_container_0/work/_info" in read mode.
+# No such file or directory. (errno = ENOENT)
+# ** Error: (vish-7) Failed to open info file "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/containers/sim_container_0/work/_info" in read mode.
+# No such file or directory. (errno = ENOENT)
+# ** Error: (vish-7) Failed to open info file "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/containers/sim_container_0/work/_info" in read mode.
+# No such file or directory. (errno = ENOENT)
+# vsim.wlf opened as dataset "vsim2"
+add wave -position insertpoint vsim2:/tb/MyRiscv/*

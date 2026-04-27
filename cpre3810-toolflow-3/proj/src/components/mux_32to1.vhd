@@ -22,12 +22,12 @@ port( select_lines 		: in std_logic_vector(4 downto 0);
 end mux_32to1;
 
 architecture dataflow of mux_32to1 is
- 
+ signal output_data_s	:	std_logic	:= '0'; 
 
 begin
-
+ output_data	<= output_data_s;
 with select_lines select
-	output_data <=		data_inputs(0)  when "00000",
+	output_data_s <=	data_inputs(0)  when "00000",
                     		data_inputs(1)  when "00001",
                     		data_inputs(2)  when "00010",
                     		data_inputs(3)  when "00011",

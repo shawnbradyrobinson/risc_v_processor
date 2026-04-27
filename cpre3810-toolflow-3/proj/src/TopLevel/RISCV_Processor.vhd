@@ -541,12 +541,16 @@ end  component;
 
 component hazard_detection_unit is 
 	port(
-		EX_MemRead	: in std_logic;
-		EX_rd_addr	: in std_logic_vector(4 downto 0);
-		ID_rs1_addr	: in std_logic_vector(4 downto 0);
-		ID_rs2_addr	: in std_logic_vector(4 downto 0);
-		o_stall		: out std_logic 
-	);
+		
+		MEM_RegWrite	: in std_logic; -- mem stage hazard 
+		MEM_rd_addr	: in std_logic_vector(4 downto 0); -- mem stage hazard
+		EX_RegWrite	: in std_logic; -- any reg-write in ex hazard 
+		EX_MemRead	: in std_logic; -- load use hazard
+		EX_rd_addr	: in std_logic_vector(4 downto 0); -- load use hazard 
+		ID_rs1_addr	: in std_logic_vector(4 downto 0); -- consumer instruction in ID
+		ID_rs2_addr	: in std_logic_vector(4 downto 0); -- consumer instruction in ID
+		o_stall		: out std_logic
+	); 
 
 end component;
 
@@ -756,7 +760,7 @@ IDEX_REG: IDEX_PipelineRegister
 	port map(
 		iCLK		=> iCLK,
 		iRST		=> iRST,
-		iWE		=> s_stall_n, --stalling 
+		iWE		=> '1', --stalling 
 		iFLUSH		=> s_flush_IDEX,
 		--datapath inputs--
 
@@ -811,6 +815,9 @@ IDEX_REG: IDEX_PipelineRegister
 -- ======= HAZARD DETECTION ========== --
 HAZARD_DETECT:	hazard_detection_unit
 	port map(
+		MEM_RegWrite	=> s_MEM_RegWrite,
+		MEM_rd_addr	=> s_MEM_rd_addr,
+		EX_RegWrite	=> s_EX_RegWrite,
 		EX_MemRead	=> s_EX_MemRead,
 		EX_rd_addr	=> s_EX_rd_addr,
 		ID_rs1_addr	=> s_ID_rs1_addr,
@@ -878,7 +885,7 @@ EXMEM_REG: EXMEM_PipelineRegister
 		iCLK		=> iCLK,
 		iRST		=> iRST,
 		iWE		=> '1', --stalling
-		iFLUSH		=> s_redirect,
+		iFLUSH		=> '0',
 		--datapath inputs--
 		EX_PC		=> s_EX_PC,		--from ID/EX output
 		EX_Instr	=> s_EX_Instr,		--from ID/EX output
