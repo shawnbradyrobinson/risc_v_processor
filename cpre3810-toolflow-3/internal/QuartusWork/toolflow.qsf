@@ -1,0 +1,53 @@
+
+#
+# CprE 381 Generated Quartus Settings File
+#
+
+set_global_assignment -name FAMILY "Cyclone IV E"
+set_global_assignment -name DEVICE EP4CE115F29C7
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 21.1.1
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "19:07:08  JANUARY 28, 2019"
+set_global_assignment -name LAST_QUARTUS_VERSION "21.1.1 Standard Edition"
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name TOP_LEVEL_ENTITY RISCV_Processor
+set_global_assignment -name VHDL_INPUT_VERSION VHDL_2008
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/RISCV_types.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/TopLevel/EXMEM_PipelineRegister.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/TopLevel/IDEX_PipelineRegister.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/TopLevel/IFID_PipelineRegister.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/TopLevel/MEMWB_PipelineRegister.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/TopLevel/RISCV_Processor.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/TopLevel/forwarding_unit.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/TopLevel/hazard_detection_unit.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/TopLevel/mem.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/TopLevel/mux3t1_N.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/TopLevel/pc_register.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/TopLevel/sw_fetch_unit.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/TopLevel/tb_PipelineRegisters.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/components/addsub_32.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/components/alu_32.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/components/andg2.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/components/barrel_shifter.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/components/bitextender_12to32.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/components/bitextender_20to32.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/components/branch_resolver.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/components/decoder_5to32.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/components/dffg.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/components/fetch_unit.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/components/full_adder.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/components/immediate_generator.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/components/invg.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/components/mux2t1.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/components/mux2t1_N.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/components/mux_32to1.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/components/org2.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/components/register_NBit.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/components/register_file.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/components/ripple_carry_adderN.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/components/sc_processor_alu_control.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/components/sc_processor_control_unit.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/components/source_register.vhd"
+set_global_assignment -name VHDL_FILE "/home/shawnr/CPRE_381/project_one/cpre3810-toolflow-3/proj/src/components/xorg2.vhd"

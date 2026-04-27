@@ -776,7 +776,7 @@ IFID_REG: IFID_PipelineRegister
 	port map(
 		iCLK		=> iCLK,
 		iRST		=> iRST,
-		iWE		=> s_stall_n, -- map it to stalling later 
+		iWE		=> s_stall_n, 
 		iFLUSH		=> s_flush_IFID,
 		IF_PC		=> s_PC,
 		IF_Instr	=> s_Inst,
