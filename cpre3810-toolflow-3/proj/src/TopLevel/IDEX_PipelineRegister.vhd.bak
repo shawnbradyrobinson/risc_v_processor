@@ -13,7 +13,7 @@ entity IDEX_PipelineRegister is
 port(	iCLK: 		in std_logic;
 	iRST: 		in std_logic;
 	iWE:		in std_logic;  -- for stall control?
-	iFLUSH 		in std_logic; 
+	iFLUSH: 		in std_logic; 
 
 	--ID INPUTS: datapath 
 	ID_PC:	  		in std_logic_vector(31 downto 0); 
@@ -107,7 +107,7 @@ architecture structural of IDEX_PipelineRegister is
   	--   1: isAUIPC
   	--   0: isLUI
 	signal s_ctrl_in	: std_logic_vector(11 downto 0);
-	signal s_ctrl_out	: std_logic_vector(11 downto 0);
+	signal s_ctrl_out	: std_logic_vector(11 downto 0) := (others => '0');
 
 
    	 -- flush-gated intermediates

@@ -32,32 +32,32 @@ In clock cycle: 19
 Register Write to Reg: 0x10 Val: 0xFFFFFFF0
 In clock cycle: 20
 Register Write to Reg: 0x02 Val: 0xFFFFFFFF
-In clock cycle: 23
+In clock cycle: 21
 Register Write to Reg: 0x03 Val: 0xFFFFFFFC
-In clock cycle: 26
+In clock cycle: 22
 Register Write to Reg: 0x04 Val: 0xFFFFFFF8
-In clock cycle: 29
+In clock cycle: 23
 Register Write to Reg: 0x05 Val: 0xFFFFFFF3
-In clock cycle: 32
+In clock cycle: 24
 Register Write to Reg: 0x06 Val: 0xFFFFFFED
-In clock cycle: 35
+In clock cycle: 25
 Register Write to Reg: 0x07 Val: 0xFFFFFFE6
-In clock cycle: 38
+In clock cycle: 26
 Register Write to Reg: 0x08 Val: 0xFFFFFFDE
-In clock cycle: 41
+In clock cycle: 27
 Register Write to Reg: 0x09 Val: 0xFFFFFFE7
-In clock cycle: 44
+In clock cycle: 28
 Register Write to Reg: 0x0A Val: 0xFFFFFFF1
-In clock cycle: 47
+In clock cycle: 29
 Register Write to Reg: 0x0B Val: 0xFFFFFFFC
-In clock cycle: 50
+In clock cycle: 30
 Register Write to Reg: 0x0C Val: 0x00000008
-In clock cycle: 53
+In clock cycle: 31
 Register Write to Reg: 0x0D Val: 0x00000015
-In clock cycle: 56
+In clock cycle: 32
 Register Write to Reg: 0x0E Val: 0x00000023
-In clock cycle: 59
+In clock cycle: 33
 Register Write to Reg: 0x0F Val: 0x00000032
-In clock cycle: 62
+In clock cycle: 34
 Register Write to Reg: 0x10 Val: 0x00000042
-Execution is stopping! Clock Cycle: 63
+Execution is stopping! Clock Cycle: 35

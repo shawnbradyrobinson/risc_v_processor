@@ -65,7 +65,7 @@ architecture structural of MEMWB_PipelineRegister is
 	--0: MemToReg(0)
 
 	signal s_ctrl_in	: std_logic_vector(3 downto 0);
-	signal s_ctrl_out	: std_logic_vector(3 downto 0);
+	signal s_ctrl_out	: std_logic_vector(3 downto 0) := (others => '1');
 
 begin 
 

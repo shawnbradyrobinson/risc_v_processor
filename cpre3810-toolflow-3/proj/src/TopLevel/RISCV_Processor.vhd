@@ -215,6 +215,17 @@ signal s_WB_Halt	: std_logic;
   signal s_isAUIPC     : std_logic;
   
 
+
+--- ===== FORWARDING SIGNALS ===== --- 
+  signal s_fwd_A	: std_logic_vector(1 downto 0);
+  signal s_fwd_B	: std_logic_vector(1 downto 0);
+
+  signal s_ALU_A_fwd	: std_logic_vector(31 downto 0);
+  signal s_ALU_B_fwd	: std_logic_vector(31 downto 0);
+
+  signal s_EX_rs1_fwd	: std_logic_vector(31 downto 0);
+  signal s_EX_rs2_fwd	: std_logic_vector(31 downto 0);
+
 -- ========= END OF ADDED SIGNALS ===== -- 
 
 
@@ -541,18 +552,42 @@ end  component;
 
 component hazard_detection_unit is 
 	port(
-		
-		MEM_RegWrite	: in std_logic; -- mem stage hazard 
-		MEM_rd_addr	: in std_logic_vector(4 downto 0); -- mem stage hazard
-		EX_RegWrite	: in std_logic; -- any reg-write in ex hazard 
-		EX_MemRead	: in std_logic; -- load use hazard
-		EX_rd_addr	: in std_logic_vector(4 downto 0); -- load use hazard 
-		ID_rs1_addr	: in std_logic_vector(4 downto 0); -- consumer instruction in ID
-		ID_rs2_addr	: in std_logic_vector(4 downto 0); -- consumer instruction in ID
-		o_stall		: out std_logic
-	); 
+		EX_MemRead	: in std_logic;
+		EX_rd_addr	: in std_logic_vector(4 downto 0);
+		ID_rs1_addr	: in std_logic_vector(4 downto 0);
+		ID_rs2_addr	: in std_logic_vector(4 downto 0);
+		o_stall		: out std_logic 
+	);
 
 end component;
+
+component mux3t1_N is
+    generic(N : integer := 32);
+    port(i_S  : in  std_logic_vector(1 downto 0);
+         i_D0 : in  std_logic_vector(N-1 downto 0);
+         i_D1 : in  std_logic_vector(N-1 downto 0);
+         i_D2 : in  std_logic_vector(N-1 downto 0);
+         o_O  : out std_logic_vector(N-1 downto 0));
+end component;
+
+
+component forwarding_unit is
+  port( -- From ID/EX 
+	EX_rs1_addr:		in std_logic_vector(4 downto 0);
+	EX_rs2_addr:		in std_logic_vector(4 downto 0);
+	
+	-- From EX/MEM
+	MEM_RegWrite:		in std_logic;
+	MEM_rd_addr:		in std_logic_vector(4 downto 0);
+	
+	-- From MEM/WB 
+	WB_RegWrite:		in std_logic; 
+	WB_rd_addr:		in std_logic_vector(4 downto 0); 
+
+	o_fwd_A:		out std_logic_vector(1 downto 0); -- associated with ALU A
+	o_fwd_B:		out std_logic_vector(1 downto 0)
+	); 
+end  component;
 
 
 -- ========= END OF ADDED COMPONENTS ===== -- 
@@ -707,7 +742,7 @@ JAL_ADDER: ripple_carry_adderN
 
 JALR_ADDER: ripple_carry_adderN
 	generic map(N => 32)
-	port map(A	=> s_EX_rs1_out,
+	port map(A	=> s_EX_rs1_fwd,
 		 B	=> s_EX_ImmGen,
 		 Cin	=> '0',
 		 Sum	=> s_jalr_target,
@@ -749,10 +784,7 @@ IFID_REG: IFID_PipelineRegister
 		
 		ID_PC		=> s_ID_PC,
 		ID_Instr	=> s_ID_Instr,
-		ID_PC_Plus4	=> s_ID_PC_Plus4
-
-
-		);
+		ID_PC_Plus4	=> s_ID_PC_Plus4);
 
 
 -- ====== ID/EX PIPELINE REGISTER ===== -- 
@@ -760,7 +792,7 @@ IDEX_REG: IDEX_PipelineRegister
 	port map(
 		iCLK		=> iCLK,
 		iRST		=> iRST,
-		iWE		=> '1', --stalling 
+		iWE		=> s_stall_n, --stalling 
 		iFLUSH		=> s_flush_IDEX,
 		--datapath inputs--
 
@@ -815,9 +847,6 @@ IDEX_REG: IDEX_PipelineRegister
 -- ======= HAZARD DETECTION ========== --
 HAZARD_DETECT:	hazard_detection_unit
 	port map(
-		MEM_RegWrite	=> s_MEM_RegWrite,
-		MEM_rd_addr	=> s_MEM_rd_addr,
-		EX_RegWrite	=> s_EX_RegWrite,
 		EX_MemRead	=> s_EX_MemRead,
 		EX_rd_addr	=> s_EX_rd_addr,
 		ID_rs1_addr	=> s_ID_rs1_addr,
@@ -825,6 +854,20 @@ HAZARD_DETECT:	hazard_detection_unit
 		o_stall		=> s_stall
 	);
 
+
+
+
+-- ======= FORWARDING UNIT ========= -- 
+FORWARDING: 	forwarding_unit
+	port map(
+		EX_rs1_addr	=> s_EX_rs1_addr, -- from ID/EX slice,
+		EX_rs2_addr	=> s_EX_rs2_addr, -- from ID/EX 
+		MEM_RegWrite	=> s_MEM_RegWrite, -- from EX/MEM output
+		MEM_rd_addr	=> s_MEM_rd_addr,  -- from EX/MEM
+		WB_RegWrite	=> s_WB_RegWrite,  -- from MEM/WB
+		WB_rd_addr	=> s_WB_rd_addr,   -- from MEM/WB
+		o_fwd_A		=> s_fwd_A,
+		o_fwd_B		=> s_fwd_B);
 
  -- ====== CONTROLS ====== -- 
 MAIN_CONTROL: sc_processor_control_unit
@@ -885,13 +928,13 @@ EXMEM_REG: EXMEM_PipelineRegister
 		iCLK		=> iCLK,
 		iRST		=> iRST,
 		iWE		=> '1', --stalling
-		iFLUSH		=> '0',
+		iFLUSH		=> '0', -- changed from s_redirect when implementing forwarding - shawn 
 		--datapath inputs--
 		EX_PC		=> s_EX_PC,		--from ID/EX output
 		EX_Instr	=> s_EX_Instr,		--from ID/EX output
 		EX_PC_Plus4	=> s_EX_PC_Plus4, 	--from ID/EX output
 		EX_ALU_Result	=> s_ALUOut,		--from ALU output
-		EX_rs2_out	=> s_EX_rs2_out,	--from ID/EX output
+		EX_rs2_out	=> s_EX_rs2_fwd,	-- changed for forwarding
 		EX_rd_addr	=> s_EX_rd_addr,	--from ID/EX slice
 		
 		--Control inputs-- 
@@ -941,7 +984,7 @@ EXMEM_REG: EXMEM_PipelineRegister
 -- ====== B MUX ====== -- 
 B_SRC_MUX: mux2t1_N
 	generic map(N => N) 
-	Port map( i_D0		=>  s_EX_rs2_out,
+	Port map( i_D0		=>  s_EX_rs2_fwd,
 		  i_D1		=>  s_EX_ImmGen,
 		  i_S		=>  s_EX_ALUSrc,
 		  o_O		=>  s_B_ALU_choice
@@ -955,7 +998,7 @@ B_SRC_MUX: mux2t1_N
   	generic map(N => N)
   	port map(
     		i_S  => s_EX_isAUIPC,
-    		i_D0 => s_EX_rs1_out,
+    		i_D0 => s_EX_rs1_fwd,
     		i_D1 => s_EX_PC,
     		o_O  => s_ALU_A_auipc
   		);
@@ -970,7 +1013,25 @@ LUI_MUX: mux2t1_N
     		o_O  => s_ALU_A
   		);
 
+FWD_MUX_A: mux3t1_N
+	generic map(N => 32)
+	port map(
+		i_S	=> s_fwd_A,
+		i_D0	=> s_EX_rs1_out, 	-- "00" means no forwarding
+		i_D1	=> s_MEM_ALU_Result, 	-- "01" means forwarding from MEM
+		i_D2	=> s_RegWrData,		-- "10" means forwarding from WB
+		o_O	=> s_EX_rs1_fwd		-- goes into AUIPC_MUX
+	);
 
+FWD_MUX_B: mux3t1_N
+	generic map(N => 32)
+	port map(
+		i_S	=> s_fwd_B,
+		i_D0	=> s_EX_rs2_out,
+		i_D1	=> s_MEM_ALU_Result,
+		i_D2	=> s_RegWrData,
+		o_O	=> s_EX_rs2_fwd
+	);
 -- ====== ALU ======== -- 
 ALU: alu_32
   port map(
