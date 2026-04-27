@@ -36,7 +36,7 @@ architecture structural of source_register is
   end component; 
 
 type transposed_bus_t is array(31 downto 0) of std_logic_vector(31 downto 0); 
-signal mux_input_bus : transposed_bus_t; 
+signal mux_input_bus : transposed_bus_t := (others => (others => '0')); 
 
 
 begin

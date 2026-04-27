@@ -53,11 +53,29 @@ architecture structural of register_file is
      address_select_lines	: in std_logic_vector(4 downto 0);
      output_lines		: out std_logic_vector(31 downto 0));
   end component; 
+
+
+   component mux2t1_N is
+    generic(N : integer := 32);
+    port(i_S  : in std_logic;
+         i_D0 : in std_logic_vector(N-1 downto 0);
+         i_D1 : in std_logic_vector(N-1 downto 0);
+         o_O  : out std_logic_vector(N-1 downto 0));
+  end component;
+
   
   signal decoder_out		: std_logic_vector(31 downto 0);
   signal write_e_mask		: std_logic_vector(31 downto 0);  
   signal gated_write_enable	: std_logic_vector(31 downto 0); 
-  signal risc_registers		: bus_32_t; 
+  signal risc_registers		: bus_32_t;
+
+  -- raw register file outputs before bypassing
+  signal s_rs1_raw		: std_logic_vector(31 downto 0); 
+  signal s_rs2_raw		: std_logic_vector(31 downto 0);
+  -- bypassing outputs 
+
+  signal s_bypass_rs1		: std_logic; 
+  signal s_bypass_rs2		: std_logic;  
 	
 
 begin
@@ -93,13 +111,42 @@ G_32bitRegisters: for i in 1 to 31 generate
 		port map(
 			register_lines 		=> risc_registers,
 			address_select_lines 	=> rs1_address,
-			output_lines		=> rs1_out);
+			output_lines		=> s_rs1_raw);
 
 	RS2_READ: source_register
 		port map(
 			register_lines 		=> risc_registers,
 			address_select_lines 	=> rs2_address,
-			output_lines		=> rs2_out);
+			output_lines		=> s_rs2_raw);
   
   
+ 	-- Bypass conditions:
+    -- If WB is writing to the same register we're reading,
+    -- AND it's not x0, forward rd_data directly
+    s_bypass_rs1 <= '1' when (write_enable = '1') and
+                             (rd_address /= "00000") and
+                             (rd_address = rs1_address)
+                    else '0';
+
+    s_bypass_rs2 <= '1' when (write_enable = '1') and
+                             (rd_address /= "00000") and
+                             (rd_address = rs2_address)
+                    else '0';
+
+    -- RS1 bypass mux
+    RS1_BYPASS: mux2t1_N
+        generic map(N => 32)
+        port map(i_S  => s_bypass_rs1,
+                 i_D0 => s_rs1_raw,   -- normal register file read
+                 i_D1 => rd_data,     -- WB forwarded value
+                 o_O  => rs1_out);
+
+    -- RS2 bypass mux
+    RS2_BYPASS: mux2t1_N
+        generic map(N => 32)
+        port map(i_S  => s_bypass_rs2,
+                 i_D0 => s_rs2_raw,   -- normal register file read
+                 i_D1 => rd_data,     -- WB forwarded value
+                 o_O  => rs2_out);
+
 end structural;
