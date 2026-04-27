@@ -34,17 +34,18 @@ architecture structure of sw_fetch_unit is
         
 
 
-	signal s_pc_reg_input :		 std_logic_vector(31 downto 0);
+	--signal s_pc_reg_input :		 std_logic_vector(31 downto 0);
 	signal s_next_PC		: std_logic_vector(31 downto 0); 
 	signal s_current_PC		: std_logic_vector(31 downto 0); 
 	signal s_pc_plus4		: std_logic_vector(31 downto 0); 
+	signal s_PC_WE			: std_logic; 
 
 	--handling a risc-v shift left one requirement
 	signal s_imm_shifted		: std_logic_vector(31 downto 0); 
 
 	signal s_stall_inverted		: std_logic; -- avoiding behavioral stuff with an inverted signal
 	
-
+	--signal s_WE_PC			: std_logic; 
   component register_NBit is 
 	generic(N: integer := 32); 
 	port(D		: in std_logic_vector(N-1 downto 0); 
@@ -110,8 +111,10 @@ begin
 
   o_PC 		<= s_current_PC; 
   PC_plus4	<= s_pc_plus4; 
+ -- s_WE_PC	<= '1' when iRST = '1' else s_stall_inverted; 
  -- s_pc_reg_input <= c_PC_RESET when iRST = '1' else s_next_PC;
-  
+  s_PC_WE	<= s_stall_inverted or i_taken;
+
    STALL_INV: invg
 	port map(i_A	=> i_stall,
 		 o_F	=> s_stall_inverted);
@@ -146,19 +149,18 @@ begin
 	--	 i_D   => s_pc_reg_input,
 	--	 o_Q	=> s_current_PC);
 
-RESET_MUX: mux2t1_N
-    generic map(N => 32)
-    port map(i_S  => iRST,
-             i_D0 => s_next_PC,
-             i_D1 => x"00400000",
-             o_O  => s_pc_reg_input);
+--RESET_MUX: mux2t1_N
+  --  generic map(N => 32)
+    --port map(i_S  => iRST,
+      --       i_D0 => s_next_PC,
+        --     i_D1 => x"00400000",
+          --   o_O  => s_pc_reg_input);
 
-PC_REG: register_NBit
-    generic map(N => 32)
-    port map(D   => s_pc_reg_input,
-             RST => '0',
-             WE  => s_stall_n, -- FREEZE PC ON STALL! 
-             CLK => iCLK,
-             Q   => s_current_PC);
+PC_REG: pc_register
+	port map(iCLK	=> iCLK,
+		 i_RST	=> iRST,
+		 i_WE	=> s_stall_inverted,
+		 i_D	=> s_next_PC,
+		 o_Q	=> s_current_PC);
 
 end structure;
