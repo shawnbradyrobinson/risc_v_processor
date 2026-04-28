@@ -7,7 +7,7 @@
 
 -- RISCV_Processor.vhd
 -------------------------------------------------------------------------
--- DESCRIPTION: THIS IS SHAWN AND JAY'S PIPELINED PROCESSOR! This file will contain software and hardware five-stage
+-- DESCRIPTION: THIS IS SHAWN AND JAY'S PIPELINED PROCESSOR! This file will contain hardware five-stage
 --pipeline handling 
 --  ---./3810_tf.sh test --summary proj/riscv/cpre3810_test_assembly_program/*.s
 -- 01/29/2019 by H3::Design created.
@@ -963,7 +963,6 @@ EXMEM_REG: EXMEM_PipelineRegister
 		
 
 
-		--Fetch outputs (CONSUMED HERE IN THE FETCH UNIT!) 
 
 		MEM_BranchTaken => s_MEM_BranchTaken,
 		MEM_Jump	=> s_MEM_Jump,

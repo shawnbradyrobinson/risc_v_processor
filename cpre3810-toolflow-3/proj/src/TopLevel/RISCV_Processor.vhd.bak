@@ -7,7 +7,7 @@
 
 -- RISCV_Processor.vhd
 -------------------------------------------------------------------------
--- DESCRIPTION: THIS IS SHAWN AND JAY'S PIPELINED PROCESSOR! This file will contain software and hardware five-stage
+-- DESCRIPTION: THIS IS SHAWN AND JAY'S PIPELINED PROCESSOR! This file will contain hardware five-stage
 --pipeline handling 
 --  ---./3810_tf.sh test --summary proj/riscv/cpre3810_test_assembly_program/*.s
 -- 01/29/2019 by H3::Design created.
@@ -776,7 +776,7 @@ IFID_REG: IFID_PipelineRegister
 	port map(
 		iCLK		=> iCLK,
 		iRST		=> iRST,
-		iWE		=> s_stall_n, -- map it to stalling later 
+		iWE		=> s_stall_n, 
 		iFLUSH		=> s_flush_IFID,
 		IF_PC		=> s_PC,
 		IF_Instr	=> s_Inst,
