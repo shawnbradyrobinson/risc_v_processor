@@ -1,21 +1,21 @@
 Oh no...
 
-Cycle: 5
-RARS instruction number: 2	Instruction: addi x2,x2,-4
-Expected:	Register Write to Reg: 0x02 Val: 0x7FFFFFFC
-Got     :	Register Write to Reg: 0x02 Val: 0xFFFFFFFC
-Incorrect write
-
-Cycle: 17
-RARS instruction number: 14	Instruction: lw x9,0(x5)
+Cycle: 22
+RARS instruction number: 19	Instruction: lw x9,0(x5)
 Expected:	Register Write to Reg: 0x09 Val: 0x0000000C
-Got     :	Register Write to Reg: 0x09 Val: 0x00000005
+Got     :	Register Write to Reg: 0x09 Val: 0x00000000
 Incorrect write
 
-Cycle: 21
-RARS instruction number: 18	Instruction: add x11,x0,x9
+Cycle: 30
+RARS instruction number: 27	Instruction: add x11,x0,x9
 Expected:	Register Write to Reg: 0x0B Val: 0x0000000C
-Got     :	Register Write to Reg: 0x0B Val: 0x00000005
+Got     :	Register Write to Reg: 0x0B Val: 0x00000000
+Incorrect write
+
+Cycle: 45
+RARS instruction number: 40	Instruction: addi x2,x2,-16
+Expected:	Register Write to Reg: 0x02 Val: 0x7FFFFFEC
+Got     :	Register Write to Reg: 0x02 Val: 0x7FFFFFDC
 Incorrect write
 
 You have reached the maximum mismatches (3)

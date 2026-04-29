@@ -47,8 +47,8 @@ res_idx:
         nop
 pump:
         j end
-
-
+        nop
+        nop
 main:
         addi sp, sp, -40
         nop
@@ -225,6 +225,7 @@ turkey:
         nop
         nop
         li   t2, -1
+        nop
         nop
         nop
         beq  t3, t2, telling
