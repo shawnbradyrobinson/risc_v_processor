@@ -1,19 +1,4 @@
-#
-# Topological sort using an adjacency matrix. Maximum 4 nodes.
-# Software-scheduled for 5-stage RISC-V pipeline:
-#   NO forwarding, NO hazard detection, NO stalling
-# Rules:
-#   DATA:    3 NOPs between producer and consumer
-#   CONTROL: 2 NOPs after every branch/jump
-#   LOAD:    3 NOPs between load and consumer
-#   lasw:    no trailing NOPs needed (expansion handles latency for code labels)
-#   Data addresses hardcoded via lui/addi (lasw uses auipc for data labels)
-# Expected output: res = [3, 0, 2, 1]
-# Data layout:
-#   res:             0x10010000
-#   adjacencymatrix: 0x10010008
-#   visited:         0x10010024
-#   res_idx:         0x10010028
+
 
 .data
 res:

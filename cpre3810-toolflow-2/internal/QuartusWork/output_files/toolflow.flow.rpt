@@ -1,5 +1,5 @@
 Flow report for toolflow
-Mon Apr 27 18:43:41 2026
+Thu May  7 02:21:47 2026
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Standard Edition
 
 
@@ -41,15 +41,15 @@ https://fpgasoftware.intel.com/eula.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Successful - Mon Apr 27 18:43:30 2026           ;
+; Flow Status                        ; Successful - Thu May  7 02:21:29 2026           ;
 ; Quartus Prime Version              ; 20.1.1 Build 720 11/11/2020 SJ Standard Edition ;
 ; Revision Name                      ; toolflow                                        ;
 ; Top-level Entity Name              ; RISCV_Processor                                 ;
 ; Family                             ; Cyclone IV E                                    ;
 ; Device                             ; EP4CE115F29C7                                   ;
 ; Timing Models                      ; Final                                           ;
-; Total logic elements               ; 42,027 / 114,480 ( 37 % )                       ;
-;     Total combinational functions  ; 25,653 / 114,480 ( 22 % )                       ;
+; Total logic elements               ; 42,113 / 114,480 ( 37 % )                       ;
+;     Total combinational functions  ; 25,895 / 114,480 ( 23 % )                       ;
 ;     Dedicated logic registers      ; 34,130 / 114,480 ( 30 % )                       ;
 ; Total registers                    ; 34130                                           ;
 ; Total pins                         ; 99 / 529 ( 19 % )                               ;
@@ -65,7 +65,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 04/27/2026 18:39:31 ;
+; Start date & time ; 05/07/2026 02:16:23 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; toolflow            ;
 +-------------------+---------------------+
@@ -76,7 +76,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+-----------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name     ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+-----------------+------------+
-; COMPILER_SIGNATURE_ID               ; 128122668752104.177733317130629        ; --            ; --              ; --         ;
+; COMPILER_SIGNATURE_ID               ; 345052211075.177813818303657           ; --            ; --              ; --         ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; RISCV_Processor ; Top        ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; RISCV_Processor ; Top        ;
 ; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; RISCV_Processor ; Top        ;
@@ -91,24 +91,24 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:01:00     ; 1.0                     ; 982 MB              ; 00:01:07                           ;
-; Fitter               ; 00:02:48     ; 1.2                     ; 2544 MB             ; 00:07:25                           ;
-; Assembler            ; 00:00:03     ; 1.0                     ; 702 MB              ; 00:00:03                           ;
-; Timing Analyzer      ; 00:00:11     ; 1.9                     ; 1348 MB             ; 00:00:14                           ;
-; Total                ; 00:04:02     ; --                      ; --                  ; 00:08:49                           ;
+; Analysis & Synthesis ; 00:01:23     ; 1.0                     ; 916 MB              ; 00:01:23                           ;
+; Fitter               ; 00:03:26     ; 1.1                     ; 1955 MB             ; 00:06:13                           ;
+; Assembler            ; 00:00:05     ; 1.0                     ; 702 MB              ; 00:00:04                           ;
+; Timing Analyzer      ; 00:00:17     ; 1.6                     ; 1261 MB             ; 00:00:18                           ;
+; Total                ; 00:05:11     ; --                      ; --                  ; 00:07:58                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+------------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                          ;
-+----------------------+---------------------------+---------+------------+----------------+
-; Module Name          ; Machine Hostname          ; OS Name ; OS Version ; Processor type ;
-+----------------------+---------------------------+---------+------------+----------------+
-; Analysis & Synthesis ; co2050-10.ece.iastate.edu ; Red Hat ; Red Hat    ; x86_64         ;
-; Fitter               ; co2050-10.ece.iastate.edu ; Red Hat ; Red Hat    ; x86_64         ;
-; Assembler            ; co2050-10.ece.iastate.edu ; Red Hat ; Red Hat    ; x86_64         ;
-; Timing Analyzer      ; co2050-10.ece.iastate.edu ; Red Hat ; Red Hat    ; x86_64         ;
-+----------------------+---------------------------+---------+------------+----------------+
++------------------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                                ;
++----------------------+---------------------------------+---------+------------+----------------+
+; Module Name          ; Machine Hostname                ; OS Name ; OS Version ; Processor type ;
++----------------------+---------------------------------+---------+------------+----------------+
+; Analysis & Synthesis ; linuxvdi-f25-21.ece.iastate.edu ; Red Hat ; Red Hat    ; x86_64         ;
+; Fitter               ; linuxvdi-f25-21.ece.iastate.edu ; Red Hat ; Red Hat    ; x86_64         ;
+; Assembler            ; linuxvdi-f25-21.ece.iastate.edu ; Red Hat ; Red Hat    ; x86_64         ;
+; Timing Analyzer      ; linuxvdi-f25-21.ece.iastate.edu ; Red Hat ; Red Hat    ; x86_64         ;
++----------------------+---------------------------------+---------+------------+----------------+
 
 
 ------------

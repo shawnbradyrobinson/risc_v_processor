@@ -3,7 +3,7 @@ Reading pref.tcl
 # 2025.1_2
 
 # vsim -postsimdataflow -debugdb -c -voptargs=""+acc"" tb -do "modelsim_framework.do" -gOUTPUT_TRACE=ms.trace 
-# Start time: 17:16:42 on Mar 31,2026
+# Start time: 04:19:48 on May 06,2026
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Note: (vsim-8611) Generating debug db.
 # ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
@@ -41,9 +41,8 @@ Reading pref.tcl
 # Loading work.mux2t1_n(structural)#1
 # Loading work.mux2t1(structure)#1
 # Loading work.invg(dataflow)#1
-# Loading work.ripple_carry_addern(structural)#1
-# Loading work.full_adder(structure)#1
-# Loading work.xorg2(dataflow)#1
+# Loading work.carry_lookahead_addern(structural)#1
+# Loading work.cla_block_4bit(dataflow)#1
 # Loading work.sc_processor_control_unit(dataflow)#1
 # Loading work.sc_processor_alu_control(dataflow)#1
 # Loading work.immediate_generator(dataflow)#1
@@ -55,6 +54,7 @@ Reading pref.tcl
 # Loading work.mux_32to1(dataflow)#1
 # Loading work.alu_32(structural)#1
 # Loading work.addsub_32(structural)#1
+# Loading work.xorg2(dataflow)#1
 # Loading work.barrel_shifter(structural)#1
 # Loading work.barrel_shifter(structural)#2
 # Loading work.branch_resolver(dataflow)#1
@@ -66,11 +66,11 @@ Reading pref.tcl
 #    Time: 0 ns  Iteration: 0  Instance: /tb/MyRiscv/IMem
 # ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
 #    Time: 0 ns  Iteration: 7  Instance: /tb/MyRiscv/DMem
-# ** Note: Data structure takes 74314808 bytes of memory
+# ** Note: Data structure takes 73266232 bytes of memory
 #          Process time 0.13 seconds
 #          stop
 #    Time: 1080 ns  Iteration: 1  Instance: /tb
-# Break in Process P_DUMP_STATE at /home/shawnr/CPRE_381/project_one/cpre3810-toolflow/internal/testpy/tb.vhd line 150
-# Stopped at /home/shawnr/CPRE_381/project_one/cpre3810-toolflow/internal/testpy/tb.vhd line 150
-# End time: 17:16:45 on Mar 31,2026, Elapsed time: 0:00:03
+# Break in Process P_DUMP_STATE at /home/jaypp123/Desktop/CPRE3810/project1/maintoolflow/risc_v_processor/cpre3810-toolflow-1/internal/testpy/tb.vhd line 150
+# Stopped at /home/jaypp123/Desktop/CPRE3810/project1/maintoolflow/risc_v_processor/cpre3810-toolflow-1/internal/testpy/tb.vhd line 150
+# End time: 04:19:52 on May 06,2026, Elapsed time: 0:00:04
 # Errors: 0, Warnings: 4

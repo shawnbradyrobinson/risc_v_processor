@@ -27,7 +27,7 @@ architecture structural of addsub_32 is
   -- Component declarations
 
 
-  component ripple_carry_adderN is
+  component carry_lookahead_adderN is
     generic(N : integer := 32);
     port(
       A    : in  std_logic_vector(N-1 downto 0);
@@ -86,7 +86,7 @@ begin
   --   ADD: A + B + 0
   --   SUB: A + ~B + 1  (i_nAdd_Sub fed as Cin)
   
-  ADDER: ripple_carry_adderN
+  ADDER: carry_lookahead_adderN
     generic map(N => 32)
     port map(
       A    => i_A,
