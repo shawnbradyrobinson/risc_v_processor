@@ -96,7 +96,7 @@ architecture structure of sw_fetch_unit is
  end component;
  
 
-  component ripple_carry_adderN is
+  component carry_lookahead_adderN is
   generic(N : integer); 
   port(A         : in std_logic_vector(N-1 downto 0);
        B         : in std_logic_vector(N-1 downto 0);
@@ -119,7 +119,7 @@ begin
 	port map(i_A	=> i_stall,
 		 o_F	=> s_stall_inverted);
 
-   PC4_ADD:	ripple_carry_adderN
+   PC4_ADD:	carry_lookahead_adderN
 	generic map(N => 32)
 	port map(A	=> s_current_PC,
 		 B	=> c_immediate_four,

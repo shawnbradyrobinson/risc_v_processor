@@ -1,5 +1,7 @@
 [N
 22
+1
+122 /home/jaypp123/Desktop/CPRE3810/project1/maintoolflow/risc_v_processor/cpre3810-toolflow-2/containers/sim_container_0/work
 17
 8 iInstExt
 5
@@ -10,8 +12,6 @@
 1 N
 20
 5 mixed
-1
-85 /home/shawnr/CPRE_381/project_one/cpre3810-toolflow-2/containers/sim_container_0/work
 14
 6 i_left
 3
@@ -24,8 +24,6 @@
 2 tb
 10
 13 register_nbit
-6
-19 ripple_carry_addern
 16
 15 riscv_processor
 4
@@ -34,6 +32,8 @@
 14 barrel_shifter
 11
 13 sw_fetch_unit
+6
+22 carry_lookahead_addern
 15
 7 i_arith
 7
@@ -47,42 +47,6 @@
 ]
 [G
 1
-19
-20
-1
-21
-0
-0
-0
-0
-8 8
--128
--106
--104
-0
-0
-0
-0
-0
-0
-0
-]
-[G
-1
-19
-20
-1
-8
-1
-0
-32
-0
-0 0
-0
-0
-]
-[G
-1
 2
 3
 1
@@ -202,20 +166,6 @@
 1
 0
 10
-0
-0 0
-0
-0
-]
-[G
-1
-6
-7
-1
-8
-1
-0
-32
 0
 0 0
 0
@@ -253,6 +203,56 @@
 1
 0
 10
+0
+0 0
+0
+0
+]
+[G
+1
+6
+7
+1
+8
+1
+0
+32
+0
+0 0
+0
+0
+]
+[G
+1
+19
+20
+1
+21
+0
+0
+0
+0
+8 8
+-128
+-106
+-104
+0
+0
+0
+0
+0
+0
+0
+]
+[G
+1
+19
+20
+1
+8
+1
+0
+32
 0
 0 0
 0

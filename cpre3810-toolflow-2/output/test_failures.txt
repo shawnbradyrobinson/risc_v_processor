@@ -1,1 +1,8 @@
+proj/riscv/Proj_sort_template.s
+proj/riscv/fibonacci.s
 proj/riscv/fibonacci_nop.s
+proj/riscv/grendel.s
+proj/riscv/lab3Seq.s
+proj/riscv/lui_test.s
+proj/riscv/proj2_mergesort.s
+proj/riscv/simplebranch.s

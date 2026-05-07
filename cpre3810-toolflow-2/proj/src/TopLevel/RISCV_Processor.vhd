@@ -511,7 +511,7 @@ component MEMWB_PipelineRegister is
 
 end component;
 
-component ripple_carry_adderN is
+component carry_lookahead_adderN is
   generic(N : integer := 32); -- Generic of type integer for input/output data width. Default value is 16.
   port(A         : in std_logic_vector(N-1 downto 0);
        B         : in std_logic_vector(N-1 downto 0);
@@ -673,7 +673,7 @@ F_UNIT_SW: sw_fetch_unit
 
 -- ====== JUMP CALCULATION ====== -- 
 
-JAL_ADDER: ripple_carry_adderN
+JAL_ADDER: carry_lookahead_adderN
 	generic map(N => 32)
 	port map(A	=> s_EX_PC,
 		 B	=> s_EX_ImmGen,
@@ -681,7 +681,7 @@ JAL_ADDER: ripple_carry_adderN
 		 Sum	=> s_jal_target,
 		 Cout	=> open);
 
-JALR_ADDER: ripple_carry_adderN
+JALR_ADDER: carry_lookahead_adderN
 	generic map(N => 32)
 	port map(A	=> s_EX_rs1_out,
 		 B	=> s_EX_ImmGen,
@@ -689,7 +689,7 @@ JALR_ADDER: ripple_carry_adderN
 		 Sum	=> s_jalr_target,
 		 Cout	=> open);
 
-BRANCH_ADDER: ripple_carry_adderN
+BRANCH_ADDER:carry_lookahead_adderN
 	generic map(N => 32)
 	port map(A	=> s_EX_PC,
 		 B	=> s_EX_ImmGen,
