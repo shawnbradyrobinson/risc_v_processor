@@ -1,13 +1,13 @@
 [N
 22
-1
-122 /home/jaypp123/Desktop/CPRE3810/project1/maintoolflow/risc_v_processor/cpre3810-toolflow-2/containers/sim_container_0/work
 17
 8 iInstExt
 5
 10 ADDR_WIDTH
 9
 8 mux2t1_n
+1
+94 /home/jaypp123/Desktop/CPRE3810/FINAL_DEMO/cpre3810-toolflow-2/containers/sim_container_0/work
 8
 1 N
 20
@@ -44,6 +44,42 @@
 9 gCLK_HPER
 18
 9 iInstAddr
+]
+[G
+1
+19
+20
+1
+21
+0
+0
+0
+0
+8 8
+-128
+-106
+-104
+0
+0
+0
+0
+0
+0
+0
+]
+[G
+1
+19
+20
+1
+8
+1
+0
+32
+0
+0 0
+0
+0
 ]
 [G
 1
@@ -212,42 +248,6 @@
 1
 6
 7
-1
-8
-1
-0
-32
-0
-0 0
-0
-0
-]
-[G
-1
-19
-20
-1
-21
-0
-0
-0
-0
-8 8
--128
--106
--104
-0
-0
-0
-0
-0
-0
-0
-]
-[G
-1
-19
-20
 1
 8
 1

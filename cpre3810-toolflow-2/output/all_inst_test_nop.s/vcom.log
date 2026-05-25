@@ -1,6 +1,6 @@
 QuestaSim-64 vcom 2025.1_2 Compiler 2025.04 Apr  7 2025
-Start time: 02:40:35 on May 07,2026
-vcom -2008 -work internal/ModelSimContainer/work proj/src/RISCV_types.vhd internal/testpy/tb.vhd proj/src/RISCV_types.vhd proj/src/components/invg.vhd proj/src/components/immediate_generator.vhd proj/src/components/sc_processor_control_unit.vhd proj/src/components/xorg2.vhd proj/src/components/branch_resolver.vhd proj/src/components/barrel_shifter.vhd proj/src/components/source_register.vhd proj/src/components/register_file.vhd proj/src/components/carry_lookahead_adderN.vhd proj/src/components/mux2t1_N.vhd proj/src/components/cla_block_4bit.vhd proj/src/components/alu_32.vhd proj/src/components/full_adder.vhd proj/src/components/addsub_32.vhd proj/src/components/mux_32to1.vhd proj/src/components/fetch_unit.vhd proj/src/components/register_NBit.vhd proj/src/components/bitextender_12to32.vhd proj/src/components/org2.vhd proj/src/components/dffg.vhd proj/src/components/andg2.vhd proj/src/components/sc_processor_alu_control.vhd proj/src/components/mux2t1.vhd proj/src/components/decoder_5to32.vhd proj/src/components/bitextender_20to32.vhd proj/src/TopLevel/IFID_PipelineRegister.vhd proj/src/TopLevel/IDEX_PipelineRegister.vhd proj/src/TopLevel/RISCV_Processor.vhd proj/src/TopLevel/EXMEM_PipelineRegister.vhd proj/src/TopLevel/MEMWB_PipelineRegister.vhd proj/src/TopLevel/pc_register.vhd proj/src/TopLevel/mem.vhd proj/src/TopLevel/sw_fetch_unit.vhd 
+Start time: 14:56:08 on May 13,2026
+vcom -2008 -work internal/ModelSimContainer/work proj/src/RISCV_types.vhd internal/testpy/tb.vhd proj/src/RISCV_types.vhd proj/src/TopLevel/RISCV_Processor.vhd proj/src/TopLevel/pc_register.vhd proj/src/TopLevel/MEMWB_PipelineRegister.vhd proj/src/TopLevel/EXMEM_PipelineRegister.vhd proj/src/TopLevel/IFID_PipelineRegister.vhd proj/src/TopLevel/IDEX_PipelineRegister.vhd proj/src/TopLevel/mem.vhd proj/src/TopLevel/sw_fetch_unit.vhd proj/src/components/sc_processor_control_unit.vhd proj/src/components/invg.vhd proj/src/components/register_file.vhd proj/src/components/sc_processor_alu_control.vhd proj/src/components/andg2.vhd proj/src/components/carry_lookahead_adderN.vhd proj/src/components/immediate_generator.vhd proj/src/components/barrel_shifter.vhd proj/src/components/source_register.vhd proj/src/components/bitextender_20to32.vhd proj/src/components/mux2t1_N.vhd proj/src/components/full_adder.vhd proj/src/components/branch_resolver.vhd proj/src/components/dffg.vhd proj/src/components/org2.vhd proj/src/components/addsub_32.vhd proj/src/components/fetch_unit.vhd proj/src/components/xorg2.vhd proj/src/components/mux_32to1.vhd proj/src/components/cla_block_4bit.vhd proj/src/components/bitextender_12to32.vhd proj/src/components/alu_32.vhd proj/src/components/decoder_5to32.vhd proj/src/components/register_NBit.vhd proj/src/components/mux2t1.vhd 
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
@@ -16,73 +16,73 @@ vcom -2008 -work internal/ModelSimContainer/work proj/src/RISCV_types.vhd intern
 ** Warning: proj/src/RISCV_types.vhd(31): (vcom-1615) Existing package body 'RISCV_types(body)' at line 31 will be overwritten.
 -- Compiling package body RISCV_types
 -- Loading package RISCV_types
--- Compiling entity invg
--- Compiling architecture dataflow of invg
--- Compiling entity immediate_generator
--- Compiling architecture dataflow of immediate_generator
--- Compiling entity sc_processor_control_unit
--- Compiling architecture dataflow of sc_processor_control_unit
--- Compiling entity xorg2
--- Compiling architecture dataflow of xorg2
--- Compiling entity branch_resolver
--- Compiling architecture dataflow of branch_resolver
--- Compiling entity barrel_shifter
--- Compiling architecture structural of barrel_shifter
 -- Loading package RISCV_types
--- Compiling entity source_register
--- Compiling architecture structural of source_register
--- Compiling entity register_file
--- Compiling architecture structural of register_file
--- Compiling entity carry_lookahead_adderN
--- Compiling architecture structural of carry_lookahead_adderN
--- Compiling entity mux2t1_N
--- Compiling architecture structural of mux2t1_N
--- Compiling entity cla_block_4bit
--- Compiling architecture dataflow of cla_block_4bit
--- Compiling entity alu_32
--- Compiling architecture structural of alu_32
--- Compiling entity full_adder
--- Compiling architecture structure of full_adder
--- Compiling entity addsub_32
--- Compiling architecture structural of addsub_32
--- Compiling entity mux_32to1
--- Compiling architecture dataflow of mux_32to1
--- Compiling entity fetch_unit
--- Compiling architecture structure of fetch_unit
--- Compiling entity register_NBit
--- Compiling architecture structural of register_NBit
--- Compiling entity bitextender_12to32
--- Compiling architecture behavioral of bitextender_12to32
--- Compiling entity org2
--- Compiling architecture dataflow of org2
--- Compiling entity dffg
--- Compiling architecture mixed of dffg
--- Compiling entity andg2
--- Compiling architecture dataflow of andg2
--- Compiling entity sc_processor_alu_control
--- Compiling architecture dataflow of sc_processor_alu_control
--- Compiling entity mux2t1
--- Compiling architecture structure of mux2t1
--- Compiling entity decoder_5to32
--- Compiling architecture dataflow of decoder_5to32
--- Compiling entity bitextender_20to32
--- Compiling architecture behavioral of bitextender_20to32
+-- Compiling entity RISCV_Processor
+-- Compiling architecture structure of RISCV_Processor
+-- Compiling entity pc_register
+-- Compiling architecture structure of pc_register
+-- Compiling entity MEMWB_PipelineRegister
+-- Compiling architecture structural of MEMWB_PipelineRegister
+-- Compiling entity EXMEM_PipelineRegister
+-- Compiling architecture structural of EXMEM_PipelineRegister
 -- Compiling entity IFID_PipelineRegister
 -- Compiling architecture structural of IFID_PipelineRegister
 -- Compiling entity IDEX_PipelineRegister
 -- Compiling architecture structural of IDEX_PipelineRegister
--- Compiling entity RISCV_Processor
--- Compiling architecture structure of RISCV_Processor
--- Compiling entity EXMEM_PipelineRegister
--- Compiling architecture structural of EXMEM_PipelineRegister
--- Compiling entity MEMWB_PipelineRegister
--- Compiling architecture structural of MEMWB_PipelineRegister
--- Compiling entity pc_register
--- Compiling architecture structure of pc_register
 -- Loading package NUMERIC_STD
 -- Compiling entity mem
 -- Compiling architecture rtl of mem
 -- Compiling entity sw_fetch_unit
 -- Compiling architecture structure of sw_fetch_unit
-End time: 02:40:36 on May 07,2026, Elapsed time: 0:00:01
+-- Compiling entity sc_processor_control_unit
+-- Compiling architecture dataflow of sc_processor_control_unit
+-- Compiling entity invg
+-- Compiling architecture dataflow of invg
+-- Compiling entity register_file
+-- Compiling architecture structural of register_file
+-- Compiling entity sc_processor_alu_control
+-- Compiling architecture dataflow of sc_processor_alu_control
+-- Compiling entity andg2
+-- Compiling architecture dataflow of andg2
+-- Compiling entity carry_lookahead_adderN
+-- Compiling architecture structural of carry_lookahead_adderN
+-- Compiling entity immediate_generator
+-- Compiling architecture dataflow of immediate_generator
+-- Compiling entity barrel_shifter
+-- Compiling architecture structural of barrel_shifter
+-- Compiling entity source_register
+-- Compiling architecture structural of source_register
+-- Compiling entity bitextender_20to32
+-- Compiling architecture behavioral of bitextender_20to32
+-- Compiling entity mux2t1_N
+-- Compiling architecture structural of mux2t1_N
+-- Compiling entity full_adder
+-- Compiling architecture structure of full_adder
+-- Compiling entity branch_resolver
+-- Compiling architecture dataflow of branch_resolver
+-- Compiling entity dffg
+-- Compiling architecture mixed of dffg
+-- Compiling entity org2
+-- Compiling architecture dataflow of org2
+-- Compiling entity addsub_32
+-- Compiling architecture structural of addsub_32
+-- Compiling entity fetch_unit
+-- Compiling architecture structure of fetch_unit
+-- Compiling entity xorg2
+-- Compiling architecture dataflow of xorg2
+-- Compiling entity mux_32to1
+-- Compiling architecture dataflow of mux_32to1
+-- Compiling entity cla_block_4bit
+-- Compiling architecture dataflow of cla_block_4bit
+-- Compiling entity bitextender_12to32
+-- Compiling architecture behavioral of bitextender_12to32
+-- Compiling entity alu_32
+-- Compiling architecture structural of alu_32
+-- Compiling entity decoder_5to32
+-- Compiling architecture dataflow of decoder_5to32
+-- Compiling entity register_NBit
+-- Compiling architecture structural of register_NBit
+-- Compiling entity mux2t1
+-- Compiling architecture structure of mux2t1
+End time: 14:56:08 on May 13,2026, Elapsed time: 0:00:00
 Errors: 0, Warnings: 2

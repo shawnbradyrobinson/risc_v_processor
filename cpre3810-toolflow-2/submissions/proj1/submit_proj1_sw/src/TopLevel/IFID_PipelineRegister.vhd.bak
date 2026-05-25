@@ -1,0 +1,93 @@
+-------------------------------------------------------------------------
+-- IFID_PipelineRegister.vhd
+-------------------------------------------------------------------------
+-- DESCRIPTION: IF/ID Pipeline Register for RISC-V 5-stage pipeline.
+-- Latches PC and full instruction from the IF stage.
+-- Field slicing (opcode, rs1, rs2, rd, funct3) should be done
+-- combinationally in the parent architecture, not here.
+-------------------------------------------------------------------------
+
+library IEEE; 
+use IEEE.std_logic_1164.all; 
+
+entity IFID_PipelineRegister is 
+
+port(	iCLK: 		in std_logic;
+	iRST: 		in std_logic;
+	iWE:		in std_logic;  -- for stall control?
+	--iFLUSH -- for squashing flushing eventually?
+
+	--IF INPUTS 
+	IF_PC:	  	in std_logic_vector(31 downto 0); 
+	IF_Instr: 	in std_logic_vector(31 downto 0); 
+	IF_PC_Plus4:	in std_logic_vector(31 downto 0);
+
+	--ID OUTPUTS
+	ID_PC:		out std_logic_vector(31 downto 0); 
+	ID_Instr: 	out std_logic_vector(31 downto 0);
+	ID_PC_Plus4:	out std_logic_vector(31 downto 0)
+); 
+
+end IFID_PipelineRegister
+
+architecture structural of IFID_PipelineRegister is 
+
+	component register_NBit is
+    		generic(N : integer := 32);
+    		port(	D   : in  std_logic_vector(N-1 downto 0);
+         		RST : in  std_logic;
+         		WE  : in  std_logic;
+         		CLK : in  std_logic;
+         		Q   : out std_logic_vector(N-1 downto 0));
+  	end component;
+
+	-- Insert flush-gated inputs here eventually? 
+	-- signal s_PC_in
+	-- signal s-Instr_in 
+
+begin 
+  --FOR FUTURE REFERENCE ON FLUSHING/SQUASHING
+  -- On flush, force NOP (ADDI x0, x0, 0 = 0x00000013) into the
+  -- instruction slot and zero the PC rather than latching bad values
+  --s_PC_in    <= (others => '0')      when iFLUSH = '1' else IF_PC;
+  --s_Instr_in <= x"00000013"          when iFLUSH = '1' else IF_Instr;
+
+	REG_PC: register_NBit
+		generic map(N => 32)
+		port map(
+			D 	=> IF_PC,
+			RST 	=> iRST,
+			WE	=> iWE,
+			CLK 	=> iCLK,
+			Q 	=> ID_PC
+		);
+
+	REG_Instr: register_NBit
+		generic map(N => 32)
+		port map(
+			D 	=> IF_Instr,
+			WE	=> iWE,
+			RST	=> iRST,
+			CLK 	=> iCLK,
+			Q	=> ID_Instr
+		);
+
+	REG_PC_Plus4: register_NBit
+    		generic map(N => 32)
+    		port map(
+        		D   => IF_PC_Plus4,
+        		RST => iRST,
+       			WE  => iWE,
+        		CLK => iCLK,
+        		Q   => ID_PC_Plus4
+		);
+
+
+
+	
+end structural; 
+
+
+
+
+
