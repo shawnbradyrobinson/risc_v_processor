@@ -18,9 +18,14 @@ ls
 # internal
 # output
 # proj
+# submissions
+# temp
 # transcript
+output
+# invalid command name "output"
 cd output
 ls
+# Proj_sort_template.s
 # add_1.s
 # add_2.s
 # add_3.s
@@ -64,7 +69,9 @@ ls
 # bne_1.s
 # bne_2.s
 # bne_3.s
+# fibonacci.s
 # fibonacci_nop.s
+# grendel.s
 # grendel_nop.s
 # jal_1.s
 # jal_2.s
@@ -88,6 +95,7 @@ ls
 # lui_1.s
 # lui_2.s
 # lui_3.s
+# lui_test.s
 # lw_0.s
 # lw_1.s
 # lw_2.s
@@ -97,11 +105,12 @@ ls
 # ori_1.s
 # ori_2.s
 # ori_3.s
+# proj2_base_test.s
 # proj2_mergesort.s
 # proj2_mergesort_nop.s
 # proj2_mergesort_nop.s_1
+# simplebranch.s
 # simplebranch_nop.s
-# simplebranch_nop.s_1
 # simplebranch_nop.s_2
 # sll_1.s
 # sll_2.s
@@ -158,18 +167,7 @@ ls
 # xori_1.s
 # xori_2.s
 # xori_3.s
-cd all_inst_test_nop.s
-ls
-# compare.txt
-# dmem.hex
-# imem.hex
-# ms.trace
-# rars.trace
-# vcom.log
-# vsim.dbg
-# vsim.log
-# vsim.wlf
-# work
+cd proj2_mergesort.s
 vsim -view vsim.wlf
 # vsim.wlf opened as dataset "vsim"
 add wave -position insertpoint vsim:/tb/MyRiscv/*

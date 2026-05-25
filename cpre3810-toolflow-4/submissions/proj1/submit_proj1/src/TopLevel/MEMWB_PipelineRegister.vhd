@@ -1,0 +1,134 @@
+-------------------------------------------------------------------------
+-- MEMWB_PipelineRegister.vhd
+-------------------------------------------------------------------------
+-- DESCRIPTION: MEM/WB Pipeline Register for RISC-V 5-stage pipeline.
+--
+-------------------------------------------------------------------------
+
+library IEEE; 
+use IEEE.std_logic_1164.all; 
+
+entity MEMWB_PipelineRegister is 
+
+port(	iCLK: 		in std_logic;
+	iRST: 		in std_logic;
+	iWE:		in std_logic;  -- for stall control?
+	--iFLUSH -- for squashing flushing eventually?
+
+	--MEM INPUTS: datapath 
+	MEM_PC:	  		in std_logic_vector(31 downto 0); 
+	MEM_PC_Plus4:		in std_logic_vector(31 downto 0);
+	MEM_ALU_Result:		in std_logic_vector(31 downto 0);
+	MEM_DMemOut:		in std_logic_vector(31 downto 0);
+	MEM_rd_addr:		in std_logic_vector(4 downto 0);
+	
+
+
+	
+	--MEM INPUTS: control signals, wb-stage consumers --> 
+	MEM_RegWrite:		in std_logic;
+	MEM_MemToReg:		in std_logic_vector(1 downto 0);
+	MEM_Halt:		in std_logic; 
+
+	--WB OUTPUTS: datapath 
+	WB_PC:			out std_logic_vector(31 downto 0); 
+	WB_PC_Plus4:		out std_logic_vector(31 downto 0);
+	WB_ALU_Result:		out std_logic_vector(31 downto 0);
+	WB_DMemOut:		out std_logic_vector(31 downto 0);
+	WB_rd_addr:		out std_logic_vector(4 downto 0);
+
+	--WB OUTPUTS: control
+	WB_Halt:		out std_logic; 
+	WB_RegWrite:		out std_logic;
+	WB_MemToReg:		out std_logic_vector(1 downto 0)
+
+); 
+
+end MEMWB_PipelineRegister;
+
+architecture structural of MEMWB_PipelineRegister is 
+
+	component register_NBit is
+    		generic(N : integer := 32);
+    		port(	D   : in  std_logic_vector(N-1 downto 0);
+         		RST : in  std_logic;
+         		WE  : in  std_logic;
+         		CLK : in  std_logic;
+         		Q   : out std_logic_vector(N-1 downto 0));
+  	end component;
+
+	--Design idea: pack all the one bit control signals into a single vector register thing so we just write one 8-bit
+	-- rather than a ton of one-bit instances
+  	--3: Halt
+	--2: RegWrite
+	--1: MemToReg(1)
+	--0: MemToReg(0)
+
+	signal s_ctrl_in	: std_logic_vector(3 downto 0);
+	signal s_ctrl_out	: std_logic_vector(3 downto 0) := (others => '1');
+
+begin 
+
+
+  -- Pack control inputs
+  s_ctrl_in <= MEM_Halt     &
+	       MEM_RegWrite &
+               MEM_MemToReg;
+
+  -- Unpack control outputs
+  WB_Halt	<= s_ctrl_out(3);
+  WB_RegWrite	<= s_ctrl_out(2);
+  WB_MemToReg	<= s_ctrl_out(1 downto 0);
+
+  REG_PC: register_NBit
+    generic map(N => 32)
+    port map(	D => MEM_PC,         
+		RST => iRST, 
+		WE => iWE, 
+		CLK => iCLK, 
+		Q => WB_PC);
+
+  REG_ALU_Result: register_NBit
+    generic map(N => 32)
+    port map(	D => MEM_ALU_Result, 
+		RST => iRST, 
+		WE => iWE, 
+		CLK => iCLK, 
+		Q => WB_ALU_Result);
+
+  REG_DMemOut: register_NBit
+    generic map(N => 32)
+    port map(	D => MEM_DMemOut,    
+		RST => iRST, 
+		WE => iWE, 
+		CLK => iCLK, 
+		Q => WB_DMemOut);
+
+  REG_rd: register_NBit
+    generic map(N => 5)
+    port map(	D => MEM_rd_addr,    
+		RST => iRST, 
+		WE => iWE, 
+		CLK => iCLK, 
+		Q => WB_rd_addr);
+
+  REG_PC_Plus4: register_NBit
+    generic map(N => 32)
+    port map(
+        D   => MEM_PC_Plus4,
+        RST => iRST,
+        WE  => iWE,
+        CLK => iCLK,
+        Q   => WB_PC_Plus4
+    );
+
+  REG_Ctrl: register_NBit
+    generic map(N => 4)
+    port map(	D => s_ctrl_in,      
+		RST => iRST, 
+		WE => iWE, 
+		CLK => iCLK, 
+		Q => s_ctrl_out);
+
+end structural;
+
